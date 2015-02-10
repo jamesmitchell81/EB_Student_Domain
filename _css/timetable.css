@@ -1,0 +1,44 @@
+.timetable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.timetable td, .timetable th {
+  border: 1px solid #000;
+}
+
+.tt-time-row {
+  height: 1em;
+}
+
+.tt-time-column {
+  width: 10%;
+  text-align: center;
+}
+
+.tt-day-column {
+  width: 18%;
+}
+
+.tt-session {
+  font-size: 0.8em;
+  width: 16%;
+  margin-left: 10%;
+  display: inline-block;
+  background: #ff3449;
+  padding: 1%;
+
+
+
+  display: none;
+}
+
+.tt-session-item {
+  display: block;
+  width: 100%;
+  font-weight: 600;
+}
+
+.tt-session-item span {
+  font-weight: 300;
+}

@@ -1,0 +1,9 @@
+input[type="text"], textarea {
+  font-family: "Fira Sans", sans-serif;
+}
+
+::-webkit-input-placeholder {
+   color: #cacaca;
+   font-weight: 100;
+}
+

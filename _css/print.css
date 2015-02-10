@@ -1,0 +1,41 @@
+body {
+  font-family: "Fira Sans", sans-serif;
+}
+
+.page-action {
+  width: 20%;
+  min-width: 100px;
+  display: inline-block;
+}
+
+.page-entity {
+  font-weight: 300;
+  width: 80%;
+}
+
+#nav-core-1,
+#nav-core-2 {
+  display: none;
+}
+
+.timetable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.timetable td, .timetable th {
+  border: 1px solid #000;
+}
+
+.tt-time-row {
+  height: 4em;
+}
+
+.tt-time-column {
+  width: 10%;
+  text-align: center;
+}
+
+.tt-day-column {
+  width: 18%;
+}
