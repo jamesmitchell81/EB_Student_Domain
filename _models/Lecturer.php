@@ -2,7 +2,7 @@
 
 
     class Lecturer {
-        private $title;
+        private $title = "";
         private $first_name = "";
         private $middle_name = "";
         private $last_name = "";
@@ -11,7 +11,15 @@
         private $modules = [];
 
         /**
-         * @return mixed
+         * @return string
+         */
+        public function getFullName()
+        {
+            return "{$this->title} {$this->first_name} {$this->middle_name} {$this->last_name}";
+        }
+
+        /**
+         * @return string
          */
         public function getTitle()
         {

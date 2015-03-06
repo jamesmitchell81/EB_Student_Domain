@@ -15,6 +15,15 @@
         private $password = "";
         private $gender = "";
 
+
+        /**
+         * @return string
+         */
+        public function getFullName()
+        {
+            return "{$this->title} {$this->first_name} {$this->middle_name} {$this->last_name}";
+        }
+
         /**
          * @return mixed
          */

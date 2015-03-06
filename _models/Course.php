@@ -1,11 +1,9 @@
 <?php namespace Models {
 
-
-    class Module {
+    class Course {
         private $title = "";
         private $description = "";
-        private $level = "";
-        // lecturers...?
+        private $course_leader;
 
         /**
          * @return string
@@ -42,18 +40,19 @@
         /**
          * @return string
          */
-        public function getLevel()
+        public function getCourseLeader()
         {
-            return $this->level;
+            return $this->course_leader;
         }
 
         /**
-         * @param string $level
+         * @param Lecturer $course_leader
          */
-        public function setLevel($level)
+        public function setCourseLeader(Lecturer $course_leader)
         {
-            $this->level = $level;
+            $this->course_leader = $course_leader;
         }
+
 
     }
 }
