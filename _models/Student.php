@@ -1,7 +1,8 @@
 <?php namespace Models {
 
 
-    class Student {
+    class Student
+    {
         private $student_id;
         private $title;
         private $first_name;
@@ -14,7 +15,6 @@
         private $email_address;
         private $password = "";
         private $gender = "";
-
 
         /**
          * @return string

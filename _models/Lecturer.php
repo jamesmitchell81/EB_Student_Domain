@@ -1,7 +1,8 @@
 <?php namespace Models {
 
 
-    class Lecturer {
+    class Lecturer
+    {
         private $title = "";
         private $first_name = "";
         private $middle_name = "";
