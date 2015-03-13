@@ -62,4 +62,9 @@ class Event
     {
         $this->attendees = $attendees;
     }
+
+    public function addAttendee(PersonInterface $attendee)
+    {
+        $this->attendees[] = $attendee;
+    }
 }
