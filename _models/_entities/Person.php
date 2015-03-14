@@ -1,4 +1,4 @@
-<?php namespace Models;
+<?php namespace Models\Entities;
 
 include 'PersonInterface.php';
 
