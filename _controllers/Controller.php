@@ -1,7 +1,6 @@
 <?php namespace Controllers;
 
 // FrontController
-
 class Controller
 {
   private $routes;
@@ -9,8 +8,15 @@ class Controller
 
   public function __construct()
   {
-    include('./configuration/routes.php');
-    $data = $_GET['data'];
+    include('./_configuration/routes.php');
+
+    if ( !isset($_GET['data']) )
+    {
+      // redirect
+      exit(0);
+    } else {
+      $data = $_GET['data'];
+    }
 
     $wildcards = [
       ':yyyy' => '\d{4}',
@@ -39,12 +45,13 @@ class Controller
       // print $str;
     }
 
-    $model = new $this->route->model;
-    $controller = new $this->route->controller($model);
-    $view = new $this->route->view($model);
+    // $model = new $this->route->model;
+    include("{$this->route->controller}.php");
 
-    var_dump($this->route);
+    $controller = new $this->route->controller; //new $this->route->controller($model);
+    // $view = new $this->route->view($model);
 
+    // var_dump($this->route);
     var_dump(explode('/', $data));
   }
 
