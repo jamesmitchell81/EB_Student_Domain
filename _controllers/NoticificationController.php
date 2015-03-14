@@ -1,6 +1,6 @@
 <?php namespace Controllers;
 
-class DiaryYearController
+class NoticificationController
 {
   public function __construct()
   {

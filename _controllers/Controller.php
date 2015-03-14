@@ -5,12 +5,18 @@
 class Controller
 {
   private $routes;
+  private $route;
 
   public function __construct()
   {
+    include('./configuration/routes.php');
     $data = $_GET['data'];
 
-    include('./_configuration/routes.php');
+    $wildcards = [
+      ':yyyy' => '\d{4}',
+      ':mm'   => '\d{2}',
+      ':dd'   => '\d{2}'
+    ];
 
     // if is set...
     $this->routes = $routes;
@@ -26,12 +32,18 @@ class Controller
 
       if( preg_match('#^' . $str . '$#', $data) )
       {
-        var_dump($this->routes[$key]);
+        $this->route = $this->routes[$key];
       } else {
         // throw out..exit...
       }
       // print $str;
     }
+
+    $model = new $this->route->model;
+    $controller = new $this->route->controller($model);
+    $view = new $this->route->view($model);
+
+    var_dump($this->route);
 
     var_dump(explode('/', $data));
   }

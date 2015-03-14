@@ -1,9 +1,10 @@
 <?php namespace Controllers;
 
-class DiaryYearController
+class AssignmentsController
 {
   public function __construct()
   {
     echo static::class;
   }
+
 }
