@@ -1,13 +1,13 @@
 <?php
 
-include 'util/Route.php';
+include '_util/Route.php';
 
 use Util\Route;
 
 // Diary.
-$routes['dairy/:yyyy'] = new Route('DiaryYearModel', 'DiaryYearView', 'DiaryYearController');
-$routes['dairy/:yyyy/:mm'] = new Route('DiaryMonthModel', 'DiaryMonthView', 'DiaryMonthController');
-$routes['dairy/:yyyy/:mm/:dd'] = new Route('DiaryDayModel', 'DiaryDayView', 'DiaryDayController');
+$routes['diary/:yyyy'] = new Route('DiaryYearModel', 'DiaryYearView', 'DiaryYearController');
+$routes['diary/:yyyy/:mm'] = new Route('DiaryMonthModel', 'DiaryMonthView', 'DiaryMonthController');
+$routes['diary/:yyyy/:mm/:dd'] = new Route('DiaryDayModel', 'DiaryDayView', 'DiaryDayController');
 
 // Noticifications.
 $routes['notifications'] = new Route('NoticificationModel', 'NoticificationView', 'NoticificationController');
