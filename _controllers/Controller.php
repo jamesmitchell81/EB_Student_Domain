@@ -10,7 +10,7 @@ class Controller
   {
     $data = $_GET['data'];
 
-    include('./configuration/routes.php');
+    include('./_configuration/routes.php');
 
     // if is set...
     $this->routes = $routes;
