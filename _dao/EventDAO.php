@@ -1,6 +1,12 @@
 <?php namespace DAO
 
-use Models;
+include '../_models/_entities/Event.php';
+include '../_models/_entities/Person.php';
+include '../_models/_entities/PersonInterface.php';
+
+use PDO;
+use Models\Entities\Event;
+use Models\Entities\Person;
 use Database;
 
 class EventDAO

@@ -11,11 +11,11 @@ class StudentDAO
 {
   private $db;
 
-    /**
-     * @param $id
-     * @return Student
-     */
-    public function getStudentByID($id)
+  /**
+   * @param $id
+   * @return Student
+   */
+  public function getStudentByID($id)
   {
     $this->db = new DatabaseQuery();
     $this->db->setInt('id', $id);
@@ -31,11 +31,3 @@ class StudentDAO
     return $student;
   }
 }
-
-$dao = new StudentDAO();
-
-$student = $dao->getStudentByID(1);
-echo $student->getFullName();
-
-
-
