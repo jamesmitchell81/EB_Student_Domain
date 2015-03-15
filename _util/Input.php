@@ -2,7 +2,6 @@
 
 class Input
 {
-
   private function __construct()
   {
 
@@ -13,6 +12,16 @@ class Input
     // do clean ..
 
     return $value;
+  }
+
+  private function cleanArray($array = [])
+  {
+    $newArray = [];
+    foreach ($array as $key => $value)
+    {
+      $newArray[$key] = clean($value);
+    }
+    return $newArray;
   }
 
   public static function get($key = '')
