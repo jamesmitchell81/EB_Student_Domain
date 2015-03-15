@@ -4,6 +4,12 @@ include '_util/Route.php';
 
 use Util\Route;
 
+/***** convention for use. 
+
+':username/area/parameters/parameters/parameters'
+
+******/
+
 // Diary.
 $routes['diary/:yyyy'] = new Route('DiaryYearModel', 'DiaryYearView', 'DiaryYearController');
 $routes['diary/:yyyy/:mm'] = new Route('DiaryMonthModel', 'DiaryMonthView', 'DiaryMonthController');
