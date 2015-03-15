@@ -1,49 +1,110 @@
 <?php namespace Util;
 
 // https://r.je/mvc-php-front-controller.html.
-include('./_util/Input.php');
+// include('./_util/Input.php');
+
+include('./_configuration/Routes.php');
+include('./_configuration/Domains.php');
+include('./_configuration/Wildcards.php');
+
+use Configuration\Routes;
+use Configuration\Domains;
+use Configuration\Wildcards;
 
 class Router
 {
   // get routes from config.
   // return required route.
-  public function __construct()
+  private $routes;
+  private $domains;
+  private $domainMatch = false;
+  private $wildcards;
+
+  private $username = '';
+  private $domain = '';
+  private $arguments = [];
+
+  public function __construct($data = '')
   {
-  	include('./_configuration/routes.php');
+    $this->domains = Domains::getDomainsWhitelist();
+    $this->wildcards = Wildcards::getWildcards();
+    $this->routes = Routes::getRoutes();
 
-    if ( !isset($_GET['data']) )
+    // replace trailing slash.
+    $data = rtrim($data, '/');
+
+    $data = explode("/", $data);
+
+    if ( preg_match("/^{$this->wildcards[':username']}$/", $data[0]) )
     {
-      exit(0); // redirect...
+      // remove the first element from the array assign as the username
+      $this->username = array_shift($data);
     } else {
-      $data = $_GET['data'];
+      $this->route = Routes::getRoute('404');
     }
 
-    $wildcards = [
-      ':username' => '\d{8}',
-      ':yyyy' => '\d{4}',
-      ':mm'   => '\d{2}',
-      ':dd'   => '\d{2}'
-    ];
+    $routePath = implode('/', $data);
 
-    // if is set...
-    $this->routes = $routes;
-    // else $this->routes = [];
-
-    // convert to regex
-    foreach ($this->routes as $key => $value)
-    {
-      $str = $key;
-      $str = str_replace(":yyyy", '\d{4}', $str);
-      $str = str_replace(":mm",   '\d{2}', $str);
-      $str = str_replace(":dd",   '\d{2}', $str);
-
-      if( preg_match('#^' . $str . '$#', $data) )
+    foreach ($this->domains as $key => $value) {
+      if ( preg_match("/^{$value}$/", $data[0]) )
       {
-        $this->route = $this->routes[$key];
-      } else {
-        // throw out..exit...
+        $this->domainMatch = true;
+        $this->domain = array_shift($data);
+        break;
       }
-      // print $str;
     }
+
+    var_dump($routePath);
+
+    // diary/:yyyy/:mm/:dd
+    // diary, #^\d{4}$#, #^\d{2}$, #^\d{2}$
+
+    // route has domain?
+    foreach($this->routes as $key => $value)
+    {
+      if ( preg_match("/^{$this->domain}/", $key) )
+      {
+        // if route has wildcard replace.
+        $search = array_keys($this->wildcards);
+        $patterns = array_values($this->wildcards);
+        $subject = $key;
+
+        // $r = preg_replace($pattern, $replace, $subject);
+        $r = str_replace($search, $patterns, $subject);
+
+        // escape slashes.
+        $r = str_replace("/", "\/", $r);
+        var_dump($r);
+
+        // attempt to match the route.
+        if ( preg_match("/^{$r}$/", $routePath) )
+        {
+          echo "Hoorah!";
+          $this->route = $this->routes[$key];
+        }
+      }
+    }
+
+    var_dump($this->route);
+
+    if ( !$this->domainMatch )
+    {
+      $this->route = Routes::getRoute('404');
+    }
+  }
+
+  public function getRoute()
+  {
+    return $this->route;
+  }
+
+  public function getArguments()
+  {
+    return $this->arguments;
+  }
+
+  public function getUsername()
+  {
+    return $this->username;
   }
 }
