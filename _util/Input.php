@@ -8,15 +8,20 @@ class Input
 
   }
 
-  private function clean($value)
+  private function clean($value = '')
   {
     // do clean ..
 
     return $value;
   }
 
-  public static function get($key)
+  public static function get($key = '')
   {
+    if ( $key == '' ) 
+    {
+      return cleanArray($_GET);
+    }
+
     if ( isset($_GET[$key]) )
     {
       return clean($_GET[$key]);
@@ -24,8 +29,13 @@ class Input
     return false;
   }
 
-  public static function post($key)
+  public static function post($key = '')
   {
+    if ( $key == '' ) 
+    {
+      return cleanArray($_POST);
+    }
+
     if ( isset($_POST[$key]) )
     {
       return clean($_POST[$key]);
@@ -33,12 +43,31 @@ class Input
     return false;
   }
 
-  public static function session($key)
+  public static function session($key = '')
   {
-    //
+    if ( $key == '' )
+    {
+      return cleanArray($_SESSION);
+    }
+
+    if ( isset($_SESSION[$key]) )
+    {
+      return clean($_SESSION[$key]);
+    }
+    return false; 
   }
 
-  public static function server($key)
+  public static function cookie($key = '')
+  {
+
+  } 
+
+  public static function server($key = '')
+  {
+
+  }
+
+  public static function input()
   {
 
   }
