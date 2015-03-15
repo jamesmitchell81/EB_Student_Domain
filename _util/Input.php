@@ -1,4 +1,4 @@
-<?php namespace Util
+<?php namespace Util;
 
 class Input
 {
@@ -19,35 +19,35 @@ class Input
     $newArray = [];
     foreach ($array as $key => $value)
     {
-      $newArray[$key] = clean($value);
+      $newArray[$key] = static::clean($value);
     }
     return $newArray;
   }
 
   public static function get($key = '')
   {
-    if ( $key == '' ) 
+    if ( $key == '' )
     {
-      return cleanArray($_GET);
+      return static::cleanArray($_GET);
     }
 
     if ( isset($_GET[$key]) )
     {
-      return clean($_GET[$key]);
+      return static::clean($_GET[$key]);
     }
     return false;
   }
 
   public static function post($key = '')
   {
-    if ( $key == '' ) 
+    if ( $key == '' )
     {
-      return cleanArray($_POST);
+      return static::cleanArray($_POST);
     }
 
     if ( isset($_POST[$key]) )
     {
-      return clean($_POST[$key]);
+      return static::clean($_POST[$key]);
     }
     return false;
   }
@@ -56,20 +56,20 @@ class Input
   {
     if ( $key == '' )
     {
-      return cleanArray($_SESSION);
+      return static::cleanArray($_SESSION);
     }
 
     if ( isset($_SESSION[$key]) )
     {
-      return clean($_SESSION[$key]);
+      return static::clean($_SESSION[$key]);
     }
-    return false; 
+    return false;
   }
 
   public static function cookie($key = '')
   {
 
-  } 
+  }
 
   public static function server($key = '')
   {
