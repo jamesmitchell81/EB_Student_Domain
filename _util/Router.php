@@ -30,6 +30,8 @@ class Router
     $this->wildcards = Wildcards::getWildcards();
     $this->routes = Routes::getRoutes();
 
+    var_dump($data);
+
     // replace trailing slash.
     $data = rtrim($data, '/');
 
@@ -40,7 +42,7 @@ class Router
       // remove the first element from the array assign as the username
       $this->username = array_shift($data);
     } else {
-      $this->route = Routes::getRoute('404');
+      $this->route = Routes::getRoute('signin');
     }
 
     $routePath = implode('/', $data);
@@ -53,8 +55,6 @@ class Router
         break;
       }
     }
-
-    var_dump($routePath);
 
     // diary/:yyyy/:mm/:dd
     // diary, #^\d{4}$#, #^\d{2}$, #^\d{2}$
@@ -74,18 +74,14 @@ class Router
 
         // escape slashes.
         $r = str_replace("/", "\/", $r);
-        var_dump($r);
 
         // attempt to match the route.
         if ( preg_match("/^{$r}$/", $routePath) )
         {
-          echo "Hoorah!";
           $this->route = $this->routes[$key];
         }
       }
     }
-
-    var_dump($this->route);
 
     if ( !$this->domainMatch )
     {
