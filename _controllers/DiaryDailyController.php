@@ -1,6 +1,6 @@
 <?php // namespace Controllers;
 
-class DiaryDayController
+class DiaryDailyController
 {
   public function __construct()
   {
