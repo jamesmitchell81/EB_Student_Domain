@@ -15,8 +15,13 @@
 // include './configuration/routes.php';
 
 include './_controllers/Controller.php';
+include './_views/View.php';
+include_once './_util/Input.php';
 
 use Controllers\Controller;
+use Util\Input;
 
-$controller = new Controller($_GET);
+$data = (Input::get('data')) ?  Input::get('data') : 'signin';
+
+$controller = new Controller($data);
 
