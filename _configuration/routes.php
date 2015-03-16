@@ -22,7 +22,7 @@ class Routes
     // Diary.
     static::$routes['diary/:yyyy'] = new Route('DiaryYearModel', 'DiaryYearView', 'DiaryYearController');
     static::$routes['diary/:yyyy/:mm'] = new Route('DiaryMonthModel', 'DiaryMonthView', 'DiaryMonthController');
-    static::$routes['diary/:yyyy/:mm/:dd'] = new Route('DiaryDayModel', 'DiaryDayView', 'DiaryDayController');
+    static::$routes['diary/:yyyy/:mm/:dd'] = new Route('DiaryDailyModel', 'DiaryDailyView', 'DiaryDailyController');
 
     // Noticifications.
     static::$routes['notifications'] = new Route('NoticificationModel', 'NoticificationView', 'NoticificationController');
