@@ -17,6 +17,8 @@ class Routes
   {
     static::$routes['404'] = new Route('BadRouteModel', 'BadRouteView', 'BadRouteController');
 
+    static::$routes['signin'] = new Route('SignInModel', 'SignInView', 'SignInController');
+
     // Diary.
     static::$routes['diary/:yyyy'] = new Route('DiaryYearModel', 'DiaryYearView', 'DiaryYearController');
     static::$routes['diary/:yyyy/:mm'] = new Route('DiaryMonthModel', 'DiaryMonthView', 'DiaryMonthController');
