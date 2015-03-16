@@ -54,6 +54,8 @@ class Input
 
   public static function session($key = '')
   {
+    if ( !isset($_SESSION) ) return false;
+
     if ( $key == '' )
     {
       return static::cleanArray($_SESSION);
