@@ -6,6 +6,7 @@
 <body>
   <p>
     Sorry this page does not exist...
+    <a href='<?= $home; ?>'>Back to home area</a>
   </p>
 </body>
 </html>
