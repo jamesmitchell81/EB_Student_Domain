@@ -6,7 +6,7 @@
 
 class Domains
 {
-  private static $domains = ['diary', 'personal-details', 'timetables', 'modules', 'assignments'];
+  private static $domains = ['signin', 'diary', 'personal-details', 'timetables', 'modules', 'assignments'];
 
   public static function getDomainsWhitelist()
   {
