@@ -16,8 +16,6 @@ class Controller
   {
     // $data = Input::get('data');
 
-    var_dump($data);
-
     $this->router = new Router($data);
     $this->route = $this->router->getRoute();
 

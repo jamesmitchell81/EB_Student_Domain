@@ -30,8 +30,6 @@ class Router
     $this->wildcards = Wildcards::getWildcards();
     $this->routes = Routes::getRoutes();
 
-    var_dump($data);
-
     // replace trailing slash.
     $data = rtrim($data, '/');
 
