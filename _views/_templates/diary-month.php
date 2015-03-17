@@ -1,9 +1,9 @@
-<!-- <?php include "_includes/head.php"; ?> -->
+<?php include "head.php"; ?>
 
-<!-- <?php include "_includes/column_one.php"; ?> -->
+<?php include "logo-column.php"; ?>
 
 <div class="col-2">
-<!-- <?php include "_includes/header_2.php"; ?> -->
+<?php include "header-nav.php"; ?>
   <article id="content">
 
     <div class="wrap" id="content-header">
