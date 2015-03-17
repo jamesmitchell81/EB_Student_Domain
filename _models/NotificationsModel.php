@@ -1,7 +1,8 @@
-<?php //namespace Controllers;
+<?php
 
-class NoticificationController
+class NotificationsModel
 {
+
   public function __construct()
   {
     echo static::class;
