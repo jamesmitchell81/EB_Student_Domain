@@ -25,7 +25,7 @@ class Routes
     static::$routes['diary/:yyyy/:mm/:dd'] = new Route('DiaryDailyModel', 'DiaryDailyView', 'DiaryDailyController');
 
     // Noticifications.
-    static::$routes['notifications'] = new Route('NoticificationModel', 'NoticificationView', 'NoticificationController');
+    static::$routes['notifications'] = new Route('NotificationsModel', 'NotificationsView', 'NotificationsController');
     // $routes['notifications/:id'] = new Route('NoticificationModel', 'NoticificationView', 'NoticificationController');
     // $routes['notifications/:subject'] = new Route('DiaryYearController', 'DiaryYearModel', 'DiaryYearView');
 
