@@ -3,8 +3,8 @@
 class DiaryMonthModel
 {
 
-  public function __construct()
+  public function __construct($args = [])
   {
-    echo static::class;
+    var_dump($args);
   }
 }
