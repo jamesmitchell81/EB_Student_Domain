@@ -7,6 +7,22 @@ class Input
 
   }
 
+  private function process($arr = [], $key = '')
+  {
+    if ( !isset($arr) ) return false;
+
+    if ( $key == '' )
+    {
+      return static::cleanArray($arr);
+    }
+
+    if ( isset($arr[$key]) )
+    {
+      return static::clean($arr[$key]);
+    }
+    return false;
+  }
+
   private function clean($value = '')
   {
     // do clean ..
@@ -26,56 +42,27 @@ class Input
 
   public static function get($key = '')
   {
-    if ( $key == '' )
-    {
-      return static::cleanArray($_GET);
-    }
-
-    if ( isset($_GET[$key]) )
-    {
-      return static::clean($_GET[$key]);
-    }
-    return false;
+    return static::process($_GET, $key);
   }
 
   public static function post($key = '')
   {
-    if ( $key == '' )
-    {
-      return static::cleanArray($_POST);
-    }
-
-    if ( isset($_POST[$key]) )
-    {
-      return static::clean($_POST[$key]);
-    }
-    return false;
+    return static::process($_POST, $key);
   }
 
   public static function session($key = '')
   {
-    if ( !isset($_SESSION) ) return false;
-
-    if ( $key == '' )
-    {
-      return static::cleanArray($_SESSION);
-    }
-
-    if ( isset($_SESSION[$key]) )
-    {
-      return static::clean($_SESSION[$key]);
-    }
-    return false;
+    return static::process($_SESSION, $key);
   }
 
   public static function cookie($key = '')
   {
-
+    return static::process($_COOKIE, $key);
   }
 
   public static function server($key = '')
   {
-
+    return static::process($_SERVER, $key);
   }
 
   public static function input()
