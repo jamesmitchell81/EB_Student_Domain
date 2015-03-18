@@ -23,7 +23,7 @@ class Controller
     include("{$this->route->controller}.php");
     include("./_views/{$this->route->view}.php");
 
-    $model = new $this->route->model;
+    $model = new $this->route->model($this->router->getArguments());
     $controller = new $this->route->controller($model);
     $view = new $this->route->view($model);
     $view->display();
