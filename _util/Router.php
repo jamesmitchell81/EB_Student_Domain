@@ -67,17 +67,25 @@ class Router
         $patterns = array_values($this->wildcards);
         $subject = $key;
 
-        // $r = preg_replace($pattern, $replace, $subject);
+        // replace wildcards with regex partners.
         $r = str_replace($search, $patterns, $subject);
 
         // escape slashes.
         $r = str_replace("/", "\/", $r);
 
-        // attempt to match the route.
+        // attempt to match the routes with wildcards
         if ( preg_match("/^{$r}$/", $routePath) )
         {
+
+          // gleen all of the arguments.
+          while ( !empty($data) )
+          {
+            $this->arguments[] = array_shift($data);
+          }
           $this->route = $this->routes[$key];
+          $this->domainMatch = true;
         }
+
       }
     }
 
