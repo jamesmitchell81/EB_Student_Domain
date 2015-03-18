@@ -6,6 +6,7 @@ class Event
     private $description = "";
     private $start_datetime;
     private $end_datetime;
+    private $location = "";
     private $reminder;
     private $attendees = [];
 
@@ -13,6 +14,16 @@ class Event
     {
         $this->start_datetime = $start_datetime;
         $this->end_datetime = $end_datetime;
+    }
+
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    public function setLocation($location)
+    {
+        $this->location = $location;
     }
 
     /**
