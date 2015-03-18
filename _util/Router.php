@@ -30,20 +30,20 @@ class Router
     $this->wildcards = Wildcards::getWildcards();
     $this->routes = Routes::getRoutes();
 
-    // replace trailing slash.
+    // remove trailing slash.
     $data = rtrim($data, '/');
-
     $data = explode("/", $data);
 
     if ( preg_match("/^{$this->wildcards[':username']}$/", $data[0]) )
     {
       // remove the first element from the array assign as the username
       $this->username = array_shift($data);
+      $this->arguments['username'] = $this->username;
     } else {
       $this->route = Routes::getRoute('signin');
     }
 
-    $routePath = implode('/', $data);
+
 
     foreach ($this->domains as $key => $value) {
       if ( preg_match("/^{$value}$/", $data[0]) )
@@ -56,32 +56,31 @@ class Router
 
     // diary/:yyyy/:mm/:dd
     // diary, #^\d{4}$#, #^\d{2}$, #^\d{2}$
+    $search = array_keys($this->wildcards);
+    $patterns = array_values($this->wildcards);
+    $routePath = implode('/', $data);
 
-    // route has domain?
     foreach($this->routes as $key => $value)
     {
+      // route has domain?
       if ( preg_match("/^{$this->domain}/", $key) )
       {
-        // if route has wildcard replace.
-        $search = array_keys($this->wildcards);
-        $patterns = array_values($this->wildcards);
-        $subject = $key;
+        // try to get the action out of the url.
+        // preg_match("/^{$this->wildcards[':action']}$/", $data[0])
 
         // replace wildcards with regex partners.
-        $r = str_replace($search, $patterns, $subject);
-
-        // escape slashes.
-        $r = str_replace("/", "\/", $r);
+        $r = str_replace($search, $patterns, $key);
+        $r = str_replace("/", "\/", $r);  // escape slashes in url.
 
         // attempt to match the routes with wildcards
         if ( preg_match("/^{$r}$/", $routePath) )
         {
-
           // gleen all of the arguments.
           while ( !empty($data) )
           {
             $this->arguments[] = array_shift($data);
           }
+
           $this->route = $this->routes[$key];
           $this->domainMatch = true;
         }

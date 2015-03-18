@@ -16,6 +16,16 @@ class Event
         $this->end_datetime = $end_datetime;
     }
 
+    public function getEndDateTime()
+    {
+        return $this->end_datetime;
+    }
+
+    public function getStartDateTime()
+    {
+        return $this->start_datetime;
+    }
+
     public function getLocation()
     {
         return $this->location;

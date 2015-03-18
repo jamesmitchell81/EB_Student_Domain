@@ -5,6 +5,7 @@ include './_dao/EventDAO.php';
 
 use Util\Input;
 use Models\Entities\Event;
+use DAO\EventDAO;
 
 class DiaryEditModel
 {

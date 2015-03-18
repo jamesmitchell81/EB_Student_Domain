@@ -1,19 +1,20 @@
 <?php namespace DAO;
 
-include '../_models/_entities/Event.php';
-include '../_models/_entities/Person.php';
-include '../_models/_entities/PersonInterface.php';
+include_once './_models/_entities/Event.php';
+include_once './_models/_entities/Person.php';
+include_once './_models/_entities/PersonInterface.php';
+include_once './_database/DatabaseQuery.php';
 
 use PDO;
 use Models\Entities\Event;
 use Models\Entities\Person;
-use Database;
+use Database\DatabaseQuery;
 
 class EventDAO
 {
   private $db;
 
-  public function getEventByID(id)
+  public function getEventByID($id)
   {
     $this->db = new DatabaseQuery();
     $this->db->set('id', $id, PDO::PARAM_INT);
@@ -42,7 +43,7 @@ class EventDAO
     $this->db->set('start', $event->getStartDateTime());
     $this->db->set('end', $event->getEndDateTime());
 
-    $SQL = 'INSERT INTO Events (Title, Description, StartDateTime, EndDateTime)
+    $sql = 'INSERT INTO Events (Title, Description, StartDateTime, EndDateTime)
             VALUES (:title, :description, :start, :end)';
 
     // do insert.
