@@ -86,7 +86,7 @@ class DatabaseQuery
 
   public function insert($sql)
   {
-
+    $this->query($sql);
   }
 }
 
