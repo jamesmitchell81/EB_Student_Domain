@@ -1,4 +1,4 @@
-<?php namespace DAO
+<?php namespace DAO;
 
 include '../_models/_entities/Event.php';
 include '../_models/_entities/Person.php';
@@ -46,6 +46,7 @@ class EventDAO
             VALUES (:title, :description, :start, :end)';
 
     // do insert.
+    $this->db->insert($sql);
 
     // for each attendee.
       // insert.
