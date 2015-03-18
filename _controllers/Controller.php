@@ -24,9 +24,9 @@ class Controller
     include("./_views/{$this->route->view}.php");
 
     $model = new $this->route->model($this->router->getArguments());
-    $controller = new $this->route->controller($model);
     $view = new $this->route->view($model);
-    $view->display();
+    $controller = new $this->route->controller($model, $view);
+    // $view->display();
 
     // var_dump($this->route);
     // var_dump(explode('/', $data));
