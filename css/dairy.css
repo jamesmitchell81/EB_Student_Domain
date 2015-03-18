@@ -5,8 +5,16 @@
 .heat-5 { background: #efffef; cursor: pointer;}
 
 .diary-day {
-  width: 42%;
-  float: left;
+  width: 100%;
+  height: 400px;
+  overflow: scroll;
+}
+
+.diary-date {
+  /*width: 100%;*/
+  /*margin: 0 0 2em 0;*/
+  text-align: right;
+  float: right;
 }
 
 .diary-hour {
