@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ajax Test</title>
+</head>
+<body>
+
+
+<script src='js/ajax.js'></script>
+<script>
+(function(win, doc){
+
+  var url = "http://localhost/~jm/group_project/diary/edit";
+  ajax.get(url, function(text) {
+    console.log(text);
+  });
+
+} (window, document));
+</script>
+</body>
+</html>

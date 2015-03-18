@@ -5,9 +5,14 @@
 .heat-5 { background: #efffef; cursor: pointer;}
 
 .diary-day {
+  padding: 1em 0;
   width: 100%;
   height: 400px;
   overflow: scroll;
+}
+
+.diary-day:first-child {
+  margin-top: 1em;
 }
 
 .diary-date {
