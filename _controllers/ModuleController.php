@@ -2,8 +2,14 @@
 
 class ModuleController
 {
-  public function __construct()
+  private $model;
+  private $view;
+
+  public function __construct($model, View $view)
   {
-    echo static::class;
+    $this->model = $model;
+    $this->view = $view;
+
+    $this->view->display();
   }
 }
