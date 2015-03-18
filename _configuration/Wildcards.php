@@ -15,14 +15,11 @@ class Wildcards
 
   private function __construct()
   {
-    // static::$wildcards[':username'] = '/^\d{8}$/';
-    // static::$wildcards[':yyyy']     = '/^\d{4}$/';
-    // static::$wildcards[':mm']       = '/^\d{2}$/';
-    // static::$wildcards[':dd']       = '/^\d{2}$/';
-    static::$wildcards[':username'] = '(\d{8})';
-    static::$wildcards[':yyyy']     = '(\d{4})';
-    static::$wildcards[':mm']       = '(\d{2})';
-    static::$wildcards[':dd']       = '(\d{2})';
+    static::$wildcards[':username'] = '(\d{8})';        // 8 numbers
+    static::$wildcards[':yyyy']     = '(\d{4})';        // 4 numbers
+    static::$wildcards[':mm']       = '(\d{2})';        // 2 numbers
+    static::$wildcards[':dd']       = '(\d{2})';        // 2 numbers
+    static::$wildcards[':action']   = '(^[a-zA-z]+$)';  // one or more letters only, no spaces.
   }
 
   public static function getWildcards()
