@@ -15,59 +15,49 @@ class Router
 {
   // get routes from config.
   // return required route.
+  private $route;
   private $routes;
   private $domains;
-  private $domainMatch = false;
   private $wildcards;
+  private $data;
 
   private $username = '';
   private $domain = '';
   private $arguments = [];
+  private $action;
 
   public function __construct($data = '')
   {
+    // default route.
+    $this->route = Routes::getRoute('404');
+    $this->data = $data;
+
     $this->domains = Domains::getDomainsWhitelist();
     $this->wildcards = Wildcards::getWildcards();
     $this->routes = Routes::getRoutes();
 
     // remove trailing slash.
-    $data = rtrim($data, '/');
-    $data = explode("/", $data);
+    $this->data = rtrim($this->data, '/');
+    $this->data = explode("/", $this->data);
 
-    if ( preg_match("/^{$this->wildcards[':username']}$/", $data[0]) )
-    {
-      // remove the first element from the array assign as the username
-      $this->username = array_shift($data);
-      $this->arguments['username'] = $this->username;
-    } else {
-      $this->route = Routes::getRoute('signin');
-    }
-
-
-
-    foreach ($this->domains as $key => $value) {
-      if ( preg_match("/^{$value}$/", $data[0]) )
-      {
-        $this->domainMatch = true;
-        $this->domain = array_shift($data);
-        break;
-      }
-    }
+    $this->matchUsername();
+    $this->domain = $this->matchDomain();
+    $this->action = $this->matchAction();
 
     // diary/:yyyy/:mm/:dd
     // diary, #^\d{4}$#, #^\d{2}$, #^\d{2}$
     $search = array_keys($this->wildcards);
     $patterns = array_values($this->wildcards);
-    $routePath = implode('/', $data);
+    $routePath = implode('/', $this->data);
 
-    foreach($this->routes as $key => $value)
+    $keys = array_keys($this->routes);
+    $i = 0;
+    while ( !empty($this->data) && $i < count($this->routes) )
     {
+      $key = $keys[$i++];
       // route has domain?
       if ( preg_match("/^{$this->domain}/", $key) )
       {
-        // try to get the action out of the url.
-        // preg_match("/^{$this->wildcards[':action']}$/", $data[0])
-
         // replace wildcards with regex partners.
         $r = str_replace($search, $patterns, $key);
         $r = str_replace("/", "\/", $r);  // escape slashes in url.
@@ -76,22 +66,48 @@ class Router
         if ( preg_match("/^{$r}$/", $routePath) )
         {
           // gleen all of the arguments.
-          while ( !empty($data) )
+          while ( !empty($this->data) )
           {
-            $this->arguments[] = array_shift($data);
+            $this->arguments[] = array_shift($this->data);
           }
 
           $this->route = $this->routes[$key];
-          $this->domainMatch = true;
         }
 
       }
     }
 
-    if ( !$this->domainMatch )
+  }
+
+  private function matchUsername()
+  {
+    if ( preg_match("/^{$this->wildcards[':username']}$/", $this->data[0]) )
     {
-      $this->route = Routes::getRoute('404');
+      // remove the first element from the array assign as the username
+      $this->arguments['username'] = array_shift($this->data);
+    } else {
+      $this->route = Routes::getRoute('signin');
     }
+  }
+
+  private function matchDomain()
+  {
+    // is a valid domain.
+    foreach ($this->domains as $key => $value) {
+      if ( preg_match("/^{$value}$/", $this->data[0]) )
+      {
+        return array_shift($this->data);
+      }
+    }    
+  }
+
+  private function matchAction()
+  {
+    // try to get the action out of the url.
+    if ( preg_match("/^{$this->wildcards[':action']}$/", $this->data[0]) ) 
+    {
+      return array_shift($this->data);
+    }    
   }
 
   public function getRoute()
@@ -107,5 +123,10 @@ class Router
   public function getUsername()
   {
     return $this->username;
+  }
+
+  private function getAction()
+  {
+    return $this->action;
   }
 }

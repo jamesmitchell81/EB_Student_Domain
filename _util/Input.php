@@ -52,6 +52,7 @@ class Input
 
   public static function session($key = '')
   {
+    if ( !isset($_SESSION) ) return false;
     return static::process($_SESSION, $key);
   }
 

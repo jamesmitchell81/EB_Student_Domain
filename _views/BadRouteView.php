@@ -4,7 +4,7 @@ include '_util/ViewBuffer.php';
 
 use Util\ViewBuffer;
 
-class BadRouteView
+class BadRouteView implements View
 {
   private $model;
   private $buffer;
