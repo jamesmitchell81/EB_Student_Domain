@@ -25,6 +25,17 @@ class Router
     $this->domains = Domains::getDomainsWhitelist();
     $this->wildcards = Wildcards::getWildcards();
     $this->routes = Routes::getRoutes();
+
+    $this->username = $this->matchUsername();
+    if ( $this->username ) {
+      array_shift($this->data);
+      $this->routePath = implode("/", $this->data);
+    } else {
+      return Routes::getRoute('signin');
+    }
+
+    $this->route = $this->determineCorrectRoute();
+    $this->setArguments();
   }
 
   private function determineCorrectRoute()
@@ -41,6 +52,7 @@ class Router
 
     for ($i = 0; $i < count($routekeys); $i++ ) {
       $domain = $routekeys[$i];
+
       if ( preg_match("/^($domain)$/", $this->routePath))
       {
         $route = $routevalues[$i];
@@ -52,18 +64,12 @@ class Router
 
   public function getRoute()
   {
-    $this->username = $this->matchUsername();
-    if ( $this->username ) {
-      array_shift($this->data);
-      $this->routePath = implode("/", $this->data);
-    } else {
-      return Routes::getRoute('signin');
-    }
-
-    $this->route = $this->determineCorrectRoute();
-    $this->setArguments();
-
     return $this->route;
+  }
+
+  public function getUsername()
+  {
+    return $this->username;
   }
 
   /*
