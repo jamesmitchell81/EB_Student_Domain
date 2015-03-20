@@ -7,16 +7,20 @@ use Util\ViewBuffer;
 class NotificationsView implements View
 {
   private $buffer;
+  private $model;
   private $viewPath = '_templates/notifications.php';
 
-  public function __construct()
+  public function __construct($model)
   {
-    echo static::class;
+    $this->model = $model;
   }
 
   public function display()
   {
     $this->buffer = new ViewBuffer($this->viewPath);
+    $data = $this->model->getNotifications();
+
+    $this->buffer->addData($data);
 
     $this->buffer->buff();
   }
