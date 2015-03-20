@@ -14,12 +14,11 @@ class Controller
 
   public function __construct($data)
   {
-    // $data = Input::get('data');
-
     $this->router = new Router($data);
 
     $username = $this->router->getUsername();
     // authenticate username.
+    $_SESSION['username'] = $username;
 
     $this->route = $this->router->getRoute();
 
