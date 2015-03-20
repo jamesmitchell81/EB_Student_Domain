@@ -19,14 +19,14 @@ class DiaryEditModel
 
   public function getAction()
   {
-    // temp.
     return $this->arguments[0];
-    // return $this0->arguments['action']
   }
 
   public function add($args = [])
   {
     $data = Input::post();
+
+    if ( empty($data) ) return;
 
     $dao = new EventDAO();
     $event = new Event();
@@ -36,6 +36,11 @@ class DiaryEditModel
     $event->setDateTime($data['start'], $data['finish']);
 
     $dao->createNewEvent($event);
+  }
+
+  public function edit()
+  {
+
   }
 
   public function updateEvent($args = [])

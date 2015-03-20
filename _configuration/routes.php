@@ -16,8 +16,8 @@ class Routes
   private function __construct()
   {
     static::$routes['404'] = new Route('BadRouteModel', 'BadRouteView', 'BadRouteController');
-
     static::$routes['signin'] = new Route('SignInModel', 'SignInView', 'SignInController');
+    static::$routes['home'] = new Route('DiaryYearModel', 'DiaryYearView', 'DiaryYearController');
 
     // Diary.
     static::$routes['diary/:yyyy'] = new Route('DiaryYearModel', 'DiaryYearView', 'DiaryYearController');
@@ -25,7 +25,7 @@ class Routes
     static::$routes['diary/:yyyy/:mm/:dd'] = new Route('DiaryDailyModel', 'DiaryDailyView', 'DiaryDailyController');
 
     static::$routes['diary/add'] = new Route('DiaryEditModel', 'DiaryEditView', 'DiaryEditController');
-    static::$routes['diary/:action'] = new Route('DiaryEditModel', 'DiaryEditView', 'DiaryEditController');
+    static::$routes['diary/edit'] = new Route('DiaryEditModel', 'DiaryEditView', 'DiaryEditController');
 
     // Noticifications.
     static::$routes['notifications'] = new Route('NotificationsModel', 'NotificationsView', 'NotificationsController');

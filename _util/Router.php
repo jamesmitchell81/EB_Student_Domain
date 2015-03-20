@@ -1,8 +1,5 @@
 <?php namespace Util;
 
-// https://r.je/mvc-php-front-controller.html.
-// include('./_util/Input.php');
-
 include('./_configuration/Routes.php');
 include('./_configuration/Domains.php');
 include('./_configuration/Wildcards.php');
@@ -13,78 +10,87 @@ use Configuration\Wildcards;
 
 class Router
 {
-  // get routes from config.
-  // return required route.
-  private $route;
-  private $routes;
-  private $routePath;
-
   private $domains;
   private $wildcards;
+  private $routes;
   private $data;
-
-  private $username = '';
-  private $domain = '';
   private $arguments = [];
-  private $action;
 
   public function __construct($data = '')
   {
     $this->routePath = $data;
     $this->routePath = rtrim($data, '/');
     $this->data = explode("/", $this->routePath);
-    // default route.
-    $this->route = Routes::getRoute('404');
 
     $this->domains = Domains::getDomainsWhitelist();
     $this->wildcards = Wildcards::getWildcards();
     $this->routes = Routes::getRoutes();
+  }
 
-    // check if username.
-    $this->username = $this->matchUsername();
-    if ( $this->username ) array_shift($this->data);
+  private function determineCorrectRoute()
+  {
+    $wildcardKeys = array_keys($this->wildcards);
+    $wildcardPatterns = array_values($this->wildcards);
+    $routekeys = implode("|", array_keys($this->routes));
 
-    // reconstruct data.
-    $this->routePath = implode("/", $this->data);
-    $this->domain = $this->matchDomain();
-    $this->action = $this->matchAction();
+    $domainRegex = str_replace($wildcardKeys, $wildcardPatterns, $routekeys);
+    $domainRegex = str_replace("/", "\/", $domainRegex);
 
-    // diary/:yyyy/:mm/:dd
-    // diary, #^\d{4}$#, #^\d{2}$, #^\d{2}$
-    $search = array_keys($this->wildcards);
-    $patterns = array_values($this->wildcards);
-    $keys = implode("|", array_keys($this->routes));
-    $i = 0;
+    $routekeys = explode("|", $domainRegex);
+    $routevalues = array_keys($this->routes);
 
-      var_dump($keys);
-      var_dump($this->data);
-      if ( preg_match("/({$this->domain})/", $keys) && empty($this->data) )
+    for ($i = 0; $i < count($routekeys); $i++ ) {
+      $domain = $routekeys[$i];
+      if ( preg_match("/^($domain)$/", $this->routePath))
       {
-          $this->route = $this->routes[$this->domain];
+        $route = $routevalues[$i];
+        return Routes::getRoute($route);
       }
+    }
+    return Routes::getRoute('404');
+  }
 
-        // replace wildcards with regex partners.
-        $r = str_replace($search, $patterns, $keys);
-        $r = str_replace("/", "\/", $r);  // escape slashes in url.
+  public function getRoute()
+  {
+    $this->username = $this->matchUsername();
+    if ( $this->username ) {
+      array_shift($this->data);
+      $this->routePath = implode("/", $this->data);
+    } else {
+      return Routes::getRoute('signin');
+    }
 
-        if ( preg_match("/^{$r}$/", $this->routePath) )
-        {
+    $this->route = $this->determineCorrectRoute();
+    $this->setArguments();
 
-          // gleen all of the arguments.
-          while ( !empty($this->data) )
-          {
-            $this->arguments[] = array_pop($this->data);
-          }
+    return $this->route;
+  }
 
-          // find the correcy key.
-        }
+  /*
+   * remove domains from the
+   * array of url values.
+   */
+  private function setArguments()
+  {
+    $args = $this->data;
+    foreach ($this->domains as $value) {
+      $index = array_search($value, $args);
+      unset($args[$index]);
+    }
 
-      // }
-    // }
+    $wildcardKeys = array_keys($this->wildcards);
+    $wildcardPatterns = array_values($this->wildcards);
 
-    if ( !$this->domain )   $this->route = Routes::getRoute('404');
-    if ( !$this->username ) $this->route = Routes::getRoute('signin');
-    var_dump($this->route);
+    foreach ($args as $arg) {
+      $this->arguments[] = $arg;
+    }
+
+    var_dump($this->arguments);
+  }
+
+  public function getArguments()
+  {
+    return $this->arguments;
   }
 
   private function matchUsername()
@@ -93,44 +99,5 @@ class Router
     $value = preg_grep("/^{$this->wildcards[':username']}$/", $data);
 
     return implode("", $value);
-  }
-
-  private function matchDomain()
-  {
-    $data = explode("/", $this->routePath);
-    $domains = implode("|", array_values($this->domains));
-    $domain = preg_grep("/$domains/", $data);
-    return implode("", $domain);
-  }
-
-  private function matchAction()
-  {
-    $match = preg_match("/^{$this->wildcards[':action']}$/", $this->data[0]);
-
-    if ( !$match || empty($this->data) )
-    {
-      return '';
-    }
-    return array_shift($this->data);
-  }
-
-  public function getRoute()
-  {
-    return $this->route;
-  }
-
-  public function getArguments()
-  {
-    return $this->arguments;
-  }
-
-  public function getUsername()
-  {
-    return $this->username;
-  }
-
-  private function getAction()
-  {
-    return $this->action;
   }
 }
