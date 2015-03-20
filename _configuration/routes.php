@@ -29,6 +29,7 @@ class Routes
 
     // Noticifications.
     static::$routes['notifications'] = new Route('NotificationsModel', 'NotificationsView', 'NotificationsController');
+    static::$routes['notifications/:id'] = new Route('NotificationsModel', 'NotificationsView', 'NotificationsController');
     // $routes['notifications/:id'] = new Route('NoticificationModel', 'NoticificationView', 'NoticificationController');
     // $routes['notifications/:subject'] = new Route('DiaryYearController', 'DiaryYearModel', 'DiaryYearView');
 
