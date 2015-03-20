@@ -17,6 +17,10 @@ class Controller
     // $data = Input::get('data');
 
     $this->router = new Router($data);
+
+    $username = $this->router->getUsername();
+    // authenticate username.
+
     $this->route = $this->router->getRoute();
 
     include("./_models/{$this->route->model}.php");
