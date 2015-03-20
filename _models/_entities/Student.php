@@ -1,6 +1,8 @@
-<?php namespace Models;
+<?php namespace Models\Entities;
 
 include 'Person.php';
+
+use Models\Entities\Person;
 
 class Student extends Person
 {
@@ -123,6 +125,4 @@ class Student extends Person
     {
         $this->gender = $gender;
     }
-
-
 }

@@ -7,16 +7,20 @@ use Util\ViewBuffer;
 class StudentDetailsView implements View
 {
   private $buffer;
+  private $model;
   private $viewPath = '_templates/student-details.php';
 
-  public function __construct()
+  public function __construct($model)
   {
-    echo static::class;
+    $this->model = $model;
   }
 
   public function display()
   {
     $this->buffer = new ViewBuffer($this->viewPath);
+
+    $data = $this->model->getStudentDetails();
+    $this->buffer->addData($data);
 
     $this->buffer->buff();
   }
