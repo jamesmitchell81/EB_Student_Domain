@@ -6,6 +6,7 @@
 <?php include "header-nav.php"; ?>
   <article id="content">
 
+
     <div class="wrap" id="content-header">
       <h2><span class='page-action'>View</span><span class='page-entity'>Notifications</span></h2>
     </div>
@@ -36,12 +37,14 @@
         </ul>
       </div>
 
+      <?php foreach ($this->data as $notice) : ?>
       <div class="notice-block">
         <h3 class="notice-title">
-          This is the Subject of the Announcement / Notification
+          <?= $notice->getSubject(); ?>
         </h3>
 
-        <span class="notice-date">22nd October 2014 at 13:00</span>
+        <span class="notice-date"><?= $notice->getSentDatetime(); ?></span>
+        <span class="notice-sender"><?= $notice->getSender()->getFullName(); ?></span>
 
         <span class="notice-cat">
           <span class='notice-filter-tag'>#tutor, </span>
@@ -49,47 +52,11 @@
         </span>
 
         <p class="notice">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aperiam ipsa quisquam quod ratione hic officia repellat delectus impedit? Impedit dignissimos nisi facilis doloremque cupiditate, quibusdam excepturi dicta pariatur, incidunt, voluptates exercitationem. Cupiditate nisi suscipit ea, at quisquam autem adipisci perferendis inventore magnam aliquid
+          <?= $notice->getBody(); ?>
         </p>
-      </div>
+      </div><!-- end of notice block -->
+      <?php endforeach; ?>
 
-      <div class="notice-block">
-        <h3 class="notice-title">
-          This is the Subject of the Announcement / Notification
-        </h3>
-
-        <span class="notice-date">
-          22nd October 2014 at 13:00
-        </span>
-
-        <span class="notice-cat">
-          <span class='notice-filter-tag'>#tutor, </span>
-          <span class="notice-filter-tag">#module</span>
-        </span>
-
-        <p class="notice">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aperiam ipsa quisquam quod ratione hic officia repellat delectus impedit? Impedit dignissimos nisi facilis doloremque cupiditate, quibusdam excepturi dicta pariatur, incidunt, voluptates exercitationem. Cupiditate nisi suscipit ea, at quisquam autem adipisci perferendis inventore magnam aliquid
-        </p>
-      </div>
-
-      <div class="notice-block">
-        <h3 class="notice-title">
-          This is the Subject of the Announcement / Notification
-        </h3>
-
-        <span class="notice-date">
-          22nd October 2014 at 13:00
-        </span>
-
-        <span class="notice-cat">
-          <span class='notice-filter-tag'>#tutor, </span>
-          <span class="notice-filter-tag">#module</span>
-        </span>
-
-        <p class="notice">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aperiam ipsa quisquam quod ratione hic officia repellat delectus impedit? Impedit dignissimos nisi facilis doloremque cupiditate, quibusdam excepturi dicta pariatur, incidunt, voluptates exercitationem. Cupiditate nisi suscipit ea, at quisquam autem adipisci perferendis inventore magnam aliquid
-        </p>
-      </div><!-- notice-block -->
     </div><!-- #content-workspace -->
   </article>
 </div><!-- .col-2 -->
