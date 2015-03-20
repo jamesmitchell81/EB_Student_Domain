@@ -11,24 +11,25 @@ use DAO\NotificationDAO;
 
 class NotificationsModel
 {
-  private $username = '20150001';
+  private $username;
   private $notifications;
   private $args = [];
 
   public function __construct($args = [])
   {
     $this->args = $args;
+    $this->username = Input::session('username');
   }
 
   public function getNotifications()
   {
     $dao = new NotificationDAO();
-    if ( empty($args) )
+    if ( empty($this->args) )
     {
       return $dao->getUserNotifications($this->username);
     } else {
-      $id = array_shift($args);
-      return $dao->getNotificationById();
+      $id = array_shift($this->args);
+      return $dao->getNotificationById($id, $this->username);
     }
   }
 
