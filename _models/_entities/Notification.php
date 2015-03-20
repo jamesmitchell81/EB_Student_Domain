@@ -4,7 +4,7 @@ class Notification
 {
     private $subject = "";
     private $body = "";
-    private $sent_datetime = "";
+    private $sent_datetime;
     private $sender;
 
     public function __construct()
@@ -50,7 +50,7 @@ class Notification
      */
     public function getSentDatetime()
     {
-        return $this->sent_datetime;
+        return strtotime($this->sent_datetime);
     }
 
     /**
