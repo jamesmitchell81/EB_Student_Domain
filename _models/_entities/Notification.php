@@ -5,7 +5,7 @@ class Notification
     private $subject = "";
     private $body = "";
     private $sent_datetime = "";
-    private $sender = "";
+    private $sender;
 
     public function __construct()
     {
@@ -24,7 +24,7 @@ class Notification
     /**
      * @param string $subject
      */
-    private function setSubject($subject)
+    public function setSubject($subject)
     {
         $this->subject = $subject;
     }
@@ -40,7 +40,7 @@ class Notification
     /**
      * @param string $body
      */
-    private function setBody($body)
+    public function setBody($body)
     {
         $this->body = $body;
     }
@@ -56,7 +56,7 @@ class Notification
     /**
      * @param string $sent_datetime
      */
-    private function setSentDatetime($sent_datetime)
+    public function setSentDatetime($sent_datetime)
     {
         $this->sent_datetime = $sent_datetime;
     }
@@ -72,7 +72,7 @@ class Notification
     /**
      * @param string $sender
      */
-    private function setSender($sender)
+    public function setSender(Person $sender)
     {
         $this->sender = $sender;
     }
