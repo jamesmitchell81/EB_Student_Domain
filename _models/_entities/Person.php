@@ -105,7 +105,4 @@ class Person implements PersonInterface
     {
         $this->emailAddress = $emailAddress;
     }
-
-
-
 }

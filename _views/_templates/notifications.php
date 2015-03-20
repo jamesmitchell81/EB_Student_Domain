@@ -37,13 +37,17 @@
         </ul>
       </div>
 
+      <?php if ( empty($this->data)) : ?>
+        <p>You have no new notifications</p>
+      <?php endif; ?>
+
       <?php foreach ($this->data as $notice) : ?>
       <div class="notice-block">
         <h3 class="notice-title">
           <?= $notice->getSubject(); ?>
         </h3>
 
-        <span class="notice-date"><?= $notice->getSentDatetime(); ?></span>
+        <span class="notice-date"><?= date('l jS F Y - H:i', $notice->getSentDatetime() ); ?></span>
         <span class="notice-sender"><?= $notice->getSender()->getFullName(); ?></span>
 
         <span class="notice-cat">
