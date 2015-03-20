@@ -25,7 +25,7 @@ class ViewBuffer
 
   public function buff()
   {
-    extract($this->data);
+    // extract($this->data);
     ob_start();
     include "{$this->defaultViewPath}{$this->view}";
     ob_end_flush();
