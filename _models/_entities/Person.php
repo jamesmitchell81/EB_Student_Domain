@@ -2,7 +2,7 @@
 
 include 'PersonInterface.php';
 
-abstract class Person implements PersonInterface
+class Person implements PersonInterface
 {
     protected $title = "";
     protected $firstName = "";
