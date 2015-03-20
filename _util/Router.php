@@ -90,8 +90,6 @@ class Router
     foreach ($args as $arg) {
       $this->arguments[] = $arg;
     }
-
-    var_dump($this->arguments);
   }
 
   public function getArguments()
