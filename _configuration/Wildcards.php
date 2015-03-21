@@ -19,7 +19,8 @@ class Wildcards
     static::$wildcards[':yyyy']     = '(\d{4})';        // 4 numbers
     static::$wildcards[':mm']       = '(\d{2})';        // 2 numbers
     static::$wildcards[':dd']       = '(\d{2})';        // 2 numbers
-    static::$wildcards[':id']      = '([0-9]*)';        // 2 numbers
+    static::$wildcards[':id']       = '([0-9]*)';        // 2 numbers
+    static::$wildcards[':code']     = '([a-zA-Z]{1}[0-9]{4})';  // one or more letters only, no spaces.
     static::$wildcards[':action']   = '(^[a-zA-z]+$)';  // one or more letters only, no spaces.
   }
 
