@@ -1,10 +1,10 @@
 <?php include 'head.php'; ?>
 
   <header class='signin-header'>
-    <div class='img-wrap'>
+    <div class='title-wrap'>
       <img src="/~jm/group_project/img/new_logo_web_3.svg" alt='logo-home' class="signin-logo">
+      <h1>Woodlands University College</h1>
     </div>
-    <h1>Woodlands University College</h1>
   </header>
 
   <form id='signin-form' action="" > <!-- method='post'> -->
