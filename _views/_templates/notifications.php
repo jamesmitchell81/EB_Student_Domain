@@ -49,11 +49,15 @@
 
         <span class="notice-date"><?= date('l jS F Y - H:i', $notice->getSentDatetime() ); ?></span>
         <span class="notice-sender"><?= $notice->getSender()->getFullName(); ?></span>
+        <a class='notice-mark-read' href='notifications/delete'>Delete</a>
+        <a class='notice-mark-read' href='notifications/save'>Save</a>
 
         <span class="notice-cat">
           <span class='notice-filter-tag'>#tutor, </span>
           <span class="notice-filter-tag">#module</span>
         </span>
+
+
 
         <p class="notice">
           <?= $notice->getBody(); ?>
