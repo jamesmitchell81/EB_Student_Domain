@@ -280,17 +280,21 @@
 /******************/
 
 .diary-year-month {
-  margin: 0 5% 6% 0;
-  padding: 1%;
   width: 28%;
+  padding: 1%;
   float: left;
   font-size: 0.9em;
   text-align: center;
   line-height: 2;
   border-collapse: separate;
   transition: box-shadow 0.5s, border-radius 0.5s;
+  margin: 0 5% 6% 0;
+  min-height: 20em;
 }
 
+.diary-year-month-wrap {
+  float: left;
+}
 
 .diary-year-month:hover {
   box-shadow: 2px 2px 7px #9898aa;
@@ -308,6 +312,7 @@ th.diary-year-month-label {
 }
 
 .diary-year-month td a {
+  /*padding: 2px;*/
   color: #313131;
   text-decoration: none;
   width: 100%;
