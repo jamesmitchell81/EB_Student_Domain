@@ -84,8 +84,8 @@ class Router
       unset($args[$index]);
     }
 
-    $wildcardKeys = array_keys($this->wildcards);
-    $wildcardPatterns = array_values($this->wildcards);
+    // $wildcardKeys = array_keys($this->wildcards);
+    // $wildcardPatterns = array_values($this->wildcards);
 
     foreach ($args as $arg) {
       $this->arguments[] = $arg;
