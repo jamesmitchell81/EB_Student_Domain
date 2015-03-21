@@ -30,8 +30,7 @@ class Routes
     // Noticifications.
     static::$routes['notifications'] = new Route('NotificationsModel', 'NotificationsView', 'NotificationsController');
     static::$routes['notifications/:id'] = new Route('NotificationsModel', 'NotificationsView', 'NotificationsController');
-    // $routes['notifications/:id'] = new Route('NoticificationModel', 'NoticificationView', 'NoticificationController');
-    // $routes['notifications/:subject'] = new Route('DiaryYearController', 'DiaryYearModel', 'DiaryYearView');
+    static::$routes['notifications/:action'] = new Route('NotificationsModel', 'NotificationsView', 'NotificationsController');
 
     // Personal details.
     static::$routes['personal-details'] = new Route('StudentDetailsModel', 'StudentDetailsView', 'StudentDetailsController');
@@ -41,7 +40,7 @@ class Routes
 
     // Modules
     static::$routes['modules'] = new Route('ModuleModel', 'ModuleView', 'ModuleController');
-    // $routes['modules/:code'] = new Route('DiaryYearController', 'DiaryYearModel', 'DiaryYearView');
+    static::$routes['modules/:code'] = new Route('ModuleModel', 'ModuleView', 'ModuleController');
 
     // Assignments
     static::$routes['assignments'] = new Route('AssignmentsModel', 'AssignmentsView', 'AssignmentsController');
