@@ -6,6 +6,7 @@
     <li class="b4">Contacts</li>
   </ul>
 </footer>
+</div><!-- container -->
 <?php include 'scripts.php'; ?>
 </body>
 </html>

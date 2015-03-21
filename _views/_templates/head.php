@@ -12,3 +12,4 @@
   <link rel="stylesheet" href="/~jm/group_project/css/print.css" media='print'>
 </head>
 <body>
+<div class='container'>
