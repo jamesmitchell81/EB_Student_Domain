@@ -9,9 +9,9 @@ class SignInView implements View
   private $buffer;
   private $viewPath = "_templates/signin.php";
 
-  public function __construct()
+  public function __construct($model)
   {
-    echo static::class;
+    $this->model = $model;
   }
 
   public function display()

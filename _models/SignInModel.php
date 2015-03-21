@@ -2,9 +2,10 @@
 
 class SignInModel
 {
+  private $args = [];
 
-  public function __construct()
+  public function __construct($args = [])
   {
-    echo static::class;
+    $this->args = $args;
   }
 }

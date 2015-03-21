@@ -1,0 +1,56 @@
+
+.signin-header {
+  width: 100%;
+  min-width: 70%;
+  margin: 0 auto;
+  display: block;
+  background: #8EFFDC;
+  overflow: hidden;
+}
+
+.signin-header h1 {
+  text-align: center;
+  line-height: 4;
+  float: left;
+}
+
+.signin-logo {
+  float: left;
+  height: 6em;
+  margin: 1em;
+}
+
+#signin-form {
+  width: 320px;
+  border: 1px solid #000;
+  display: block;
+  margin: 6em auto 0 auto;
+  padding: 1em;
+}
+
+
+.signin-label,
+.signin-text,
+.signin-btn {
+  width: 100%;
+  display: block;
+}
+
+.signin-label {
+  line-height: 2;
+  padding: 0 0 0 0.5em;
+}
+
+.signin-text {
+  line-height: 2;
+  padding: 0 0 0 0.5em;
+}
+
+.signin-btn {
+  font-size: 1.25em;
+  padding: 1em;
+  margin: 1em 0 0 0;
+  border: none;
+  background: #8EFFDC;
+}
+
