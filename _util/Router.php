@@ -31,7 +31,7 @@ class Router
       array_shift($this->data);
       $this->routePath = implode("/", $this->data);
     } else {
-      return Routes::getRoute('signin');
+      $this->route = Routes::getRoute('signin');
     }
 
     $this->route = $this->determineCorrectRoute();
