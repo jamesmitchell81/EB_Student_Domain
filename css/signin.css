@@ -15,9 +15,11 @@
 }
 
 .signin-header h1 {
-  text-align: center;
-  line-height: 4;
+  text-align: left;
+  line-height: 1;
+  padding: 1.5em 1em 1.5em 0;
   float: left;
+  color: #62AC93;
 }
 
 .signin-logo {
@@ -30,7 +32,13 @@
   width: 320px;
   display: block;
   margin: 2em auto 0 auto;
-  padding: 1em;
+  padding: 2em 1.5em;
+  border-radius: 0.5em;
+  box-shadow: 1px 1px 4px #cacaca,
+              2px 2px 4px #cacaca,
+              3px 3px 4px #cacaca,
+              4px 4px 4px #cacaca,
+              5px 5px 4px #cacaca;
 }
 
 .signin-label,
@@ -64,6 +72,8 @@
   border-radius: 0.5em;
   border: none;
   background: #8EFFDC;
+  color: #62AC93;
+  text-transform: uppercase;
   box-shadow: 1px 1px #62AC93,
               2px 2px #62AC93,
               3px 3px #62AC93,

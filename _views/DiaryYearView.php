@@ -18,7 +18,10 @@ class DiaryYearView implements View
   public function display()
   {
     $this->buffer = new ViewBuffer($this->viewPath);
+
     $data["entity"] = $this->model->getYear();
+    $data["start"] = $this->model->getStartDate();
+
     $this->buffer->addData($data);
     $this->buffer->buff();
   }

@@ -13,7 +13,7 @@
         <input class='signin-text' type="text" name='username' id='username'>
         <label class='signin-label' for="password">Password</label>
         <input class='signin-text' type="text" name='password' id='password'>
-        <input class='signin-btn' type="submit">
+        <input class='signin-btn' type="submit" value='Sign in'>
     </ul>
   </form>
 </body>

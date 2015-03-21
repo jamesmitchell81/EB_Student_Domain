@@ -13,7 +13,17 @@ class DiaryYearModel
     $date = new DateTime();
     $this->startDate = $date->setDate($this->year, 1, 1);
 
-    var_dump($this->startDate);
+    // build up the months.
+
+    /*
+    ['2015']['January']['Mon']['']
+
+    */
+  }
+
+  public function getStartDate()
+  {
+    return $this->startDate;
   }
 
   public function getYear()

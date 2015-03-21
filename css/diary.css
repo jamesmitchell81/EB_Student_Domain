@@ -291,6 +291,7 @@
   transition: box-shadow 0.5s, border-radius 0.5s;
 }
 
+
 .diary-year-month:hover {
   box-shadow: 2px 2px 7px #9898aa;
   border-radius: 5px;
@@ -306,12 +307,16 @@ th.diary-year-month-label {
   font-weight: bold;
 }
 
-.diary-year-month td {
+.diary-year-month td a {
+  color: #313131;
+  text-decoration: none;
+  width: 100%;
+  display: block;
   cursor: pointer;
   border-radius: 17px;
   transition: background 0.5s;
 }
 
-.diary-year-month td:hover {
+.diary-year-month td a:hover {
   background: #3E97EB;
 }
