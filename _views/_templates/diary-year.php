@@ -11,7 +11,18 @@
     <div class="wrap" id="content-workspace">
 
       <?php
+        include './_util/Month.php';
+
+        use Util\Month;
+
         $dt = $this->data['start'];
+
+        $test = new DateTime();
+        $test->setDate(2015, 1, 2);
+
+        $oMonth = new Month($test);
+        $aMonth = $oMonth->getWeeks();
+
         $weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
         $week = 0;
@@ -66,11 +77,13 @@
     <tbody>
     <?php for ( $week = 0; $week < count($monthWeeks); $week++ ) : ?>
       <tr>
-<!--         <?= "$monthName"; ?>
-        <?php var_dump($monthWeeks[$week]); ?>
- -->      <?php foreach ($weekdays as $day) : ?>
+      <?php foreach ($weekdays as $day) : ?>
       <?php if ( array_key_exists($day, $monthWeeks[$week]) ) : ?>
-        <td><a href='<?= "{$monthWeeks[$week][$day]['href']}"; ?>'><?= "{$monthWeeks[$week][$day]['date']}"; ?></a></td>
+        <td>
+          <a href='<?= "{$monthWeeks[$week][$day]['href']}"; ?>'>
+            <?= "{$monthWeeks[$week][$day]['date']}"; ?>
+          </a>
+        </td>
       <?php else : ?>
         <td></td>
       <?php endif; ?>
