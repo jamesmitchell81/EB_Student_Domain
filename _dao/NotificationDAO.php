@@ -12,6 +12,7 @@ use Database\DatabaseQuery;
 
 class NotificationDAO
 {
+  private $db;
 
   public function getNotificationById($id, $username)
   {
