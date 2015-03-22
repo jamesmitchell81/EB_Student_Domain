@@ -28,6 +28,7 @@ class NotificationDAO
     $data = $this->db->first();
 
     $notification = [];
+
     extract($data);
 
     $sender = new Person();
@@ -76,5 +77,14 @@ class NotificationDAO
     return $notifications;
   }
 
-
+  public function deleteNotificationById($id, $username)
+  {
+    $this->db = new DatabaseQuery();
+    $this->db->setInt('id', $id);
+    $this->db->setInt('username', $username);
+    $success = $this->db->delete('DELETE FROM NotificationReceivers
+                                  WHERE idStudent = :username
+                                  AND idNotifications = :id');
+    return $success;
+  }
 }
