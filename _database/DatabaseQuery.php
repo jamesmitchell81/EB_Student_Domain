@@ -38,12 +38,11 @@ class DatabaseQuery
     return $this->statement;
   }
 
-
   private function query($sql)
   {
     $this->connection = $this->db->connect();
     $this->statement = $this->prepare_statement($sql);
-    $this->statement->execute();
+    return $this->statement->execute();
   }
 
   public function set($name, $value, $type = PDO::PARAM_STR)
@@ -86,7 +85,12 @@ class DatabaseQuery
 
   public function insert($sql)
   {
-    $this->query($sql);
+    return $this->query($sql);
+  }
+
+  public function delete($sql)
+  {
+    return $this->query($sql);
   }
 }
 
