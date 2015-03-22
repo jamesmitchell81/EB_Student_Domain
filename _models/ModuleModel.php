@@ -20,9 +20,13 @@ class ModuleModel
     $this->username = Input::session('username');
   }
 
+  public function getUsername()
+  {
+    return $this->username;
+  }
+
   public function getModules()
   {
-
     if ( empty($this->args) ) {
       $dao = new ModuleDAO();
       return $dao->getUserModules($this->username);
@@ -32,14 +36,14 @@ class ModuleModel
       $moduleData = new ModuleDAO();
       $lecturerData = new LecturerDAO();
 
-      $module = new Module();
+      $modules = $moduleData->getModuleById($code);
 
-      $module = $moduleData->getModuleById($code);
-      $lecturers = $lecturerData->getLecturersByModuleCode($code);
-
-      $module->setLecturers($lecturers);
-
-      return $module;
+      foreach ($modules as $module) {
+        $code = $module->getModuleCode();
+        $lecturers = $lecturerData->getLecturersByModuleCode($code);
+        $module->setLecturers($lecturers);
+      }
+      return $modules;
     }
   }
 
