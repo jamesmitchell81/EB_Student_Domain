@@ -19,7 +19,7 @@ class NotificationDAO
     $this->db = new DatabaseQuery();
     $this->db->set('id', $id, PDO::PARAM_INT);
     $this->db->set('username', $username, PDO::PARAM_INT);
-    $this->db->select('SELECT n.Title AS Subject, n.Body, n.NotificationDate, s.Title, s.FirstName, s.Surname
+    $this->db->select('SELECT n.idNotifications, n.Title AS Subject, n.Body, n.NotificationDate, s.Title, s.FirstName, s.Surname
                        FROM Notifications n
                        INNER JOIN Staff s ON s.idStaff = n.idStaff
                        INNER JOIN NotificationReceivers r ON r.idNotifications = n.idNotifications
@@ -27,20 +27,23 @@ class NotificationDAO
                        ORDER BY n.NotificationDate DESC');
     $data = $this->db->first();
 
-    $notification = [];
+    $notifications = [];
 
-    extract($data);
+    if ( $data ) {
+      extract($data);
 
-    $sender = new Person();
-    $sender->setTitle($Title);
-    $sender->setFirstName($FirstName);
-    $sender->setLastName($Surname);
+      $sender = new Person();
+      $sender->setTitle($Title);
+      $sender->setFirstName($FirstName);
+      $sender->setLastName($Surname);
 
-    $notifications[] = new Notification();
-    $notifications[0]->setSubject($Subject);
-    $notifications[0]->setBody($Body);
-    $notifications[0]->setSentDateTime($NotificationDate);
-    $notifications[0]->setSender($sender);
+      $notifications[] = new Notification();
+      $notifications[0]->setID($idNotifications);
+      $notifications[0]->setSubject($Subject);
+      $notifications[0]->setBody($Body);
+      $notifications[0]->setSentDateTime($NotificationDate);
+      $notifications[0]->setSender($sender);
+    }
 
     return $notifications;
   }
@@ -49,7 +52,7 @@ class NotificationDAO
   {
     $this->db = new DatabaseQuery();
     $this->db->set('username', $username, PDO::PARAM_INT);
-    $this->db->select('SELECT n.Title AS Subject, n.Body, n.NotificationDate, s.Title, s.FirstName, s.Surname
+    $this->db->select('SELECT n.idNotifications, n.Title AS Subject, n.Body, n.NotificationDate, s.Title, s.FirstName, s.Surname
                        FROM Notifications n
                        INNER JOIN Staff s ON s.idStaff = n.idStaff
                        INNER JOIN NotificationReceivers r ON r.idNotifications = n.idNotifications
@@ -68,6 +71,7 @@ class NotificationDAO
       $sender->setLastName($Surname);
 
       $notifications[] = new Notification();
+      $notifications[$index]->setID($idNotifications);
       $notifications[$index]->setSubject($Subject);
       $notifications[$index]->setBody($Body);
       $notifications[$index]->setSentDateTime($NotificationDate);
@@ -75,6 +79,30 @@ class NotificationDAO
     }
 
     return $notifications;
+  }
+
+  public function saveNotification($id, $username)
+  {
+    $this->db = new DatabaseQuery();
+    $this->db->setInt('id', $id);
+    $this->db->setInt('username', $username);
+    $success = $this->db->update('UPDATE NotificationReceivers
+                                 SET Saved = TRUE
+                                 WHERE idNotifications = :id
+                                 AND idStudent = :username');
+    return $success;
+  }
+
+  public function unSaveNotification($id, $username)
+  {
+    $this->db = new DatabaseQuery();
+    $this->db->setInt('id', $id);
+    $this->db->setInt('username', $username);
+    $success = $this->db->update('UPDATE NotificationReceivers
+                                 SET Saved = FALSE
+                                 WHERE idNotifications = :id
+                                 AND idStudent = :username');
+    return $success;
   }
 
   public function deleteNotificationById($id, $username)
