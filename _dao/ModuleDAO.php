@@ -1,7 +1,6 @@
 <?php namespace DAO;
 
 include_once './_database/DatabaseQuery.php';
-// include_once './_models/_entities/Module.php';
 
 use PDO;
 use Models\Entities\Module;
@@ -21,17 +20,15 @@ class ModuleDAO
                        WHERE m.idModuleCode = :id AND m.Status = "Current"');
     $data = $this->db->first();
 
-    $modules = [];
+    $modules = new Module();
 
     if ( $data )
     {
       extract($data);
-
-      $modules[0] = new Module();
-      $modules[0]->setModuleCode($idModuleCode);
-      $modules[0]->setTitle($Title);
-      $modules[0]->setDescription($Description);
-      $modules[0]->setLevel($Level);
+      $modules->setModuleCode($idModuleCode);
+      $modules->setTitle($Title);
+      $modules->setDescription($Description);
+      $modules->setLevel($Level);
     }
 
     return $modules;
