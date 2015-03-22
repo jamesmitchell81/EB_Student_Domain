@@ -39,8 +39,16 @@
       <td></td>
     </tr>
     <tr>
-      <td>Modules...</td>
-      <td></td>
+      <td colspan='2'>Modules</td>
     </tr>
+    <?php foreach ($this->data->getModules() as $module) : ?>
+    <tr>
+      <td colspan='2'>
+        <a href='<?= BASE_PATH . "{$this->data->getStudentId()}/modules/{$module->getModuleCode()}"; ?>'>
+        <?= "{$module->getModuleCode()} {$module->getTitle()}"; ?>
+        </a>
+      </td>
+    </tr>
+    <?php endforeach; ?>
   </tbody>
 </table>

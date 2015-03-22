@@ -30,6 +30,11 @@ class Student extends Person
         $this->student_id = $student_id;
     }
 
+    public function addModule(Module $module)
+    {
+        $this->modules[] = $module;
+    }
+
     /**
      * @return array
      */
@@ -41,7 +46,7 @@ class Student extends Person
     /**
      * @param array $modules
      */
-    public function setModules($modules)
+    public function setModules($modules = [])
     {
         $this->modules = $modules;
     }

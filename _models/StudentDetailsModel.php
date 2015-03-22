@@ -1,10 +1,14 @@
 <?php
 
 include './_dao/StudentDAO.php';
+include './_dao/ModuleDAO.php';
+include '_entities/Module.php';
 
 use Util\Input;
 use Models\Entities\Student;
+use Models\Entities\Module;
 use DAO\StudentDAO;
+use DAO\ModuleDAO;
 
 class StudentDetailsModel
 {
@@ -18,8 +22,16 @@ class StudentDetailsModel
 
   public function getStudentDetails()
   {
-    $dao = new StudentDAO();
-    return $dao->getStudentByID($this->username);
+    $studentData = new StudentDAO();
+    $moduleData = new ModuleDAO();
+    $student = new Student();
+    $modules = new Module();
+
+    $student = $studentData->getStudentByID($this->username);
+    $modules = $moduleData->getUserModules($this->username);
+
+    $student->setModules($modules);
+    return $student;
   }
 
 }

@@ -15,14 +15,25 @@ class StudentDAO
   {
     $this->db = new DatabaseQuery();
     $this->db->setInt('id', $id);
-    $this->db->select('SELECT Title, FirstName, Surname FROM Student WHERE idStudent = :id');
+    $this->db->select('SELECT idStudent, Title, FirstName, Surname, TermAddress,
+                       HomeAddress, Mobile, Email, Gender
+                       FROM Student WHERE idStudent = :id');
     $data = $this->db->first();
 
     $student = new Student();
-    $student->setTitle($data['Title']);
-    $student->setFirstName($data['FirstName']);
-    $student->setLastName($data['Surname']);
-    // set others.
+
+    if ( $data )
+    {
+      $student->setStudentID($data['idStudent']);
+      $student->setTitle($data['Title']);
+      $student->setFirstName($data['FirstName']);
+      $student->setLastName($data['Surname']);
+      $student->setTermAddress($data['TermAddress']);
+      $student->setHomeAddress($data['HomeAddress']);
+      $student->setMobile($data['Mobile']);
+      $student->setEmailAddress($data['Email']);
+      $student->setGender($data['Gender']);
+    }
 
     return $student;
   }
