@@ -46,6 +46,7 @@ class Routes
     static::$routes['assignments'] = new Route('AssignmentsModel', 'AssignmentsView', 'AssignmentsController');
     // $routes['assignments/:id'] = new Route('DiaryYearController', 'DiaryYearModel', 'DiaryYearView');
     // $routes['assignments/:module'] = new Route('DiaryYearController', 'DiaryYearModel', 'DiaryYearView');
+    static::$routes['lecturers/:lecturerid'] = new Route('LecturerModel', 'LecturerView', 'LecturerController');
   }
 
   public static function getRoutes()

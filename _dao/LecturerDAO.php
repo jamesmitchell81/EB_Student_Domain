@@ -60,7 +60,6 @@ class LecturerDAO
       $lecturers[$index]->setTelExt($Mobile);
       $lecturers[$index]->setEmailAddress($Email);
     }
-
     return $lecturers;
   }
 }
