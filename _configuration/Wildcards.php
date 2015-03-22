@@ -22,6 +22,7 @@ class Wildcards
     static::$wildcards[':id']       = '([0-9]*)';        // 2 numbers
     static::$wildcards[':code']     = '([a-zA-Z]{1}[0-9]{4})';  // one or more letters only, no spaces.
     static::$wildcards[':action']   = '([a-zA-z]+)';  // one or more letters only, no spaces.
+    static::$wildcards[':lecturerid'] = '(\d{6})';
   }
 
   public static function getWildcards()
