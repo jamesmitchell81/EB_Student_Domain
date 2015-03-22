@@ -21,8 +21,8 @@ class Person implements PersonInterface
     public function setFullName($title, $firstName, $lastName)
     {
         $this->title = $title;
-        $this->$firstName = $firstName;
-        $this->$lastName = $lastName;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
     }
 
     /**
