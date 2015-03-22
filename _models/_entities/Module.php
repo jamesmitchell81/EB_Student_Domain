@@ -1,10 +1,21 @@
 <?php namespace Models\Entities;
 
 class Module {
+    private $moduleCode = "";
     private $title = "";
     private $description = "";
     private $level = "";
     // lecturers...?
+
+    public function getModuleCode()
+    {
+        return $this->moduleCode;
+    }
+
+    public function setModuleCode($moduleCode)
+    {
+        $this->moduleCode = $moduleCode;
+    }
 
     /**
      * @return string

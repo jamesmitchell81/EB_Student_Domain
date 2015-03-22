@@ -18,6 +18,11 @@ class ModuleView implements View
   public function display()
   {
     $this->buffer = new ViewBuffer($this->viewPath);
+
+    $data = $this->model->getModules();
+
+    var_dump($data);
+
     $this->buffer->buff();
   }
 }

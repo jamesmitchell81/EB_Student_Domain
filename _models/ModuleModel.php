@@ -20,13 +20,15 @@ class ModuleModel
 
   public function getModules()
   {
-    $dao = new ModuleDAO();
     if ( empty($this->args) ) {
-      // get all modules.
+      $dao = new ModuleDAO();
+      return $dao->getUserModules($this->username);
     } else {
-      // get specific module.
+      $dao = new ModuleDAO();
+      $id = array_shift($this->args);
+      return $dao->getModuleById($id, $this->username);
     }
-
+    return;
   }
 
 }
