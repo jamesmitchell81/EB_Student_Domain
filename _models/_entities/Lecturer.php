@@ -1,9 +1,24 @@
 <?php namespace Models\Entities;
 
+include 'Person.php';
+
+use Models\Entities\Person;
+
 class Lecturer extends Person
 {
     private $tel_ext = "";
     private $modules = [];
+    private $id;
+
+    public function setID($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getID()
+    {
+        return $this->id;
+    }
 
     /**
      * @return string
