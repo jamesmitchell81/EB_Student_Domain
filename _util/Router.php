@@ -15,6 +15,7 @@ class Router
   private $routes;
   private $data;
   private $arguments = [];
+  private $action;
 
   public function __construct($data = '')
   {
@@ -79,17 +80,28 @@ class Router
   private function setArguments()
   {
     $args = $this->data;
+
     foreach ($this->domains as $value) {
       $index = array_search($value, $args);
       unset($args[$index]);
     }
 
-    // $wildcardKeys = array_keys($this->wildcards);
-    // $wildcardPatterns = array_values($this->wildcards);
+    $this->action = preg_grep("/^{$this->wildcards[':action']}$/", $args);
+    if ( !empty($this->action) )
+    {
+      $this->action = array_shift($this->action);
+      $index = array_search($this->action, $args);
+      unset($args[$index]);
+    }
 
     foreach ($args as $arg) {
       $this->arguments[] = $arg;
     }
+  }
+
+  public function getAction()
+  {
+    return ( !empty($this->action) ) ? $this->action : '';
   }
 
   public function getArguments()
