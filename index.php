@@ -1,18 +1,6 @@
 <?php
 
-// include 'util/ViewBuffer.php';
-
-// use Util\ViewBuffer;
-
-// $hello = [
-//   "name" => "James",
-//   "surname" => "Mitchell"
-// ];
-
-// $view = new ViewBuffer('hello.php');
-// $view->addData($hello)->buff();
-
-// include './configuration/routes.php';
+define("BASE_PATH", "/~jm/group_project/");
 
 include './_controllers/Controller.php';
 include './_views/View.php';
