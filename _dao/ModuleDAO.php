@@ -16,7 +16,7 @@ class ModuleDAO
   {
     $this->db = new DatabaseQuery();
     $this->setInt('username', $username);
-    $this->db->select('')
+    $this->db->select('');
 
   }
 }
