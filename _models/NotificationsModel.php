@@ -45,7 +45,13 @@ class NotificationsModel
 
   public function save()
   {
-
+    if ( !empty($this->args) )
+    {
+      $id = array_shift($this->args);
+      $dao = new NotificationDAO();
+      $dao->saveNotification($id, $this->username);
+      Redirect::to('notifications');
+    }
   }
 
   public function delete()
@@ -55,10 +61,7 @@ class NotificationsModel
       $id = array_shift($this->args);
       $dao = new NotificationDAO();
       $dao->deleteNotificationById($id, $this->username);
-      Redirect::to('modules');
-      // header("Location: {$newPath}");
-      // exit();
-      // redirect.
+      Redirect::to('notifications');
     }
   }
 }
