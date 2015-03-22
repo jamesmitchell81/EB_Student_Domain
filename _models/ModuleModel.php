@@ -2,9 +2,11 @@
 
 include '_entities/Module.php';
 include './_dao/ModuleDAO.php';
+include './_dao/LecturerDAO.php';
 
 use Util\Input;
 use Models\Entities\Module;
+use DAO\LecturerDAO;
 use DAO\ModuleDAO;
 
 class ModuleModel
@@ -20,15 +22,25 @@ class ModuleModel
 
   public function getModules()
   {
+
     if ( empty($this->args) ) {
       $dao = new ModuleDAO();
       return $dao->getUserModules($this->username);
     } else {
-      $dao = new ModuleDAO();
-      $id = array_shift($this->args);
-      return $dao->getModuleById($id, $this->username);
+      $code = array_shift($this->args);
+
+      $moduleData = new ModuleDAO();
+      $lecturerData = new LecturerDAO();
+
+      $module = new Module();
+
+      $module = $moduleData->getModuleById($code);
+      $lecturers = $lecturerData->getLecturersByModuleCode($code);
+
+      $module->setLecturers($lecturers);
+
+      return $module;
     }
-    return;
   }
 
 }

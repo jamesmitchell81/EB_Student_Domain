@@ -5,7 +5,7 @@ class Module {
     private $title = "";
     private $description = "";
     private $level = "";
-    // lecturers...?
+    private $lecturers = [];
 
     public function getModuleCode()
     {
@@ -63,5 +63,15 @@ class Module {
     public function setLevel($level)
     {
         $this->level = $level;
+    }
+
+    public function setLecturers($lecturers = [])
+    {
+        $this->lecturers = $lecturers;
+    }
+
+    public function getLecturers()
+    {
+        return $this->lecturers;
     }
 }
