@@ -57,8 +57,6 @@
           <span class="notice-filter-tag">#module</span>
         </span>
 
-
-
         <p class="notice">
           <?= $notice->getBody(); ?>
         </p>
