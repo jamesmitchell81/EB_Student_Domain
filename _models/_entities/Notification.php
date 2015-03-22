@@ -6,11 +6,22 @@ class Notification
     private $body = "";
     private $sent_datetime;
     private $sender;
+    private $id;
 
     public function __construct()
     {
         // get data
         // assign to variables.
+    }
+
+    public function getID()
+    {
+        return $this->id;
+    }
+
+    public function setID($id)
+    {
+        $this->id = $id;
     }
 
     /**
