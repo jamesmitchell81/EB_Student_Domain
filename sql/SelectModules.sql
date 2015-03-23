@@ -1,0 +1,3 @@
+
+
+DROP DATABASE db_eco;
