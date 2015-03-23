@@ -1,5 +1,10 @@
 <?php
 
+include './_dao/TimetableDAO.php';
+
+use Util\Input;
+use DAO\TimetableDAO;
+
 class DiaryDailyModel
 {
   private $year;
@@ -7,6 +12,8 @@ class DiaryDailyModel
   private $day;
 
   private $date;
+
+  private $username;
 
   public function __construct($args = [])
   {
@@ -21,5 +28,14 @@ class DiaryDailyModel
   public function getDate()
   {
     return $this->date->format('l jS, M Y');
+  }
+
+  public function getDiary()
+  {
+    $username = Input::session('username');
+    $dao = new TimetableDAO();
+    $dao->selectUserTimetableDate($username, $this->date);
+
+
   }
 }
