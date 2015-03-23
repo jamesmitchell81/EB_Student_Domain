@@ -20,7 +20,7 @@ class NotificationsView implements View
     $this->buffer = new ViewBuffer($this->viewPath);
     $data = $this->model->getNotifications();
 
-    $this->buffer->addData($data);
+    $this->buffer->addData('notifications', $data);
 
     $this->buffer->buff();
   }
