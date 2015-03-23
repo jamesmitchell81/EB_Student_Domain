@@ -30,12 +30,20 @@ class DiaryDailyModel
     return $this->date->format('l jS, M Y');
   }
 
-  public function getDiary()
+  public function getEvents()
+  {
+
+  }
+
+  private function getTimetable()
   {
     $username = Input::session('username');
     $dao = new TimetableDAO();
-    $dao->selectUserTimetableDate($username, $this->date);
+    return $dao->selectUserTimetableDate($username, $this->date);
+  }
 
+  public function getDiaryEvents()
+  {
 
   }
 }

@@ -9,6 +9,17 @@ class Event
     private $location = "";
     private $reminder;
     private $attendees = [];
+    private $diaryName;
+
+    public function setDiaryName($diaryName)
+    {
+        $this->diaryName = $diaryName;
+    }
+
+    public function getDiaryName()
+    {
+        return $this->diaryName;
+    }
 
     public function setDateTime($start_datetime, $end_datetime)
     {
@@ -16,9 +27,19 @@ class Event
         $this->end_datetime = $end_datetime;
     }
 
+    public function setEndDateTime($end_datetime)
+    {
+        $this->end_datetime = $end_datetime;
+    }
+
     public function getEndDateTime()
     {
         return $this->end_datetime;
+    }
+
+    public function setStartDateTime($start_datetime)
+    {
+        $this->start_datetime = $start_datetime;
     }
 
     public function getStartDateTime()
