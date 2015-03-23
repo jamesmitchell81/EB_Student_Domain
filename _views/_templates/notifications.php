@@ -41,7 +41,7 @@
         <p>You have no new notifications</p>
       <?php endif; ?>
 
-      <?php foreach ($this->data as $notice) : ?>
+      <?php foreach ($this->data['notifications'] as $notice) : ?>
       <div class="notice-block">
         <h3 class="notice-title">
           <?= $notice->getSubject(); ?>

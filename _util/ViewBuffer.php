@@ -15,17 +15,14 @@ class ViewBuffer
     return $this;
   }
 
-  public function addData($data)
+  public function addData($key, $data)
   {
-    $this->data = $data;
-
-    // if is an object.
+    $this->data[$key] = $data;
     return $this;
   }
 
   public function buff()
   {
-    // extract($this->data);
     ob_start();
     include "{$this->defaultViewPath}{$this->view}";
     ob_end_flush();
