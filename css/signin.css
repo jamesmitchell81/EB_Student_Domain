@@ -1,3 +1,10 @@
+/*
+  Background Image Method: https://css-tricks.com/perfect-full-page-background-image/
+*/
+
+html {
+}
+
 .signin-header {
   width: 100%;
   min-width: 70%;
@@ -19,7 +26,7 @@
   line-height: 1;
   padding: 1.5em 1em 1.5em 0;
   float: left;
-  color: #62AC93;
+  color: #00F1B2;
 }
 
 .signin-logo {
@@ -29,16 +36,21 @@
 }
 
 #signin-form {
-  width: 320px;
+  min-width: 320px;
+  max-width: 460px;
   display: block;
   margin: 2em auto 0 auto;
   padding: 2em 1.5em;
   border-radius: 0.5em;
-  box-shadow: 1px 1px 4px #cacaca,
-              2px 2px 4px #cacaca,
-              3px 3px 4px #cacaca,
-              4px 4px 4px #cacaca,
-              5px 5px 4px #cacaca;
+  background: #fff;
+  box-shadow: 1px 1px 1px 1px #f8f8f8,
+              2px 2px 1px 1px #f8f8f8,
+              3px 3px 1px 1px #f8f8f8,
+              4px 4px 1px 1px #f8f8f8,
+              5px 5px 1px 1px #f8f8f8,
+              6px 6px 1px 1px #f8f8f8,
+              7px 7px 1px 1px #f8f8f8,
+              8px 8px 1px 1px #cacaca;
 }
 
 .signin-label,
@@ -55,14 +67,24 @@
 }
 
 .signin-text {
+  outline: none;
   line-height: 2;
   padding: 0.75em;
-  border-radius: 0.5em;
-  border: 3px solid #8BD9EF;
-  box-shadow: 1px 1px #8BD9EF,
-              2px 2px #8BD9EF,
-              3px 3px #8BD9EF,
-              4px 4px #8BD9EF;
+  border-radius: 0.45em;
+  border: 3px solid #8CCCFF;
+  transition: border-color 0.5s, box-shadow 0.5s;
+  box-shadow: 1px 1px #8CCCFF,
+              2px 2px #8CCCFF,
+              3px 3px #8CCCFF,
+              4px 4px #8CCCFF;
+}
+
+.signin-text:focus {
+  border: 3px solid #3E97EB;
+  box-shadow: 1px 1px #3E97EB,
+              2px 2px #3E97EB,
+              3px 3px #3E97EB,
+              4px 4px #3E97EB;
 }
 
 .signin-btn {
@@ -72,16 +94,16 @@
   border-radius: 0.5em;
   border: none;
   background: #8EFFDC;
-  color: #62AC93;
+  color: #9CFBDC;
   text-transform: uppercase;
-  box-shadow: 1px 1px #62AC93,
-              2px 2px #62AC93,
-              3px 3px #62AC93,
-              4px 4px #62AC93,
-              5px 5px #62AC93,
-              6px 6px #62AC93,
-              7px 7px #62AC93,
-              8px 8px #62AC93;
+  box-shadow: 1px 1px #00F1B2,
+              2px 2px #00F1B2,
+              3px 3px #00F1B2,
+              4px 4px #00F1B2,
+              5px 5px #00F1B2,
+              6px 6px #00F1B2,
+              7px 7px #00F1B2,
+              8px 8px #00F1B2;
 }
 
 .signin-btn:active {
