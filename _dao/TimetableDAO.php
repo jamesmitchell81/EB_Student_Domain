@@ -1,11 +1,14 @@
 <?php namespace DAO;
 
 include_once './_database/DatabaseQuery.php';
+include_once './_models/_entities/Event.php';
+include_once './_models/_entities/Lecturer.php';
 
 use DateTime;
 use PDO;
 use Database\DatabaseQuery;
-use Models\Entities\Timetable;
+use Models\Entities\Event;
+use Models\Entities\Lecturer;
 
 class TimetableDAO
 {
@@ -14,7 +17,10 @@ class TimetableDAO
   public function selectUserTimetableDate($username, DateTime $date)
   {
     $sql = "SELECT s.Date, l.idLecturer, st.Title, st.FirstName, st.Surname,
-                   m.idModuleCode, m.Title, t.StartTime, t.EndTime, r.idRoomNumber
+                   m.idModuleCode, m.Title AS ModuleName,
+                   CONCAT(s.Date, ' ', t.StartTime) AS StartDateTime,
+                   CONCAT(s.Date, ' ', t.EndTime) AS EndDateTime,
+                   r.idRoomNumber
             FROM Timetable t
             INNER JOIN Session s ON s.idTimetable = t.idTimetable
             INNER JOIN Module m ON m.idModuleCode = t.idModuleCode
@@ -31,8 +37,26 @@ class TimetableDAO
     $this->db->select($sql);
     $data = $this->db->all();
 
-    var_dump($data);
+    $timetables = [];
 
+    foreach ($data as $index => $timetable) {
+
+      extract($timetable);
+
+      $lecturer = new Lecturer();
+      $lecturer->setFullName($Title, $FirstName, $Surname);
+      $lecturer->setID($idLecturer);
+
+      $timetables[] = new Event();
+      $timetables[$index]->addAttendee($lecturer);
+      $timetables[$index]->setLocation($idRoomNumber);
+      $timetables[$index]->setTitle("{$idModuleCode} {$ModuleName}");
+      $timetables[$index]->setDiaryName("Timetable");
+      $timetables[$index]->setStartDateTime($StartDateTime);
+      $timetables[$index]->setEndDateTime($EndDateTime);
+    }
+
+    return $timetables;
   }
 
 

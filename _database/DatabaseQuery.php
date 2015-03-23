@@ -42,7 +42,8 @@ class DatabaseQuery
   {
     $this->connection = $this->db->connect();
     $this->statement = $this->prepare_statement($sql);
-    return $this->statement->execute();
+    $success = $this->statement->execute();
+    return $success;
   }
 
   public function set($name, $value, $type = PDO::PARAM_STR)
@@ -69,7 +70,7 @@ class DatabaseQuery
 
   public function select($sql)
   {
-    $this->query($sql, $this->fetchMode);
+    $this->query($sql);
     return $this;
   }
 
