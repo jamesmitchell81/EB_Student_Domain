@@ -1,8 +1,10 @@
 <?php include 'head.php'; ?>
 
+  <img id='background' src='/~jm/group_project/img/woodland-blue.png'/>
+
   <header class='signin-header'>
     <div class='title-wrap'>
-      <img src="/~jm/group_project/img/new_logo_web_3.svg" alt='logo-home' class="signin-logo">
+      <!-- <img src="/~jm/group_project/img/ne  w_logo_web_3.svg" alt='logo-home' class="signin-logo"> -->
       <h1>Woodlands University College</h1>
     </div>
   </header>
