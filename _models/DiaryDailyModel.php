@@ -30,11 +30,6 @@ class DiaryDailyModel
     return $this->date->format('l jS, M Y');
   }
 
-  public function getEvents()
-  {
-
-  }
-
   private function getTimetable()
   {
     $username = Input::session('username');
@@ -44,6 +39,7 @@ class DiaryDailyModel
 
   public function getDiaryEvents()
   {
-
+    // temp...
+    return $this->getTimetable();
   }
 }

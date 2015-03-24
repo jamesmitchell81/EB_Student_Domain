@@ -14,7 +14,6 @@
     </div>
 
     <div class="wrap" id="content-workspace">
-      <!-- <h2 class='diary-date'><?= "{$today}" ?></h2> -->
 
       <div class="diary-day">
         <?php foreach ($this->data['hours'] as $hour) : ?>
