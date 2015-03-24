@@ -1,6 +1,9 @@
 <?php
 
-define("BASE_PATH", "/~jm/group_project/");
+$path = $_SERVER['REQUEST_URI'];
+$path = explode("/", $path);
+
+define("BASE_PATH", "http://localhost/EB_Student/");
 
 include './_controllers/Controller.php';
 include './_views/View.php';
