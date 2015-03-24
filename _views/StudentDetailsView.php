@@ -20,7 +20,7 @@ class StudentDetailsView implements View
     $this->buffer = new ViewBuffer($this->viewPath);
 
     $data = $this->model->getStudentDetails();
-    $this->buffer->addData($data);
+    $this->buffer->addData('details', $data);
 
     $this->buffer->buff();
   }

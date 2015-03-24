@@ -20,7 +20,7 @@ class ModuleView implements View
     $this->buffer = new ViewBuffer($this->viewPath);
     $data = $this->model->getModules();
 
-    $this->buffer->addData($data);
+    $this->buffer->addData('modules', $data);
     $this->buffer->buff();
   }
 }

@@ -21,12 +21,13 @@ class BadRouteView implements View
 
     if ( $this->model->isValidUser() && $this->model->userIsSignedIn() )
     {
-      $data["home"] = $this->model->getUsername;
+      $data = $this->model->getUsername;
+      $this->buffer->addData('home', $data);
     } else {
-      $data["home"] = "signin";
+      $data = "signin";
+      $this->buffer->addData('home', $data);
     }
 
-    $this->buffer->addData($data);
     $this->buffer->buff();
   }
 

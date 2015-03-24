@@ -8,31 +8,31 @@
   <tbody>
     <tr>
       <td>Student ID</td>
-      <td><?= $this->data->getStudentId(); ?></td>
+      <td><?= $this->data['details']->getStudentId(); ?></td>
     </tr>
     <tr>
       <td>Name</td>
-      <td><?= $this->data->getFullName(); ?></td>
+      <td><?= $this->data['details']->getFullName(); ?></td>
     </tr>
     <tr>
       <td>Email Address</td>
-      <td><?= $this->data->getEmailAddress(); ?></td>
+      <td><?= $this->data['details']->getEmailAddress(); ?></td>
     </tr>
     <tr>
       <td>Tel No.</td>
-      <td><?= $this->data->getMobile(); ?></td>
+      <td><?= $this->data['details']->getMobile(); ?></td>
     </tr>
     <tr>
       <td>Home Address</td>
-      <td><?= $this->data->getHomeAddress(); ?></td>
+      <td><?= $this->data['details']->getHomeAddress(); ?></td>
     </tr>
     <tr>
       <td>Term Address</td>
-      <td><?= $this->data->getTermAddress(); ?></td>
+      <td><?= $this->data['details']->getTermAddress(); ?></td>
     </tr>
     <tr>
       <td>Gender</td>
-      <td><?= $this->data->getGender(); ?></td>
+      <td><?= $this->data['details']->getGender(); ?></td>
     </tr>
     <tr>
       <td>Quailifications...</td>
@@ -41,10 +41,10 @@
     <tr>
       <td colspan='2'>Modules</td>
     </tr>
-    <?php foreach ($this->data->getModules() as $module) : ?>
+    <?php foreach ($this->data['details']->getModules() as $module) : ?>
     <tr>
       <td colspan='2'>
-        <a href='<?= BASE_PATH . "{$this->data->getStudentId()}/modules/{$module->getModuleCode()}"; ?>'>
+        <a href='<?= BASE_PATH . "{$this->data['details']->getStudentId()}/modules/{$module->getModuleCode()}"; ?>'>
         <?= "{$module->getModuleCode()} {$module->getTitle()}"; ?>
         </a>
       </td>

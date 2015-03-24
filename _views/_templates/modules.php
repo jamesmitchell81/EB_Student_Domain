@@ -13,7 +13,7 @@
 
     <div class="wrap" id="content-workspace">
 
-    <?php foreach ($this->data as $module) :?>
+    <?php foreach ($this->data['modules'] as $module) :?>
 
       <div>
       <h3>

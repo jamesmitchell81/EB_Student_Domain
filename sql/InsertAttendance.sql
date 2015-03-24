@@ -51,11 +51,9 @@ FROM Session s
 INNER JOIN Timetable t ON t.idTimetable = s.idTimetable
 INNER JOIN ModuleStudents ms ON ms.idModuleCode = t.idModuleCode;
 
-
 SELECT st.idStudent, st.FirstName, m.Title, s.Date, t.StartTime, t.EndTime, t.Weekday, a.Result
 FROM Attendance a
 INNER JOIN Student st ON st.idStudent = a.idStudent
 INNER JOIN Session s ON s.idSession = a.idSession
 INNER JOIN Timetable t ON t.idTimetable = s.idTimetable
-INNER JOIN Module m ON m.idModuleCode = t.idModuleCode
-WHERE st.idStudent = 20150001;
+INNER JOIN Module m ON m.idModuleCode = t.idModuleCode;
