@@ -51,6 +51,9 @@ class Routes
 
     // Attendance
     static::$routes['attendance'] = new Route('AttendanceModel', 'AttendanceView', 'AttendanceController');
+
+    // Personal Tutor Feedback
+    static::$routes['tutor-sessions'] = new Route('PersonalTutorModel', 'PersonalTutorView', 'PersonalTutorController');
   }
 
   public static function getRoutes()

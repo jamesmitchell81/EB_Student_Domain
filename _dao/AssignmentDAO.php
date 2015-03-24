@@ -22,7 +22,7 @@ class AssignmentDAO
         $assignments = [];
 
         foreach ($data as $index => $assignment) {
-            
+
             extract($assignment);
 
             $assignments[$index]->setTitle("");
