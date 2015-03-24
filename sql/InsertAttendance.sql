@@ -1,8 +1,5 @@
 SELECT * FROM Session;
 
-INSERT INTO Attendance (Result, idStudent, idSession)
-VALUES 
-();
 
 -- select student timetable.
 SELECT s.Date, l.idLecturer, st.Title, st.FirstName, st.Surname,
@@ -31,8 +28,7 @@ FROM Timetable t
 INNER JOIN Session s ON s.idTimetable = t.idTimetable
 INNER JOIN Module m ON m.idModuleCode = t.idModuleCode;
 
-
-
+-- Select Student timetable.
 SELECT s.Date, l.idLecturer, st.Title, st.FirstName, st.Surname,
 m.idModuleCode, m.Title, t.StartTime, t.EndTime, r.idRoomNumber
 FROM Timetable t
@@ -44,16 +40,45 @@ INNER JOIN ModuleStudents ms ON ms.idModuleCode = m.idModuleCode
 INNER JOIN Room r ON r.idRoomNumber = t.idRoomNumber
 WHERE ms.idStudent = 20150001;
 
-
+-- Populate all dummy students into attendance.
 INSERT INTO Attendance (Result, idStudent, idSession)
 SELECT "Present", ms.idStudent, s.idSession
 FROM Session s
 INNER JOIN Timetable t ON t.idTimetable = s.idTimetable
 INNER JOIN ModuleStudents ms ON ms.idModuleCode = t.idModuleCode;
 
+-- Mark a third of the attendance records "Absent"
+UPDATE Attendance SET Result = "Absent" WHERE RAND() < 0.3;
+
+-- Mark 20% of attendance records as "Authorised"
+UPDATE Attendance SET Result = "Authorised" WHERE RAND() < 0.2;
+
+-- Select all attendance records.
 SELECT st.idStudent, st.FirstName, m.Title, s.Date, t.StartTime, t.EndTime, t.Weekday, a.Result
 FROM Attendance a
 INNER JOIN Student st ON st.idStudent = a.idStudent
 INNER JOIN Session s ON s.idSession = a.idSession
 INNER JOIN Timetable t ON t.idTimetable = s.idTimetable
 INNER JOIN Module m ON m.idModuleCode = t.idModuleCode;
+
+SELECT * FROM Attendance;
+
+SELECT st.idStudent, m.idModuleCode, m.Title, 
+	   SUM(IF(a.Result = "Absent", 1, 0)) AS Absent,
+	   SUM(IF(a.Result = "Present", 1, 0)) AS Present,
+	   SUM(IF(a.Result = "Authorised", 1, 0)) AS Authorised,
+	   COUNT(a.idAttendance) AS Total
+FROM Attendance a
+INNER JOIN Student st ON st.idStudent = a.idStudent
+INNER JOIN Session s ON s.idSession = a.idSession
+INNER JOIN Timetable t ON t.idTimetable = s.idTimetable
+INNER JOIN Module m ON m.idModuleCode = t.idModuleCode
+WHERE a.idStudent = 20150001
+GROUP BY st.idStudent, m.idModuleCode;
+
+
+
+
+
+
+
