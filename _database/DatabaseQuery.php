@@ -62,6 +62,12 @@ class DatabaseQuery
     return $this;
   }
 
+  public function setStr($name, $value)
+  {
+    $this->set($name, $value, PDO::PARAM_STR);
+    return $this;
+  }
+
   public function setFetchMode($fetchMode)
   {
     $this->fetchMode = $fetchMode;
