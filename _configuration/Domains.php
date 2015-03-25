@@ -13,7 +13,8 @@ class Domains
                              'modules',
                              'assignments',
                              'notifications',
-                             'attendance'];
+                             'attendance'
+                             'tutor-sessions'];
 
   public static function getDomainsWhitelist()
   {
