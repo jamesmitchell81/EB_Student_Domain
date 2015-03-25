@@ -1,3 +1,5 @@
+USE db_eco;
+
 SELECT * FROM Session;
 
 
@@ -77,7 +79,16 @@ WHERE a.idStudent = 20150001
 GROUP BY st.idStudent, m.idModuleCode;
 
 
-
+-- Select Module Attendance By Week.
+SELECT s.Date, a.Result
+FROM Attendance a
+INNER JOIN Session s ON s.idSession = a.idSession
+INNER JOIN Timetable t ON t.idTimetable = s.idTimetable
+INNER JOIN Module m ON m.idModuleCode = t.idModuleCode
+INNER JOIN Student st ON st.idStudent = a.idStudent
+WHERE m.idModuleCode = "C1001" AND st.idStudent = 20150001
+AND s.Date BETWEEN '2015-01-01' AND '2015-04-01'
+ORDER BY s.Date DESC;
 
 
 
