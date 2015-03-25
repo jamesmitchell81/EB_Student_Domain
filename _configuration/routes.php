@@ -50,8 +50,9 @@ class Routes
     static::$routes['lecturers/:lecturerid'] = new Route('LecturerModel', 'LecturerView', 'LecturerController');
 
     // Attendance
-    static::$routes['attendance'] = new Route('AttendanceModel', 'AttendanceView', 'AttendanceController');
+    static::$routes['attendance/:code/:period'] = new Route('AttendanceModel', 'AttendanceView', 'AttendanceController');
     static::$routes['attendance/:code'] = new Route('AttendanceModel', 'AttendanceView', 'AttendanceController');
+    static::$routes['attendance/:period'] = new Route('AttendanceModel', 'AttendanceView', 'AttendanceController');
 
     // Personal Tutor Feedback
     static::$routes['tutor-sessions'] = new Route('PersonalTutorModel', 'PersonalTutorView', 'PersonalTutorController');
