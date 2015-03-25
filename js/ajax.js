@@ -15,11 +15,13 @@ window.ajax = (function() {
     get: function(url, callback) {
       this.callback = callback;
       http.open("GET", url);
+      http.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
       http.send();
     },
     post: function(url, data, callback) {
       this.callback = callback;
       http.open("POST", url);
+      http.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
       http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // important
       http.send(data);
     },

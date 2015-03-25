@@ -21,6 +21,11 @@ class ViewBuffer
     return $this;
   }
 
+  public function addPageSection()
+  {
+
+  }
+
   public function buff()
   {
     ob_start();

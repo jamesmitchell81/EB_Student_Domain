@@ -1,5 +1,6 @@
 <?php namespace DAO;
 
+include_once './_models/_entities/Module.php';
 include_once './_database/DatabaseQuery.php';
 
 use PDO;
