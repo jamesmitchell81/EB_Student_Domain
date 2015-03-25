@@ -95,8 +95,22 @@ class Router
     }
 
     foreach ($args as $arg) {
-      $this->arguments[] = $arg;
+      $key = $this->getArgWildcard($arg);
+      $this->arguments[$key] = $arg;
     }
+  }
+
+  private function getArgWildcard($arg)
+  {
+    $key = $arg;
+    foreach ($this->wildcards as $wildcard => $pattern) {
+      if ( preg_match("/^$pattern$/", $key) )
+      {
+        $key = preg_replace($pattern, $wildcard, $key);
+        return $key;
+      }
+    }
+    return;
   }
 
   public function getAction()
