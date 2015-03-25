@@ -6,18 +6,31 @@ use Util\ViewBuffer;
 
 class AssignmentsView implements View
 {
-  private $buffer;
-  private $viewPath = '_templates/assignments.php';
-
+  private $model;
+  private $data;
 
   public function __construct()
   {
-    echo static::class;
+
+  }
+
+  public function getData()
+  {
+    $this->data['action'] = "View";
+    $this->data['entity'] = "Assignments";
   }
 
   public function display()
   {
-    $this->buffer = new ViewBuffer($this->viewPath);
-    $this->buffer->buff();
+    ob_start();
+    include "_templates/head.php";
+    include "_templates/logo-column.php";
+    include "_templates/header-nav.php";
+    include "_templates/content-header.php";
+    include "_templates/assignments.php";
+    include "_templates/content-end.php";
+    include "_templates/footer.php";
+    include "_templates/page-end.php";
+    ob_end_flush();
   }
 }

@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="<?= BASE_PATH; ?>css/reset.css" media='screen'>
   <link rel="stylesheet" href="<?= BASE_PATH; ?>css/base.css" media='screen'>
+  <link rel="stylesheet" href="<?= BASE_PATH; ?>css/attendance.css" media='screen'>
   <link rel="stylesheet" href="<?= BASE_PATH; ?>css/signin.css" media='screen'>
   <link rel="stylesheet" href="<?= BASE_PATH; ?>css/timetable.css" media='screen'>
   <link rel="stylesheet" href="<?= BASE_PATH; ?>css/diary.css" media='screen'>

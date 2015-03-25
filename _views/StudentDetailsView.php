@@ -6,22 +6,30 @@ use Util\ViewBuffer;
 
 class StudentDetailsView implements View
 {
-  private $buffer;
   private $model;
-  private $viewPath = '_templates/student-details.php';
+  private $data;
 
   public function __construct($model)
   {
     $this->model = $model;
   }
 
+  public function getData()
+  {
+    $this->data['details'] = $this->model->getStudentDetails();
+  }
+
   public function display()
   {
-    $this->buffer = new ViewBuffer($this->viewPath);
-
-    $data = $this->model->getStudentDetails();
-    $this->buffer->addData('details', $data);
-
-    $this->buffer->buff();
+    ob_start();
+    include "_templates/head.php";
+    include "_templates/logo-column.php";
+    include "_templates/header-nav.php";
+    include "_templates/content-header.php";
+    include "_templates/student-details.php";
+    include "_templates/content-end.php";
+    include "_templates/footer.php";
+    include "_templates/page-end.php";
+    ob_end_flush();
   }
 }

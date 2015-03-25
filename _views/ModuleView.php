@@ -1,26 +1,31 @@
 <?php
 
-include './_util/ViewBuffer.php';
-
-use Util\ViewBuffer;
-
 class ModuleView implements View
 {
-  private $buffer;
   private $model;
-  private $viewPath = '_templates/modules.php';
+  private $data;
 
   public function __construct($model)
   {
     $this->model = $model;
   }
 
+  public function getData()
+  {
+    $this->data['modules'] = $this->model->getModules();
+  }
+
   public function display()
   {
-    $this->buffer = new ViewBuffer($this->viewPath);
-    $data = $this->model->getModules();
-
-    $this->buffer->addData('modules', $data);
-    $this->buffer->buff();
+    ob_start();
+    include "_templates/head.php";
+    include "_templates/logo-column.php";
+    include "_templates/header-nav.php";
+    include "_templates/content-header.php";
+    include "_templates/modules.php";
+    include "_templates/content-end.php";
+    include "_templates/footer.php";
+    include "_templates/page-end.php";
+    ob_end_flush();
   }
 }

@@ -6,22 +6,30 @@ use Util\ViewBuffer;
 
 class DiaryEditView implements View
 {
-  private $buffer;
   private $model;
-  private $viewPath = '_templates/diary-edit.php';
+  private $data;
 
   public function __construct($model)
   {
     $this->model = $model;
   }
 
+  public function getData()
+  {
+    $this->data['action'] = $this->model->getAction();
+  }
+
   public function display($viewPath = '')
   {
-    $this->buffer = new ViewBuffer($this->viewPath);
-    $data['action'] = $this->model->getAction();
-
-    $this->buffer->addData($data);
-
-    $this->buffer->buff();
+    ob_start();
+    include "_templates/head.php";
+    include "_templates/logo-column.php";
+    include "_templates/header-nav.php";
+    include "_templates/content-header.php";
+    include "_templates/diary-edit.php";
+    include "_templates/content-end.php";
+    include "_templates/footer.php";
+    include "_templates/page-end.php";
+    ob_end_flush();
   }
 }

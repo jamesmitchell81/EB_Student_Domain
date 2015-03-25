@@ -1,22 +1,31 @@
 <?php
 
-include './_util/ViewBuffer.php';
-
-use Util\ViewBuffer;
-
 class DiaryMonthView implements View
 {
-  private $buffer;
-  private $viewPath = '_templates/diary-month.php';
+  private $model;
+  private $data;
 
   public function __construct()
   {
-    echo static::class;
+
+  }
+
+  public class getData()
+  {
+
   }
 
   public function display()
   {
-    $this->buffer = new ViewBuffer($this->viewPath);
-    $this->buffer->buff();
+    ob_start();
+    include "_templates/head.php";
+    include "_templates/logo-column.php";
+    include "_templates/header-nav.php";
+    include "_templates/content-header.php";
+    include "_templates/diary-month.php";
+    include "_templates/content-end.php";
+    include "_templates/footer.php";
+    include "_templates/page-end.php";
+    ob_end_flush();
   }
 }

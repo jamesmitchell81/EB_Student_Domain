@@ -1,24 +1,27 @@
 <?php
 
-include './_util/ViewBuffer.php';
-
-use Util\ViewBuffer;
-
 class SignInView implements View
 {
-  private $buffer;
-  private $viewPath = "_templates/signin.php";
+  private $model;
+  private $data;
 
   public function __construct($model)
   {
     $this->model = $model;
   }
 
+  public function getData()
+  {
+
+  }
+
   public function display()
   {
-    $this->buffer = new ViewBuffer($this->viewPath);
-
-    $this->buffer->buff();
+    ob_start();
+    include "_templates/head.php";
+    include "_templates/signin.php";
+    include "_templates/page-end.php";
+    ob_end_flush();
   }
 
 }
