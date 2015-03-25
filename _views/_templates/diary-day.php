@@ -2,8 +2,8 @@
 
 <?php include "logo-column.php"; ?>
 
-<div class="col-2">
 <?php include "header-nav.php"; ?>
+
   <article id="content">
 
     <div class="wrap" id="content-header">
@@ -23,6 +23,7 @@
         </div><!-- diary-hour -->
         <?php endforeach; ?>
       </div><!-- diary-day -->
+
     </div><!-- content-workspace -->
   </article><!-- #content -->
 

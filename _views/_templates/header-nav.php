@@ -1,3 +1,4 @@
+<div class="col-2">
 <header>
   <nav id='nav-core-1'>
     <ul>
