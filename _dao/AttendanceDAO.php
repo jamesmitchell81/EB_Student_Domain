@@ -75,7 +75,7 @@ class AttendanceDAO
 
     $attendanceSummary = new AttendanceSummary();
 
-    if ( empty($data) ) return;
+    if ( empty($data) ) return $attendanceSummary;
 
     $attendanceSummary->setResult('Absent', $data['Absent']);
     $attendanceSummary->setResult('Present', $data['Present']);
@@ -101,7 +101,6 @@ class AttendanceDAO
                        WHERE m.idModuleCode = :code AND st.idStudent = :username
                        AND s.Date BETWEEN :start AND :end
                        ORDER BY s.Date DESC');
-
     $data = $this->db->all();
 
     $attendance = new Attendance();
@@ -109,11 +108,11 @@ class AttendanceDAO
     $attendance->setModule($code);
 
     foreach ($data as $session) {
-
       $attendanceSession = new AttendanceSession();
-      $attendanceSession->setDate($session['Date']);
-      $attendanceSession->setResult($session['Result']);
-      $attendance->addSession($attendanceSession);
+      // $attendanceSession->setDate($session['Date']);
+      // $attendanceSession->setResult($session['Result']);
+      // $attendance->addSession($attendanceSession);
+      $attendance->addSession($session['Date'], $session['Result']);
     }
 
     return $attendance;

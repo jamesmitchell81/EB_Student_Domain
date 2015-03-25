@@ -16,8 +16,28 @@ class Attendance
     $this->module = $module;
   }
 
-  public function addSession(AttendanceSession $session)
+  // public function addSession($session)
+  // {
+  //   $this->sessions[] = $session;
+  // }
+
+  public function getSessions()
   {
-    $this->sessions[] = $session;
+    return $this->sessions;
+  }
+
+  public function hasSession($key)
+  {
+    return array_key_exists($key, $this->sessions);
+  }
+
+  public function getSession($key)
+  {
+    return $this->sessions[$key];
+  }
+
+  public function addSession($date, $result)
+  {
+    $this->sessions[$date] = $result;
   }
 }

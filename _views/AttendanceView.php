@@ -1,13 +1,11 @@
 <?php
 
-include './_util/ViewBuffer.php';
+// include './_util/ViewBuffer.php';
 
-use Util\ViewBuffer;
+// use Util\ViewBuffer;
 
 class AttendanceView implements View
 {
-  private $defaultViewPath = "_templates/";
-  private $buffer;
   private $model;
   private $data;
 
@@ -20,8 +18,11 @@ class AttendanceView implements View
   {
     $this->data['action'] = "View";
     $this->data['entity'] = "Attendance";
+    $this->data['modules'] = $this->model->getAttendanceModules();
     $this->data['summary'] = $this->model->getAttendanceSummary();
     $this->data['totals'] = $this->model->getSummaryTotals();
+    // $this->data['weeks'] = $this->model->getAttendanceWeeks();
+    $this->data['days'] = $this->model->getSessionDays();
     $this->data['history'] = $this->model->getAttendanceHistory();
   }
 

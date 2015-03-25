@@ -14,4 +14,9 @@ class AttendanceSession
   {
     $this->result = $result;
   }
+
+  public function getResult()
+  {
+    return $this->result;
+  }
 }

@@ -1,0 +1,41 @@
+
+.att-summary, .att-history {
+  text-align: center;
+  table-layout: fixed;
+  margin-bottom: 4em;
+  line-height: 3;
+}
+
+.att-summary {
+  width: 100%;
+}
+
+.att-history {
+  width: 100%;
+}
+
+.att-summary th, .att-history th {
+  font-weight: normal;
+  border-bottom: 2px solid #000;
+}
+
+.att-summ-total-column,
+.att-summ-total-row td {
+  background: #efefef;
+  font-weight: bold;
+}
+
+.att-summ-total-column {
+  border-left: 1px solid #555;
+}
+
+.att-summ-total-row td {
+  border-top: 1px solid #555;
+}
+
+.att-title-column {
+  text-align: left;
+  padding-left: 1em;
+  width: 40%;
+}
+
