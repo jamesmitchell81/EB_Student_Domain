@@ -1,7 +1,7 @@
 
 <?php if ( empty($this->data['lecturer-details']) ) : ?>
   <p>No lecturers have been set at the moment</p>
-<?php endif; ?>
+<?php else : ?>
 
 <?php foreach ($this->data['lecturer-details'] as $details) : ?>
   <table>
@@ -36,3 +36,4 @@
   </table>
 
 <?php endforeach; ?>
+<?php endif; ?>

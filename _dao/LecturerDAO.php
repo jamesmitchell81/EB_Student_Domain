@@ -59,4 +59,35 @@ class LecturerDAO
     }
     return $lecturers;
   }
+
+  public function getLecturerByStudent($username)
+  {
+    $this->db = new DatabaseQuery();
+    $this->db->setInt('username', $username);
+    $this->db->select('SELECT l.idLecturer, s.Title,
+                       s.FirstName, s.Surname, s.Mobile, s.Email
+                       FROM Lecturer l
+                       INNER JOIN Staff s ON s.idStaff = l.idStaff
+                       WHERE l.idLecturer IN (SELECT m.idLecturer
+                       FROM ModuleLecturer m
+                       WHERE m.idModuleCode IN (SELECT idModuleCode
+                       FROM ModuleStudents WHERE idStudent = :username));');
+
+    $data = $this->db->all();
+
+    $lecturers = [];
+
+    foreach ($data as $index => $lecturer)
+    {
+      extract($lecturer);
+
+      $lecturers[] = new Lecturer();
+      $lecturers[$index]->setID($idLecturer);
+      $lecturers[$index]->setFullName($Title, $FirstName, $Surname);
+      $lecturers[$index]->setTelExt($Mobile);
+      $lecturers[$index]->setEmailAddress($Email);
+    }
+    return $lecturers;
+
+  }
 }

@@ -16,11 +16,10 @@ class LecturerModel
   public function getLecturerDetails()
   {
     $dao = new LecturerDAO();
-    var_dump($this->args);
     if ( !empty($this->args) ) {
       return $dao->getLecturerById($this->args[':id:id']);
     } else {
-
+      return $dao->getLecturerByStudent($this->username);
     }
 
   }

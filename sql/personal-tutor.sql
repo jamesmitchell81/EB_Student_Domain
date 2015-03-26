@@ -25,7 +25,7 @@ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 3);
-
+use db_eco;
 
 -- Staff name, Student Name, Date, Feedback.
 SELECT l.idLecturer, sf.Title, sf.FirstName, sf.Surname
@@ -48,3 +48,12 @@ INNER JOIN Staff s ON s.idStaff = l.idStaff
 WHERE l.idLecturer = 990001 AND s.Status = "Active";
 
 SELECT * FROM Staff;
+
+SELECT l.idLecturer, s.Title,
+s.FirstName, s.Surname, s.Mobile, s.Email
+FROM Lecturer l
+INNER JOIN Staff s ON s.idStaff = l.idStaff
+WHERE l.idLecturer IN (SELECT m.idLecturer
+FROM ModuleLecturer m
+WHERE m.idModuleCode IN (SELECT idModuleCode 
+	FROM ModuleStudents WHERE idStudent = 20150001));
