@@ -1,6 +1,6 @@
 
 <?php if ( empty($this->data['lecturer-details']) ) : ?>
-  <p>You have not yet been assigned a personal tutor</p>
+  <p>No lecturers have been set at the moment</p>
 <?php endif; ?>
 
 <?php foreach ($this->data['lecturer-details'] as $details) : ?>

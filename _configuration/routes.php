@@ -45,6 +45,7 @@ class Routes
     static::$routes['assignments/:id'] = new Route('AssignmentsModel', 'AssignmentsModel', 'AssignmentsModel');
 
     // Lecturers.
+    static::$routes['lecturers'] = new Route('LecturerModel', 'LecturerView', 'LecturerController');
     static::$routes['lecturers/:lecturerid'] = new Route('LecturerModel', 'LecturerView', 'LecturerController');
 
     // Attendance
