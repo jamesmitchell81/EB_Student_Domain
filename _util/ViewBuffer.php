@@ -1,4 +1,4 @@
-<?php namespace Util;
+<?php
 
 // object to array.
 // get object vars.

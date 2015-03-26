@@ -1,6 +1,4 @@
-<?php namespace Util;
-
-use DateTime;
+<?php
 
 class Month
 {

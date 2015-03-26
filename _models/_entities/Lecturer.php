@@ -1,8 +1,6 @@
-<?php namespace Models\Entities;
+<?php
 
-include 'Person.php';
-
-use Models\Entities\Person;
+include_once 'Person.php';
 
 class Lecturer extends Person
 {

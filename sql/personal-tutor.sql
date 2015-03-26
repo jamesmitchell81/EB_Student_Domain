@@ -28,8 +28,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 3);
 
 
 -- Staff name, Student Name, Date, Feedback.
-SELECT l.idLecturer, sf.Title, sf.FirstName, sf.Surname, st.idStudent,
-st.Title, st.FirstName, st.Surname, f.Date, f.Detail
+SELECT l.idLecturer, sf.Title, sf.FirstName, sf.Surname
 FROM PersonalTutor p
 INNER JOIN Lecturer l ON l.idLecturer = p.idLecturer
 INNER JOIN Staff sf ON sf.idStaff = l.idStaff
@@ -37,5 +36,15 @@ INNER JOIN Student st ON st.idStudent = p.idStudent
 INNER JOIN PersonalTutorFeedback f ON f.AssignRef = p.AssignRef
 WHERE st.idStudent = 20150001;
 
+SELECT idLecturer FROM PersonalTutor WHERE idStudent = 20150001;
 
+SELECT * FROM Lecturer;
+SELECT * FROM Staff;
 
+SELECT l.idLecturer, s.Title,
+s.FirstName, s.Surname, s.Mobile, s.Email
+FROM Lecturer l
+INNER JOIN Staff s ON s.idStaff = l.idStaff
+WHERE l.idLecturer = 990001 AND s.Status = "Active";
+
+SELECT * FROM Staff;

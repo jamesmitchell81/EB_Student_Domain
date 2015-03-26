@@ -1,12 +1,8 @@
-<?php namespace Util;
+<?php
 
 include('./_configuration/Routes.php');
 include('./_configuration/Domains.php');
 include('./_configuration/Wildcards.php');
-
-use Configuration\Routes;
-use Configuration\Domains;
-use Configuration\Wildcards;
 
 class Router
 {

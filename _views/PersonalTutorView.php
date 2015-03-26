@@ -14,6 +14,8 @@ class PersonalTutorView implements View
   {
     $this->data['action'] = "View";
     $this->data['entity'] = "Personal Tutor Feedback";
+    $this->data['lecturer-details'] = $this->model->getPersonalTutorDetails();
+    $this->data['feedback'] = $this->model->getPersonalTutorFeedback();
   }
 
   public function display()
@@ -23,6 +25,7 @@ class PersonalTutorView implements View
     include "_templates/logo-column.php";
     include "_templates/header-nav.php";
     include "_templates/content-header.php";
+    include "_templates/lecturer.php";
     include "_templates/tutor-feedback.php";
     include "_templates/content-end.php";
     include "_templates/footer.php";

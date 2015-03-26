@@ -1,14 +1,8 @@
-<?php namespace DAO;
+<?php
 
 include_once './_database/DatabaseQuery.php';
 include_once './_models/_entities/Event.php';
 include_once './_models/_entities/Lecturer.php';
-
-use DateTime;
-use PDO;
-use Database\DatabaseQuery;
-use Models\Entities\Event;
-use Models\Entities\Lecturer;
 
 class TimetableDAO
 {

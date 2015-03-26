@@ -1,4 +1,4 @@
-<?php namespace Util;
+<?php
 
 class QueryBuilder
 {

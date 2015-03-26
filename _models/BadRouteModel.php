@@ -2,8 +2,6 @@
 
 // include "./_util/Input.php";
 
-use Util\Input;
-
 // get the users home area address if signed in.
 // else give sign in page.
 class BadRouteModel

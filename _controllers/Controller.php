@@ -1,10 +1,7 @@
-<?php namespace Controllers;
+<?php
 
 include_once './_util/Input.php';
 include './_util/Router.php';
-
-use Util\Input;
-use Util\Router;
 
 // FrontController
 class Controller

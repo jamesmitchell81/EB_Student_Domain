@@ -1,8 +1,6 @@
-<?php namespace Configuration;
+<?php
 
 include '_util/Route.php';
-
-use Util\Route;
 
 /***** convention for use.
 ':username/domain/parameters/parameters/parameters...'

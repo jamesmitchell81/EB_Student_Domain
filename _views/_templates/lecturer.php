@@ -1,0 +1,38 @@
+
+<?php if ( empty($this->data['lecturer-details']) ) : ?>
+  <p>You have not yet been assigned a personal tutor</p>
+<?php endif; ?>
+
+<?php foreach ($this->data['lecturer-details'] as $details) : ?>
+  <table>
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td><?= $details->getFullName(); ?></td>
+      </tr>
+      <tr>
+        <td>Tel Ext.</td>
+        <td><?= $details->getTelExt(); ?></td>
+      </tr>
+      <tr>
+        <td>Email Address</td>
+        <td><?= $details->getEmailAddress(); ?></td>
+      </tr>
+      <td colspan='2'>Modules</td>
+    </tr>
+    <?php foreach ($details->getModules() as $module) : ?>
+    <tr>
+      <td colspan='2'>
+        <a href='<?= BASE_PATH . "{$this->data['details']->getStudentId()}/modules/{$module->getModuleCode()}"; ?>'>
+        <!-- <a href='<?= BASE_PATH . "{$this->data['details']->getStudentId()}/modules/{$module->getModuleCode()}"; ?>'> -->
+        <?= "{$module->getModuleCode()} {$module->getTitle()}"; ?>
+        </a>
+      </td>
+    </tr>
+    <?php endforeach; ?>
+    </tbody>
+  </table>
+
+<?php endforeach; ?>

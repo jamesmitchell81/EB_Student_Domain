@@ -1,11 +1,7 @@
-<?php namespace DAO;
+<?php
 
 include_once './_models/_entities/Module.php';
 include_once './_database/DatabaseQuery.php';
-
-use PDO;
-use Models\Entities\Module;
-use Database\DatabaseQuery;
 
 class ModuleDAO
 {

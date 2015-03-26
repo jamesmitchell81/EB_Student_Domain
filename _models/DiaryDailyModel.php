@@ -2,9 +2,6 @@
 
 include './_dao/TimetableDAO.php';
 
-use Util\Input;
-use DAO\TimetableDAO;
-
 class DiaryDailyModel
 {
   private $year;

@@ -4,11 +4,6 @@ include '_entities/Module.php';
 include './_dao/ModuleDAO.php';
 include './_dao/LecturerDAO.php';
 
-use Util\Input;
-use Models\Entities\Module;
-use DAO\LecturerDAO;
-use DAO\ModuleDAO;
-
 class ModuleModel
 {
   private $args;

@@ -1,6 +1,4 @@
-<?php namespace Database;
-
-use PDO;
+<?php
 
 class DatabaseConnection
 {

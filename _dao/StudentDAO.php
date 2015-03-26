@@ -1,11 +1,7 @@
-<?php namespace DAO;
+<?php
 
 include_once './_models/_entities/Student.php';
 include_once './_database/DatabaseQuery.php';
-
-use PDO;
-use Models\Entities\Student;
-use Database\DatabaseQuery;
 
 class StudentDAO
 {

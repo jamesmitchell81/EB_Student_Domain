@@ -1,11 +1,7 @@
-<?php namespace DAO;
+<?php
 
 include_once './_database/DatabaseQuery.php';
 include_once './_models/_entities/Assignment.php';
-
-use PDO;
-use Database\DatabaseQuery;
-use Models\Entities\Assignment;
 
 class AssignmentDAO
 {

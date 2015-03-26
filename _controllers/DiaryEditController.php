@@ -2,8 +2,6 @@
 
 // include '_util/Input.php';
 
-use Util\Input;
-
 class DiaryEditController
 {
   private $view;

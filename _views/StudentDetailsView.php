@@ -1,9 +1,5 @@
 <?php
 
-include './_util/ViewBuffer.php';
-
-use Util\ViewBuffer;
-
 class StudentDetailsView implements View
 {
   private $model;

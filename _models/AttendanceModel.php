@@ -4,12 +4,6 @@ include './_database/DatabaseQuery.php';
 include './_dao/AttendanceDAO.php';
 include_once './_models/_entities/AttendanceSummary.php';
 
-use Util\Input;
-use Database\DatabaseQuery;
-use Models\Entities\AttendanceSummary;
-use DAO\ModuleDAO;
-use DAO\AttendanceDAO;
-
 class AttendanceModel
 {
   private $username;

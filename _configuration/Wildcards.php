@@ -1,4 +1,4 @@
-<?php namespace Configuration;
+<?php
 
 /*
  * wildcard regex conversion reference.

@@ -1,4 +1,4 @@
-<?php namespace Util;
+<?php
 
 abstract class Observer
 {

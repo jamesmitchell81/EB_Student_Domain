@@ -1,4 +1,4 @@
-<?php namespace DAO;
+<?php
 
 include_once './_models/_entities/Attendance.php';
 include_once './_models/_entities/AttendanceSession.php';
@@ -6,13 +6,6 @@ include_once './_models/_entities/AttendanceSummary.php';
 include_once './_dao/ModuleDAO.php';
 include_once './_dao/StudentDAO.php';
 include_once './_database/DatabaseQuery.php';
-
-use Models\Entities\Attendance;
-use Models\Entities\AttendanceSession;
-use Models\Entities\AttendanceSummary;
-use DAO\ModuleDAO;
-use DAO\StudentDAO;
-use Database\DatabaseQuery;
 
 class AttendanceDAO
 {

@@ -1,11 +1,7 @@
-<?php namespace DAO;
+<?php
 
 include_once './_database/DatabaseQuery.php';
 include_once './_models/_entities/Lecturer.php';
-
-use PDO;
-use Models\Entities\Lecturer;
-use Database\DatabaseQuery;
 
 class LecturerDAO
 {
@@ -18,8 +14,8 @@ class LecturerDAO
     $this->db->select('SELECT l.idLecturer, s.Title,
                        s.FirstName, s.Surname, s.Mobile, s.Email
                        FROM Lecturer l
-                       INNER JOIN Staff s ON s.idStaff = l.idLecturer
-                       WHERE l.idLecturer = :id AND l.Status = "Active"');
+                       INNER JOIN Staff s ON s.idStaff = l.idStaff
+                       WHERE l.idLecturer = :id AND s.Status = "Active"');
     $data = $this->db->first();
     $lecturers = [];
 
@@ -33,6 +29,7 @@ class LecturerDAO
       $lecturers[0]->setTelExt($Mobile);
       $lecturers[0]->setEmailAddress($Email);
     }
+
     return $lecturers;
   }
 

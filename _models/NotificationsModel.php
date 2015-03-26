@@ -5,12 +5,6 @@ include '_entities/Person.php';
 include './_dao/NotificationDAO.php';
 include './_util/Redirect.php';
 
-use Util\Input;
-use Util\Redirect;
-use Models\Entities\Notification;
-use Models\Entities\Person;
-use DAO\NotificationDAO;
-
 class NotificationsModel
 {
   private $username;
@@ -43,6 +37,7 @@ class NotificationsModel
     }
   }
 
+  // move controller?
   public function save()
   {
     if ( !empty($this->args) )

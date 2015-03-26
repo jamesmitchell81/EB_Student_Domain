@@ -1,8 +1,6 @@
-<?php namespace Database;
+<?php
 
 include 'DatabaseConnection.php';
-
-use PDO;
 
 class DatabaseQuery
 {

@@ -1,4 +1,4 @@
-<?php namespace Configuration;
+<?php
 
 /*
  * white list of all available domains.
@@ -13,7 +13,7 @@ class Domains
                              'modules',
                              'assignments',
                              'notifications',
-                             'attendance'
+                             'attendance',
                              'tutor-sessions'];
 
   public static function getDomainsWhitelist()

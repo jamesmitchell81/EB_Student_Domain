@@ -4,12 +4,6 @@ include './_dao/StudentDAO.php';
 include './_dao/ModuleDAO.php';
 include '_entities/Module.php';
 
-use Util\Input;
-use Models\Entities\Student;
-use Models\Entities\Module;
-use DAO\StudentDAO;
-use DAO\ModuleDAO;
-
 class StudentDetailsModel
 {
   private $details;

@@ -1,4 +1,4 @@
-<?php namespace Util;
+<?php
 
 // https://r.je/mvc-php-front-controller.html
 

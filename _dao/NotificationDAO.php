@@ -1,14 +1,9 @@
-<?php namespace DAO;
+<?php
 
 include_once './_models/_entities/Notification.php';
 include_once './_models/_entities/Person.php';
 include_once './_models/_entities/PersonInterface.php';
 include_once './_database/DatabaseQuery.php';
-
-use PDO;
-use Models\Entities\Notification;
-use Models\Entities\Person;
-use Database\DatabaseQuery;
 
 class NotificationDAO
 {
