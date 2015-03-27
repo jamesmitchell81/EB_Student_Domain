@@ -1,4 +1,4 @@
-<?php namespace Models\Entities;
+<?php
 
 class Notification
 {

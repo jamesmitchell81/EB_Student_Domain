@@ -25,8 +25,7 @@
     <?php foreach ($details->getModules() as $module) : ?>
     <tr>
       <td colspan='2'>
-        <a href='<?= BASE_PATH . "{$this->data['details']->getStudentId()}/modules/{$module->getModuleCode()}"; ?>'>
-        <!-- <a href='<?= BASE_PATH . "{$this->data['details']->getStudentId()}/modules/{$module->getModuleCode()}"; ?>'> -->
+        <a href='<?= BASE_PATH . Input::session('username') . "/modules/{$module->getModuleCode()}"; ?>'>
         <?= "{$module->getModuleCode()} {$module->getTitle()}"; ?>
         </a>
       </td>

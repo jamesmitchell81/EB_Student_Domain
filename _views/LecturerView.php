@@ -12,7 +12,7 @@ class LecturerView implements View
   public function getData()
   {
     $this->data['action'] = "View";
-    $this->data['entity'] = "Lectuters";
+    $this->data['entity'] = "Lecturers";
     $this->data['lecturer-details'] = $this->model->getLecturerDetails();
   }
 

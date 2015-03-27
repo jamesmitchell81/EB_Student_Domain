@@ -1,6 +1,7 @@
 <?php
 
 include_once './_database/DatabaseQuery.php';
+include_once './_dao/ModuleDAO.php';
 include_once './_models/_entities/Lecturer.php';
 
 class LecturerDAO
@@ -19,15 +20,20 @@ class LecturerDAO
     $data = $this->db->first();
     $lecturers = [];
 
+    $moduleDAO = new ModuleDAO();
+
+
     if ( $data )
     {
       extract($data);
 
+      $modules = $moduleDAO->getLecturerModules($idLecturer);
       $lecturers[0] = new Lecturer();
       $lecturers[0]->setID($idLecturer);
       $lecturers[0]->setFullName($Title, $FirstName, $Surname);
       $lecturers[0]->setTelExt($Mobile);
       $lecturers[0]->setEmailAddress($Email);
+      $lecturers[0]->setModules($modules);
     }
 
     return $lecturers;
@@ -47,15 +53,20 @@ class LecturerDAO
     $data = $this->db->all();
     $lecturers = [];
 
+    $moduleDAO = new ModuleDAO();
+
     foreach ($data as $index => $lecturer)
     {
       extract($lecturer);
+
+      $modules = $moduleDAO->getLecturerModules($idLecturer);
 
       $lecturers[] = new Lecturer();
       $lecturers[$index]->setID($idLecturer);
       $lecturers[$index]->setFullName($Title, $FirstName, $Surname);
       $lecturers[$index]->setTelExt($Mobile);
       $lecturers[$index]->setEmailAddress($Email);
+      $lecturers[$index]->setModules($modules);
     }
     return $lecturers;
   }
@@ -68,24 +79,29 @@ class LecturerDAO
                        s.FirstName, s.Surname, s.Mobile, s.Email
                        FROM Lecturer l
                        INNER JOIN Staff s ON s.idStaff = l.idStaff
-                       WHERE l.idLecturer IN (SELECT m.idLecturer
-                       FROM ModuleLecturer m
-                       WHERE m.idModuleCode IN (SELECT idModuleCode
-                       FROM ModuleStudents WHERE idStudent = :username));');
+                       INNER JOIN ModuleLecturer m ON m.idLecturer = l.idLecturer
+                       INNER JOIN ModuleStudents ms ON ms.idModuleCode = m.idModuleCode
+                       WHERE idStudent = :username;');
 
     $data = $this->db->all();
 
     $lecturers = [];
 
+    $moduleDAO = new ModuleDAO();
+
     foreach ($data as $index => $lecturer)
     {
       extract($lecturer);
 
+      $modules = $moduleDAO->getLecturerModules($idLecturer);
+
       $lecturers[] = new Lecturer();
+
       $lecturers[$index]->setID($idLecturer);
       $lecturers[$index]->setFullName($Title, $FirstName, $Surname);
       $lecturers[$index]->setTelExt($Mobile);
       $lecturers[$index]->setEmailAddress($Email);
+      $lecturers[$index]->setModules($modules);
     }
     return $lecturers;
 

@@ -57,6 +57,34 @@ class ModuleDAO
     }
     return $modules;
   }
+
+  public function getLecturerModules($id)
+  {
+    $this->db = new DatabaseQuery();
+    $this->db->setInt('id', $id);
+    $this->db->select('SELECT m.idModuleCode, m.Title,
+                          m.Description, m.Level
+                       FROM Module m
+                       WHERE m.idModuleCode IN (SELECT l.idModuleCode
+                                                FROM ModuleLecturer l
+                                                WHERE idLecturer = :id)');
+    $data = $this->db->all();
+
+    $modules = [];
+
+    foreach ($data as $index => $module) {
+
+      extract($module);
+
+      $modules[] = new Module();
+      $modules[$index]->setModuleCode($idModuleCode);
+      $modules[$index]->setTitle($Title);
+      $modules[$index]->setDescription($Description);
+      $modules[$index]->setLevel($Level);
+    }
+    return $modules;
+
+  }
 }
 
 

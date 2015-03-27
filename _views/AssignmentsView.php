@@ -14,6 +14,7 @@ class AssignmentsView implements View
   {
     $this->data['action'] = "View";
     $this->data['entity'] = "Assignments";
+    $this->data['assignments'] =
   }
 
   public function display()

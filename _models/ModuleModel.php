@@ -22,24 +22,24 @@ class ModuleModel
 
   public function getModules()
   {
+
+    $moduleData = new ModuleDAO();
+    $lecturerData = new LecturerDAO();
+
     if ( empty($this->args) ) {
-      $dao = new ModuleDAO();
-      return $dao->getUserModules($this->username);
+      $modules = $moduleData->getUserModules($this->username);
     } else {
       $code = array_shift($this->args);
-
-      $moduleData = new ModuleDAO();
-      $lecturerData = new LecturerDAO();
-
       $modules = $moduleData->getModuleById($code);
-
-      foreach ($modules as $module) {
-        $code = $module->getModuleCode();
-        $lecturers = $lecturerData->getLecturersByModuleCode($code);
-        $module->setLecturers($lecturers);
-      }
-      return $modules;
     }
+
+    foreach ($modules as $module) {
+      $code = $module->getModuleCode();
+      $lecturers = $lecturerData->getLecturersByModuleCode($code);
+      $module->setLecturers($lecturers);
+    }
+
+    return $modules;
   }
 
 }

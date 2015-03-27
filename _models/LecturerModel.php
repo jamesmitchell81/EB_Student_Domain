@@ -21,7 +21,6 @@ class LecturerModel
     } else {
       return $dao->getLecturerByStudent($this->username);
     }
-
   }
 
 
