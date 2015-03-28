@@ -64,13 +64,21 @@ class AssignmentDAO
     {
         $this->db = new DatabaseQuery();
         $this->db->set('username', $username, PDO::PARAM_STR);
-        $this->db->select('SELECT a.idAssignment, a.idModuleCode, a.idLecturer,
-                                  a.Title, a.ReleaseDate, a.DueDate, a.Weighting
+        $this->db->select('SELECT a.idAssignment
                            FROM Assignment a
                            INNER JOIN ModuleStudents ms ON ms.idModuleCode = a.idModuleCode
                            WHERE ms.idStudent = :username');
         $data = $this->db->all();
 
+        $assignments = [];
+
+        foreach ($data as $index => $assignment) {
+
+            extract($assignment);
+            $assignments[] = $this->getAssignmentByID($idAssignment);
+        }
+
+        return $assignments;
     }
 
     private function getAssignmentSubmission($assignment, $username)
