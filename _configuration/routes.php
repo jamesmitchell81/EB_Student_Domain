@@ -42,7 +42,7 @@ class Routes
 
     // Assignments
     static::$routes['assignments'] = new Route('AssignmentsModel', 'AssignmentsView', 'AssignmentsController');
-    static::$routes['assignments/:id'] = new Route('AssignmentsModel', 'AssignmentsView', 'AssignmentsController');
+    static::$routes['assignments/:id'] = new Route('AssignmentsModel', 'AssignmentFrontSheetView', 'AssignmentsController');
     static::$routes['assignments/:code'] = new Route('AssignmentsModel', 'AssignmentsView', 'AssignmentsController');
 
     // Lecturers.

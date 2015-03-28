@@ -6,6 +6,7 @@ include_once './_dao/LecturerDAO.php';
 include_once './_dao/ModuleDAO.php';
 include_once './_models/_entities/Assignment.php';
 include_once './_models/_entities/AssignmentSubmission.php';
+include_once './_models/_entities/AssignmentCriteria.php';
 include_once './_models/_entities/AssignmentSummary.php';
 
 class AssignmentDAO
@@ -30,12 +31,14 @@ class AssignmentDAO
 
             $lecturer = $lecturerDAO->getLecturerById($idLecturer);
             $module = $moduleDAO->getModuleById($idModuleCode);
+            $criteria = $this->getAssignmentCriteria($idAssignment);
 
             $assignment->setTitle($Title);
             $assignment->setReleaseDate($ReleaseDate);
             $assignment->setDueDate($DueDate);
             $assignment->setLecturer($lecturer);
             $assignment->setModule($module);
+            $assignment->setCriteria($criteria);
         }
 
         return $assignment;
@@ -117,9 +120,6 @@ class AssignmentDAO
                            ORDER BY a.idModuleCode, a.DueDate');
         $data = $this->db->all();
 
-        // $assignment = new Assignment();
-        // $submission = new AssignmentSubmission();
-
         foreach($data as $index => $summary)
         {
             extract($summary);
@@ -132,6 +132,28 @@ class AssignmentDAO
             $assignmentSummary[$index]->setAssignmentSubmission($submission);
         }
         return $assignmentSummary;
+    }
+
+    public function getAssignmentCriteria($assignment)
+    {
+        $this->db = new DatabaseQuery();
+        $this->db->setInt('assignment', $assignment);
+        $this->db->select('SELECT Title, Details, Weighting
+                           FROM AssignmentCritrea
+                           WHERE idAssignment = :assignment');
+        $data = $this->db->all();
+
+        foreach ($data as $index => $crit)
+        {
+
+            extract($crit);
+            $criteria[] = new AssignmentCriteria();
+            $criteria[$index]->setTitle($Title);
+            $criteria[$index]->setDetails($Details);
+            $criteria[$index]->setWeighting($Weighting);
+        }
+
+        return $criteria;
     }
 }
 

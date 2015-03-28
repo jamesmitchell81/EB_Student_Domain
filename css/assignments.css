@@ -1,11 +1,11 @@
 .assignment-summary {
   width: 100%;
   margin: 1.2em 0 1em 0;
+  table-layout: fixed;
 }
 
-
 .ass-title {
-  width: 30%;
+  /*width: 30%;*/
 }
 
 .ass-due {
@@ -22,4 +22,61 @@
 
 .ass-weight {
 
+}
+
+.assignment-front-sheet {
+  width: 100%;
+  text-align: left;
+  table-layout: fixed;
+}
+
+th.ass-front-title {
+  height: 2em;
+  text-align: center;
+  background: #efefef;
+  font-size: 1.5em;
+}
+
+.ass-fs-date {
+  font-weight: bold;
+}
+
+.assignment-front-sheet td {
+  padding: 10px;
+  border: 1px dotted #cacaca;
+}
+
+td.ass-student-start {
+  border-top: 3px solid #000;
+}
+
+.ass-lect-fs {
+  height: 3em;
+}
+
+td.ass-lect-start {
+  border-top: 3px solid #000;
+}
+
+td.ass-feedback-start {
+  border-top: 3px solid #000;
+  text-align: center;
+  font-weight: bold;
+}
+
+.ass-feedback-title {
+  border-top: 1px solid #000;
+}
+
+.ass-feedback {
+  border-bottom: 1px solid #000;
+  height: 10em;
+}
+
+.ass-marking {
+  height: 3em;
+}
+
+.ass-marking-title {
+  border-bottom: 1px solid #000;
 }

@@ -35,7 +35,7 @@ class AssignmentSubmission
         if ( $format == '' ) {
             return $this->submission_date;
         }
-        return date($format, strtotime($this->submission_date));
+        return ($this->submission_date) ? date($format, strtotime($this->submission_date)) : "";
     }
 
     /**
@@ -52,6 +52,11 @@ class AssignmentSubmission
     public function getGrade()
     {
         return $this->grade;
+    }
+
+    public function getGradePC()
+    {
+        return ($this->grade) ? ($this->grade * 100) . "%" : "";
     }
 
     /**

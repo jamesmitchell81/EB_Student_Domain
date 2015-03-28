@@ -7,7 +7,7 @@ class Assignment
     private $due_date = "";
     private $lecturer;
     private $module;
-    private $critrea = [];
+    private $criteria = [];
     private $weighting;
 
     /**
@@ -26,22 +26,25 @@ class Assignment
         $this->title = $title;
     }
 
-    public function getCritrea()
+    public function getCriteria()
     {
-        return $this->critrea;
+        return $this->criteria;
     }
 
-    public function setCritrea($critrea)
+    public function setCriteria($criteria)
     {
-        $this->critirea[] = $critrea;
+        $this->criteria = $criteria;
     }
 
     /**
      * @return string
      */
-    public function getReleaseDate()
+    public function getReleaseDate($format = '')
     {
-        return $this->release_date;
+        if ( $format == '' ) {
+            return $this->due_date;
+        }
+        return date($format, strtotime($this->release_date));
     }
 
     /**
@@ -79,6 +82,11 @@ class Assignment
     public function getWeighting()
     {
         return $this->weighting;
+    }
+
+    public function getWeightingPC()
+    {
+        return $this->weighting * 100 . "%";
     }
 
     /**

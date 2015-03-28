@@ -74,3 +74,12 @@ VALUES
 (20150001, 10, '2015-04-10 23:00:00'),
 (20150001, 11, '2015-04-20 21:00:00'),
 (20150001, 12, '2015-04-15 18:00:00');
+
+SELECT idAssignment, idStudent, Grade, DateSubmitted
+FROM AssignmentSubmission
+WHERE idAssignment = 1
+AND idStudent = 20150001;
+
+SELECT Title, Details, Weighting
+FROM AssignmentCritrea
+WHERE idAssignment = 1;
