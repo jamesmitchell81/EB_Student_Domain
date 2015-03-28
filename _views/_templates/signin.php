@@ -1,6 +1,7 @@
 <?php include 'head.php'; ?>
 
-  <img id='background' src='<?= BASE_PATH; ?>img/woodland-blue.png'/>
+  <!-- <img id='background' src='<?= BASE_PATH; ?>img/woodland-blue.png'/> -->
+  <img id='background' src='<?= BASE_PATH; ?>img/woodland-blue-blur.png'/>
 
   <header class='signin-header'>
     <div class='title-wrap'>

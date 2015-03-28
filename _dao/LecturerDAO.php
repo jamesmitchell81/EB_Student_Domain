@@ -18,22 +18,21 @@ class LecturerDAO
                        INNER JOIN Staff s ON s.idStaff = l.idStaff
                        WHERE l.idLecturer = :id AND s.Status = "Active"');
     $data = $this->db->first();
-    $lecturers = [];
+    // $lecturers = [];
 
     $moduleDAO = new ModuleDAO();
-
 
     if ( $data )
     {
       extract($data);
 
       $modules = $moduleDAO->getLecturerModules($idLecturer);
-      $lecturers[0] = new Lecturer();
-      $lecturers[0]->setID($idLecturer);
-      $lecturers[0]->setFullName($Title, $FirstName, $Surname);
-      $lecturers[0]->setTelExt($Mobile);
-      $lecturers[0]->setEmailAddress($Email);
-      $lecturers[0]->setModules($modules);
+      $lecturers = new Lecturer();
+      $lecturers->setID($idLecturer);
+      $lecturers->setFullName($Title, $FirstName, $Surname);
+      $lecturers->setTelExt($Mobile);
+      $lecturers->setEmailAddress($Email);
+      $lecturers->setModules($modules);
     }
 
     return $lecturers;

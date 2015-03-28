@@ -7,6 +7,8 @@ class Assignment
     private $due_date = "";
     private $lecturer;
     private $module;
+    private $critrea = [];
+    private $weighting;
 
     /**
      * @return string
@@ -22,6 +24,16 @@ class Assignment
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    public function getCritrea()
+    {
+        return $this->critrea;
+    }
+
+    public function setCritrea($critrea)
+    {
+        $this->critirea[] = $critrea;
     }
 
     /**
@@ -43,9 +55,12 @@ class Assignment
     /**
      * @return string
      */
-    public function getDueDate()
+    public function getDueDate($format = '')
     {
-        return $this->due_date;
+        if ( $format == '' ) {
+            return $this->due_date;
+        }
+        return date($format, strtotime($this->due_date));
     }
 
     /**
@@ -54,6 +69,16 @@ class Assignment
     public function setDueDate($due_date)
     {
         $this->due_date = $due_date;
+    }
+
+    public function setWeighting($weighting)
+    {
+        $this->weighting = $weighting;
+    }
+
+    public function getWeighting()
+    {
+        return $this->weighting;
     }
 
     /**
@@ -67,7 +92,7 @@ class Assignment
     /**
      * @param mixed $lecturer
      */
-    public function setLecturer(Lecture $lecturer)
+    public function setLecturer(Lecturer $lecturer)
     {
         $this->lecturer = $lecturer;
     }
