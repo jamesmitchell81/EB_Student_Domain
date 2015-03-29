@@ -35,6 +35,7 @@ class Routes
 
     // Timetable.
     static::$routes['timetable'] = new Route('TimetableModel', 'TimetableView', 'TimetableController');
+    static::$routes['timetable/:yyyy/:mm/:dd'] = new Route('TimetableModel', 'TimetableView', 'TimetableController');
 
     // Modules
     static::$routes['modules'] = new Route('ModuleModel', 'ModuleView', 'ModuleController');

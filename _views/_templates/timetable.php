@@ -1,23 +1,3 @@
-<?php include "head.php"; ?>
-
-<?php include "logo-column.php"; ?>
-<div class="col-2">
-  <?php include "header-nav.php"; ?>
-  <article id="content">
-
-    <div class="wrap" id="content-header">
-      <h2><span class='page-action'>View</span><span class='page-entity'>Timetable</span></h2>
-    </div>
-
-    <div class="wrap" id="content-workspace">
-
-      <span class="tt-session" data-day="mon" data-start="10:00" data-finish="11:30">
-        <span class="tt-session-item"><span>Start:</span> 10:00</span>
-        <span class="tt-session-item"><span>Module:</span> CSY2028</span>
-        <span class="tt-session-item"><span>Room:</span> MB8</span>
-        <span class="tt-session-item"><span>Finish:</span> 11:30</span>
-      </span>
-
       <table class='timetable'>
         <thead>
           <tr>
@@ -121,8 +101,3 @@
         </tbody>
       </table>
 
-    </div><!-- #content-workspace .wrap -->
-  </article>
-</div><!-- .col2 -->
-
-<?php include "footer.php"; ?>

@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="<?= BASE_PATH; ?>css/forms.css" media='screen'>
   <link rel="stylesheet" href="<?= BASE_PATH; ?>css/media_queries.css" media='screen'>
   <link rel="stylesheet" href="<?= BASE_PATH; ?>css/print.css" media='print'>
+  <title><?= $this->data['title']; ?></title>
 </head>
 <body>
 <div class='container'>

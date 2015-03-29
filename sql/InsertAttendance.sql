@@ -128,3 +128,10 @@ WHERE YEAR(c.DateStart) = 2014
 AND YEAR(c.DateEnd) = 2015
 AND st.idStudent = 20150001;
 
+
+SELECT MIN(StartTime), MAX(EndTime) FROM Timetable;
+
+SELECT DISTINCT DATE_SUB(s.Date, INTERVAL (DAYOFWEEK(s.Date) - 2) DAY) WeekStart, 
+				DATE_ADD(s.Date, INTERVAL ((DAYOFWEEK(s.Date) - 2) + 5) DAY) WeekEnd
+FROM Session s
+WHERE s.Date = '2015-03-30';

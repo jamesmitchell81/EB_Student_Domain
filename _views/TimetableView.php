@@ -5,14 +5,17 @@ class TimetableView implements View
   private $buffer;
   private $viewPath = '_templates/timetable.php';
 
-  public function __construct()
+  public function __construct($model)
   {
-    echo static::class;
+    $this->model = $model;
   }
 
   public function getData()
   {
-
+    $this->data['title'] = "Timetables";
+    $this->data['action'] = "View";
+    $this->data['entity'] = "Timetables";
+    $this->data['timespaces'] = $this->model->getTimespaces();
   }
 
   public function display()

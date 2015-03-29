@@ -103,6 +103,8 @@ class Router
       if ( preg_match("/^$pattern$/", $key) )
       {
         $key = preg_replace($pattern, $wildcard, $key);
+        // remove wildcard if used.
+        unset($this->wildcards[$wildcard]);
         return $key;
       }
     }

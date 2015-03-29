@@ -24,6 +24,7 @@ class Wildcards
     static::$wildcards[':action']   = '([a-zA-z]+)';  // one or more letters only, no spaces.
     static::$wildcards[':lecturerid'] = '(\d{6})';
     static::$wildcards[':period'] = '(\d{4}-\d{4})';
+    static::$wildcards[':week'] = '(week\d{1,2})';
   }
 
   public static function getWildcards()
