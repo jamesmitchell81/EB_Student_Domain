@@ -1,4 +1,58 @@
-      <table class='timetable'>
+<?php $timespaces = $this->data['timespaces']; ?>
+
+<table class='timetable'>
+  <thead>
+    <tr>
+      <th></th>
+<?php foreach($this->data['weekdays'] as $weekday) : ?>
+      <th><?= $weekday; ?></th>
+<?php endforeach; ?>
+  <tbody>
+
+    <?php foreach($timespaces as $timespace) : ?>
+    <tr>
+      <?php if ( date('i', strtotime($timespace)) == "00" ) : ?>
+      <td rowspan='4'><?= $timespace; ?></td>
+      <?php endif; ?>
+
+      <td><?= $timespace; ?></td>
+      <td><?= $timespace; ?></td>
+      <td><?= $timespace; ?></td>
+      <td><?= $timespace; ?></td>
+      <td><?= $timespace; ?></td>
+
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
+
+
+
+
+<!-- <table class='timetable'>
+  <thead>
+    <tr>
+      <th></th>
+<?php foreach($this->data['weekdays'] as $weekday) : ?>
+      <th><?= $weekday; ?></th>
+<?php endforeach; ?>
+  <tbody>
+
+  <?php for( $i = 0; $i < count($timespaces['Mon']) - 1; $i++ ) : ?>
+  <tr>
+    <?php if ( $i % 4 == 0 ) : ?>
+    <td rowspan='4'><?= $timespaces['Mon'][$i]; ?></td>
+    <?php endif; ?>
+    <?php foreach ($timespaces as $timespace) : ?>
+        <td><?= $timespace[$i]; ?></td>
+    <?php endforeach; ?>
+  </tr>
+  <?php endfor; ?>
+  </tbody>
+</table>
+ -->
+
+<!--       <table class='timetable'>
         <thead>
           <tr>
             <th></th>
@@ -101,3 +155,4 @@
         </tbody>
       </table>
 
+ -->

@@ -1,11 +1,42 @@
 <?php
 
+include "./_models/_entities/Lecturer.php";
+
 class Session
 {
     private $room;
-    private $start_time;
-    private $end_time;
+    private $startTime;
+    private $endTime;
     private $weekday;
+    private $lecturer;
+    private $title;
+
+    public function getDuration()
+    {
+        $start = strtotime($this->startTime);
+        $end = strtotime($this->endTime);
+        return $end - $start;
+    }
+
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    public function setLecturer(Lecturer $lecturer)
+    {
+        $this->lecturer = $lecturer;
+    }
+
+    public function getLecturer()
+    {
+        return $this->lecturer;
+    }
 
     /**
      * @return mixed
@@ -28,15 +59,15 @@ class Session
      */
     public function getStartTime()
     {
-        return $this->start_time;
+        return $this->startTime;
     }
 
     /**
-     * @param mixed $start_time
+     * @param mixed $startTime
      */
-    public function setStartTime($start_time)
+    public function setStartTime($startTime)
     {
-        $this->start_time = $start_time;
+        $this->startTime = $startTime;
     }
 
     /**
@@ -44,15 +75,15 @@ class Session
      */
     public function getEndTime()
     {
-        return $this->end_time;
+        return $this->endTime;
     }
 
     /**
-     * @param mixed $end_time
+     * @param mixed $endTime
      */
-    public function setEndTime($end_time)
+    public function setEndTime($endTime)
     {
-        $this->end_time = $end_time;
+        $this->endTime = $endTime;
     }
 
     /**
