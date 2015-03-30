@@ -82,25 +82,7 @@ class TimetableModel
     $timespaces = $this->getTimespaces();
 
     $dao = new TimetableDAO();
-    $timetable = $dao->selectUserTimetableDate($this->username, date('Y-m-d', $startDate));
-
-    while ( $this->day($endDate - $startDate) > 0 )
-    {
-
-      for( $i = 0; $i < count($timespaces); $i++ )
-      {
-        $weekday = date('D', $startDate);
-        $timespace = $timespaces[$i];
-        if ( $timetable->hasSession($weekday, $timespace) )
-        {
-          var_dump($timetable->getSession($weekday, $timespace));
-        }
-        // $timetable[date('H:i', $startTime)][date('D', $startDate)] = date('H:i', $startTime);
-        // $startTime += $this->minutes(15);
-      }
-
-      $startDate += $this->days(1);
-    }
+    $timetable = $dao->selectUserTimetableWeek($this->username, date('Y-m-d', $startDate), date('Y-m-d', $endDate));
 
     return $timetable;
   }
@@ -120,6 +102,43 @@ class TimetableModel
     while( ($this->minute($endTime - $startTime) + 15) > 0 )
     {
       $timespaces[] = date('H:i', $startTime);
+      $startTime += $this->minutes(15);
+    }
+
+    return $timespaces;
+  }
+
+  public function getTimespaces2()
+  {
+
+    $startDate = new DateTime();
+    $startDate->setDate($this->args[":yyyy"], $this->args[':mm'], $this->args[':dd']);
+    // $startDate = $this->setDateToWeekday($startDate);
+    // $startDate = $this->setDateToMonday($startDate);
+
+    $startDate = strtotime($startDate->format('Y-m-d'));
+    $endDate = $startDate + $this->days(5);
+
+    $db = new DatabaseQuery();
+    $db->select('SELECT MIN(StartTime) AS Earliest, MAX(EndTime) AS Latest FROM Timetable');
+    $data = $db->first();
+
+    if ( $data ) extract($data);
+    $startTime = strtotime($Earliest);
+    $endTime = strtotime($Latest) + $this->hours(1);
+
+    $timespaces = [];
+
+
+    while ( ($this->minute($endTime - $startTime) + 15) > 0 )
+    {
+      $startDateTemp = $startDate;
+      while ( $this->day($endDate - $startDateTemp) > 0 )
+      {
+        $timespaces[date('H:i', $startTime)][date('D', $startDateTemp)] = date('D', $startDateTemp) . " " . date('H:i', $startTime);
+        $startDateTemp += $this->days(1);
+      }
+
       $startTime += $this->minutes(15);
     }
 
@@ -161,18 +180,3 @@ class TimetableModel
     return $t - strtotime(date("Y-d-m")) / 1000;
   }
 }
-
-
-    // while ( (int)date_diff($startDate, $endDate)->format("%a") > 0 )
-    // {
-
-    //   while( (int)date_diff($startDate, $endDate)->format("%h") > 0 )
-    //   {
-    //     $timespaces[$startDate->format('D')][] = $startDate->format('H:i');
-    //     $startDate->add(new DateInterval("PT15M")); // !
-    //   }
-
-    //   $startDate->add(new DateInterval("P1D")); // !
-    //   $startDate->setTime(9, 0, 0);
-    // }
-

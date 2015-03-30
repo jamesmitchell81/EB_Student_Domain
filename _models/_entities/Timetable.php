@@ -10,8 +10,11 @@ class Timetable
     $start = date('H:i', strtotime($session->getStartTime()));
 
     $this->sessions[$weekday][$start] = $session;
+  }
 
-    var_dump($this->sessions);
+  public function getSessions()
+  {
+    return $this->sessions;
   }
 
   public function getSession($weekday, $timestart)

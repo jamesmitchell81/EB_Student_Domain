@@ -53,10 +53,11 @@ class TimetableDAO
 
     $this->db = new DatabaseQuery();
     $this->db->set('start', $start, PDO::PARAM_STR);
-    $this->db->set('start', $end, PDO::PARAM_STR);
+    $this->db->set('end', $end, PDO::PARAM_STR);
     $this->db->set('username', $username, PDO::PARAM_INT);
 
     $this->db->select($sql);
+
     return $this->db->all();
   }
 
@@ -89,10 +90,12 @@ class TimetableDAO
   }
 
 
-  public function selectUserTimetableDate($username, $date)
+  public function selectUserTimetableWeek($username, $start, $end)
   {
 
-    $data = $this->selectUserSessionsWeek($username, $date);
+    $data = $this->selectUserSessionsWeek($username, $start, $end);
+
+    $timetableSessions = new Timetable();
 
     foreach ($data as $index => $timetable) {
 
@@ -114,11 +117,10 @@ class TimetableDAO
       $session->setEndTime($EndTime);
       $session->setWeekday($Weekday);
 
-      $timetable = new Timetable();
-      $timetable->addSession($session);
+      $timetableSessions->addSession($session);
     }
 
-    return $timetable;
+    return $timetableSessions;
   }
 
 

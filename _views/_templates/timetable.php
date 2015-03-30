@@ -1,4 +1,5 @@
 <?php $timespaces = $this->data['timespaces']; ?>
+<?php $timetable = $this->data['timetable']; ?>
 
 <table class='timetable'>
   <thead>
@@ -9,20 +10,36 @@
 <?php endforeach; ?>
   <tbody>
 
-    <?php foreach($timespaces as $timespace) : ?>
+    <?php for($i = 0; $i < count($timespaces); $i++) : ?>
     <tr>
-      <?php if ( date('i', strtotime($timespace)) == "00" ) : ?>
-      <td rowspan='4'><?= $timespace; ?></td>
+      <?php if ( date('i', strtotime($timespaces[$i])) == "00" ) : ?>
+      <td rowspan='4'><?= $timespaces[$i]; ?></td>
       <?php endif; ?>
 
-      <td><?= $timespace; ?></td>
-      <td><?= $timespace; ?></td>
-      <td><?= $timespace; ?></td>
-      <td><?= $timespace; ?></td>
-      <td><?= $timespace; ?></td>
+      <?php
 
+      $timespace = $timespaces[$i];
+
+      foreach ($this->data['weekdays'] as $weekday) {
+
+       if ($timetable->hasSession($weekday, $timespace)) {
+
+        $session = $timetable->getSession($weekday, $timespace);
+        $durarion = $session->getDuration();
+        $rows = (($durarion / 60) / 60) * 4;
+
+        echo "<td rowspan='$rows'>";
+          echo $session->getWeekday();
+          echo $session->getTitle();
+          echo $rows;
+        echo "</td>";
+        } else {
+        // echo "<td></td>";
+        }
+
+      } ?>
     </tr>
-    <?php endforeach; ?>
+    <?php endfor; ?>
   </tbody>
 </table>
 
