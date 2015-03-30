@@ -89,27 +89,6 @@ class TimetableModel
 
   public function getTimespaces()
   {
-    $db = new DatabaseQuery();
-    $db->select('SELECT MIN(StartTime) AS Earliest, MAX(EndTime) AS Latest FROM Timetable');
-    $data = $db->first();
-
-    if ( $data ) extract($data);
-    $startTime = strtotime($Earliest);
-    $endTime = strtotime($Latest) + $this->hours(1);
-
-    $timespaces = [];
-
-    while( ($this->minute($endTime - $startTime) + 15) > 0 )
-    {
-      $timespaces[] = date('H:i', $startTime);
-      $startTime += $this->minutes(15);
-    }
-
-    return $timespaces;
-  }
-
-  public function getTimespaces2()
-  {
 
     $startDate = new DateTime();
     $startDate->setDate($this->args[":yyyy"], $this->args[':mm'], $this->args[':dd']);

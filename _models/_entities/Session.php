@@ -57,9 +57,12 @@ class Session
     /**
      * @return mixed
      */
-    public function getStartTime()
+    public function getStartTime($format = '')
     {
-        return $this->startTime;
+        if ( $format == '' ) {
+            return $this->startTime;
+        }
+        return ($this->startTime) ? date($format, strtotime($this->startTime)) : "";
     }
 
     /**
@@ -73,9 +76,12 @@ class Session
     /**
      * @return mixed
      */
-    public function getEndTime()
+    public function getEndTime($format = '')
     {
-        return $this->endTime;
+        if ( $format == '' ) {
+            return $this->endTime;
+        }
+        return ($this->endTime) ? date($format, strtotime($this->endTime)) : "";
     }
 
     /**
