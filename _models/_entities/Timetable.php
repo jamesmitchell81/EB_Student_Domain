@@ -24,7 +24,6 @@ class Timetable
 
   public function hasSession($weekday, $timestart)
   {
-
     if ( array_key_exists($weekday, $this->sessions))
     {
       if ( array_key_exists($timestart, $this->sessions[$weekday]))
@@ -32,7 +31,6 @@ class Timetable
         return true;
       }
     }
-
     return false;
   }
 }

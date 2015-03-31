@@ -18,6 +18,7 @@ class NotificationsController
       call_user_func(array($this->model, $action));
     }
 
+    $this->view->getData();
     $this->view->display();
   }
 }

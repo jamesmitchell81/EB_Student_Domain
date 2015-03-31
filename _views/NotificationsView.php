@@ -12,6 +12,9 @@ class NotificationsView implements View
 
   public function getData()
   {
+    $this->data['action'] = "View";
+    $this->data['entity'] = "Notifications";
+    $this->data['title'] = "Notifications";
     $this->data['notifications'] = $this->model->getNotifications();
   }
 

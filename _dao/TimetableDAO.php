@@ -61,11 +61,9 @@ class TimetableDAO
     return $this->db->all();
   }
 
-
-
   public function selectUserTimetableEvent($username, $date)
   {
-    $data = $this->selectUserSessions($username, $data);
+    $data = $this->selectUserSessions($username, $date);
 
     $events = [];
 
@@ -77,13 +75,16 @@ class TimetableDAO
       $lecturer->setFullName($Title, $FirstName, $Surname);
       $lecturer->setID($idLecturer);
 
+      $startDateTime = "{$date } {$StartTime}";
+      $endDateTime = "{$date } {$EndTime}";
+
       $events[] = new Event();
       $events[$index]->addAttendee($lecturer);
       $events[$index]->setLocation($idRoomNumber);
       $events[$index]->setTitle("{$idModuleCode} {$ModuleName}");
       $events[$index]->setDiaryName("Timetable");
-      $events[$index]->setStartDateTime($StartDateTime);
-      $events[$index]->setEndDateTime($EndDateTime);
+      $events[$index]->setStartDateTime($startDateTime);
+      $events[$index]->setEndDateTime($endDateTime);
     }
 
     return $events;

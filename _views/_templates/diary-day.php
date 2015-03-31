@@ -1,31 +1,34 @@
-<?php include "head.php"; ?>
 
-<?php include "logo-column.php"; ?>
+<?php $diary = $this->data['diary']; ?>
 
-<?php include "header-nav.php"; ?>
+  <div class="diary-day">
+    <?php foreach ($this->data['hours'] as $hour) : ?>
+    <div class="diary-hour">
+      <span class="diary-time">
+        <?= "{$hour}"; ?>
+      </span>
+      <?php if ( $diary->hasEvent($this->data['today'], date('H:i', strtotime($hour) )) ) : ?>
 
-  <article id="content">
+          <?php
+            $today = $this->data['today'];
+            $time = date('H:i', strtotime($hour));
+            $events = $diary->getEventsAt($today, $time);
 
-    <div class="wrap" id="content-header">
-      <h2><span class='page-action'>View</span>
-          <span class='page-entity'>Diary</span>
-          <span class='diary-date'><?= "{$this->data['today']}"; ?></span>
-      </h2>
-    </div>
+            foreach ($events as $event) {
 
-    <div class="wrap" id="content-workspace">
+            $cls = strtolower($event->getDiaryName());
 
-      <div class="diary-day">
-        <?php foreach ($this->data['hours'] as $hour) : ?>
-        <div class="diary-hour">
-          <span class="diary-time"><?= "{$hour}"; ?></span>
+              echo "<span class='event {$cls}'>";
+              echo $event->getDiaryName();
+              echo $event->getTitle();
+              echo $event->getDescription();
+              echo "</span>";
 
-        </div><!-- diary-hour -->
-        <?php endforeach; ?>
-      </div><!-- diary-day -->
+            }
 
-    </div><!-- content-workspace -->
-  </article><!-- #content -->
+          ?>
+      <?php endif; ?>
+    </div><!-- diary-hour -->
+    <?php endforeach; ?>
+  </div><!-- diary-day -->
 
-</div>
-<!-- <?php include "_includes/footer.php"; ?>

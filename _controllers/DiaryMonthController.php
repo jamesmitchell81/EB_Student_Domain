@@ -1,4 +1,4 @@
-<?php // namespace Controllers;
+<?php
 
 class DiaryMonthController
 {
@@ -10,6 +10,7 @@ class DiaryMonthController
     $this->model = $model;
     $this->view = $view;
 
+    $this->view->getData();
     $this->view->display();
   }
 }

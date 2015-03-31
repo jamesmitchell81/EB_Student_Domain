@@ -12,22 +12,26 @@ class DiaryDailyView implements View
 
   public function getData()
   {
-    $this->data['today'] = $this->model->getDate();
+    $this->data['action'] = "View";
+    $this->data['entity'] = "Diary";
+    $this->data['today'] = $this->model->getDate('Y-m-d');
     $this->data['hours'] = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"];
-    $this->data['timetable'] = $this->model->getDiaryEvents();
+    $this->data['diary'] = $this->model->getDiaryEvents();
+    $this->data['add-link'] = $this->model->getDiaryAddPath();
   }
 
   public function display()
   {
-    ob_start();
+    // ob_start();
     include "_templates/head.php";
     include "_templates/logo-column.php";
     include "_templates/header-nav.php";
     include "_templates/content-header.php";
+    include "_templates/diary-add-btn.php";
     include "_templates/diary-day.php";
     include "_templates/content-end.php";
     include "_templates/footer.php";
     include "_templates/page-end.php";
-    ob_end_flush();
+    // ob_end_flush();
   }
 }

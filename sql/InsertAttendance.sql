@@ -135,3 +135,5 @@ SELECT DISTINCT DATE_SUB(s.Date, INTERVAL (DAYOFWEEK(s.Date) - 2) DAY) WeekStart
 				DATE_ADD(s.Date, INTERVAL ((DAYOFWEEK(s.Date) - 2) + 5) DAY) WeekEnd
 FROM Session s
 WHERE s.Date = '2015-03-30';
+
+SELECT * FROM Session;

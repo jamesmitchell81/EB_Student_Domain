@@ -72,8 +72,7 @@ class TimetableModel
   {
     $startDate = new DateTime();
     $startDate->setDate($this->args[":yyyy"], $this->args[':mm'], $this->args[':dd']);
-    // $startDate = $this->setDateToWeekday($startDate);
-    // $startDate = $this->setDateToMonday($startDate);
+    $startDate = $this->setDateToMonday($startDate);
 
     $startDate = strtotime($startDate->format('Y-m-d'));
     $endDate = $startDate + $this->days(5);
@@ -92,8 +91,7 @@ class TimetableModel
 
     $startDate = new DateTime();
     $startDate->setDate($this->args[":yyyy"], $this->args[':mm'], $this->args[':dd']);
-    // $startDate = $this->setDateToWeekday($startDate);
-    // $startDate = $this->setDateToMonday($startDate);
+    $startDate = $this->setDateToMonday($startDate);
 
     $startDate = strtotime($startDate->format('Y-m-d'));
     $endDate = $startDate + $this->days(5);
@@ -107,7 +105,6 @@ class TimetableModel
     $endTime = strtotime($Latest) + $this->hours(1);
 
     $timespaces = [];
-
 
     while ( ($this->minute($endTime - $startTime) + 15) > 0 )
     {

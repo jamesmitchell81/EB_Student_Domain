@@ -1,3 +1,5 @@
+
+
 INSERT INTO Student (idStudent, Title, FirstName, Surname, TermAddress, HomeAddress, Mobile, Email)
 VALUES
 (20150001, "Mr", "James", "Mitchell", "44 The Avenue", "45 The Avenue", "00789 000 000", "jm@jm.co.uk"), 

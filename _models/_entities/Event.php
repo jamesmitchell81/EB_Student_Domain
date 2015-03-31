@@ -4,8 +4,8 @@ class Event
 {
     private $title = "";
     private $description = "";
-    private $start_datetime;
-    private $end_datetime;
+    private $startDateTime;
+    private $endDateTime;
     private $location = "";
     private $reminder;
     private $attendees = [];
@@ -21,30 +21,48 @@ class Event
         return $this->diaryName;
     }
 
-    public function setDateTime($start_datetime, $end_datetime)
+    public function getDate($format = '')
     {
-        $this->start_datetime = $start_datetime;
-        $this->end_datetime = $end_datetime;
+        if ( $format == '' )
+        {
+            return date('Y-m-d', $this->startDateTime); // default
+        }
+        return ($this->startDateTime) ? date($format, strtotime($this->startDateTime)) : "";
     }
 
-    public function setEndDateTime($end_datetime)
+    public function getStartTime($format = '')
     {
-        $this->end_datetime = $end_datetime;
+        if ( $format == '' )
+        {
+            return date('H:i:s', strtotime($this->startDateTime)); // default
+        }
+        return ($this->startDateTime) ? date($format, strtotime($this->startDateTime)) : "";
+    }
+
+    public function setDateTime($startDateTime, $endDateTime)
+    {
+        $this->startDateTime = $startDateTime;
+        $this->endDateTime = $endDateTime;
+    }
+
+    public function setEndDateTime($endDateTime)
+    {
+        $this->endDateTime = $endDateTime;
     }
 
     public function getEndDateTime()
     {
-        return $this->end_datetime;
+        return $this->endDateTime;
     }
 
-    public function setStartDateTime($start_datetime)
+    public function setStartDateTime($startDateTime)
     {
-        $this->start_datetime = $start_datetime;
+        $this->startDateTime = $startDateTime;
     }
 
     public function getStartDateTime()
     {
-        return $this->start_datetime;
+        return $this->startDateTime;
     }
 
     public function getLocation()

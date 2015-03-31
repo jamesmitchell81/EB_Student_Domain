@@ -6,16 +6,17 @@ include './_dao/EventDAO.php';
 class DiaryEditModel
 {
   private $arguments = [];
+  private $action;
 
-  public function __construct($args = [])
+  public function __construct($args = [], $action = '')
   {
     $this->arguments = $args;
-    var_dump($this->arguments);
+    $this->action = $action;
   }
 
   public function getAction()
   {
-    return $this->arguments[0];
+    return $this->action;
   }
 
   public function add($args = [])
@@ -35,6 +36,11 @@ class DiaryEditModel
   }
 
   public function edit()
+  {
+
+  }
+
+  public function delete()
   {
 
   }

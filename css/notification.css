@@ -10,22 +10,6 @@
   position: relative;
 }
 
-#notice-search:focus {
-  border-color: #48E7B3;
-}
-
-#notice-search {
-  width: 90%;
-  line-height: 2;
-  padding-left: 25px;
-  padding-bottom: 3px;
-  border-width: 0 0 2px 0;
-  border-style: solid;
-  border-color: #787878;
-  transition: border-color 0.25s, width 0.5s;
-  outline: none;
-}
-
 .notice-search-label {
   position: absolute;
   top: 3px;
@@ -50,7 +34,7 @@
 
 .notice-block {
   width: 80%;
-  margin-left: 20%;
+  /*margin-left: 20%;*/
   margin-top: 2em;
 }
 

@@ -10,6 +10,7 @@ class SignInController
     $this->model = $model;
     $this->view = $view;
 
+    $this->view->getData();
     $this->view->display();
   }
 }

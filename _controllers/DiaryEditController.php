@@ -1,7 +1,5 @@
 <?php
 
-// include '_util/Input.php';
-
 class DiaryEditController
 {
   private $view;
@@ -15,6 +13,7 @@ class DiaryEditController
     $action = $this->model->getAction();
     $this->model->$action();
 
+    $this->view->getData();
     $this->view->display();
   }
 }
