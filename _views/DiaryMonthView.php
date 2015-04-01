@@ -17,6 +17,8 @@ class DiaryMonthView implements View
 
     $this->data['diary'] = $this->model->getDiaryEvents();
     $this->data['months'] = $this->model->getMonthRange();
+    $this->data['month'] = $this->model->getMonth();
+    $this->data['calender'] = $this->model->getCalenderStucture();
   }
 
   public function display()
@@ -24,12 +26,12 @@ class DiaryMonthView implements View
     ob_start();
     include "_templates/head.php";
     include "_templates/logo-column.php";
-    include "_templates/header-nav.php";
+    // include "_templates/header-nav.php";
     include "_templates/content-header.php";
     include "_templates/diary-month-tabs.php";
     include "_templates/diary-month.php";
     include "_templates/content-end.php";
-    include "_templates/footer.php";
+    // include "_templates/footer.php";
     include "_templates/page-end.php";
     ob_end_flush();
   }

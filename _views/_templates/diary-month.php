@@ -1,4 +1,22 @@
 
+
+<div class="diary-month">
+<?php foreach( $this->data['calender'] as $row) : ?>
+
+<?php endforeach; ?>
+
+<?php foreach( $this->data['calender'] as $row) : ?>
+
+  <div class='diary-month-cal-row'>
+    <?php foreach($row as $day => $date) : ?>
+      <div class='diary-month-cal-cell'>
+        <?= $date; ?>
+      </div>
+    <?php endforeach; ?>
+  </div>
+
+<?php endforeach; ?>
+</div><!-- diary - month -->
       <table class="diary-month">
         <thead>
           <tr>
