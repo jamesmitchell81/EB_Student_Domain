@@ -97,5 +97,10 @@ class DatabaseQuery
   {
     return $this->query($sql);
   }
+
+  public function getLastID()
+  {
+    return $this->connection->lastInsertId();
+  }
 }
 

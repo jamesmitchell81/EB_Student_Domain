@@ -5,14 +5,18 @@ class DiaryMonthView implements View
   private $model;
   private $data;
 
-  public function __construct()
+  public function __construct($model)
   {
-
+    $this->model = $model;
   }
 
-  public class getData()
+  public function getData()
   {
+    $this->data['action'] = "View";
+    $this->data['entity'] = "Diary";
 
+    $this->data['diary'] = $this->model->getDiaryEvents();
+    $this->data['months'] = $this->model->getMonthRange();
   }
 
   public function display()
@@ -22,6 +26,7 @@ class DiaryMonthView implements View
     include "_templates/logo-column.php";
     include "_templates/header-nav.php";
     include "_templates/content-header.php";
+    include "_templates/diary-month-tabs.php";
     include "_templates/diary-month.php";
     include "_templates/content-end.php";
     include "_templates/footer.php";

@@ -27,7 +27,7 @@ class Event
         {
             return date('Y-m-d', $this->startDateTime); // default
         }
-        return ($this->startDateTime) ? date($format, strtotime($this->startDateTime)) : "";
+        return ($this->startDateTime) ? date($format, $this->startDateTime) : "";
     }
 
     public function getStartTime($format = '')
@@ -36,8 +36,18 @@ class Event
         {
             return date('H:i:s', strtotime($this->startDateTime)); // default
         }
-        return ($this->startDateTime) ? date($format, strtotime($this->startDateTime)) : "";
+        return ($this->startDateTime) ? date($format, $this->startDateTime) : "";
     }
+
+    public function getEndTime($format = '')
+    {
+        if ( $format == '' )
+        {
+            return date('H:i:s', strtotime($this->endDateTime)); // default
+        }
+        return ($this->endDateTime) ? date($format, $this->endDateTime) : "";
+    }
+
 
     public function setDateTime($startDateTime, $endDateTime)
     {
@@ -63,6 +73,13 @@ class Event
     public function getStartDateTime()
     {
         return $this->startDateTime;
+    }
+
+    public function getDuration()
+    {
+        $start = strtotime($this->startDateTime);
+        $end = strtotime($this->endDateTime);
+        return $end - $start;
     }
 
     public function getLocation()

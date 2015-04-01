@@ -78,6 +78,9 @@ class TimetableDAO
       $startDateTime = "{$date } {$StartTime}";
       $endDateTime = "{$date } {$EndTime}";
 
+      $startDateTime = strtotime($startDateTime);
+      $endDateTime = strtotime($endDateTime);
+
       $events[] = new Event();
       $events[$index]->addAttendee($lecturer);
       $events[$index]->setLocation($idRoomNumber);

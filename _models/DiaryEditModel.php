@@ -1,5 +1,6 @@
 <?php
 
+include_once './_util/Redirect.php';
 include '_entities/Event.php';
 include './_dao/EventDAO.php';
 
@@ -19,40 +20,17 @@ class DiaryEditModel
     return $this->action;
   }
 
-  public function add($args = [])
+  public function getEvent()
   {
-    $data = Input::post();
-
-    if ( empty($data) ) return;
-
-    $dao = new EventDAO();
     $event = new Event();
+    $date = new DateTime();
+    $date->setDate($this->arguments[':yyyy'], $this->arguments[':mm'], $this->arguments[':dd']);
 
-    $event->setTitle($data['title']);
-    $event->setDescription($data['details']);
-    $event->setDateTime($data['start'], $data['finish']);
+    $event->setStartDateTime(strtotime($date->format('d/m/Y H:i')));
+    $date->add(new DateInterval('PT1H'));
+    $event->setEndDateTime(strtotime($date->format('d/m/Y H:i')));
 
-    $dao->createNewEvent($event);
-  }
-
-  public function edit()
-  {
-
-  }
-
-  public function delete()
-  {
-
-  }
-
-  public function updateEvent($args = [])
-  {
-
-  }
-
-  public function deleteEvent($args = [])
-  {
-
+    return $event;
   }
 
 }

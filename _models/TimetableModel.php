@@ -1,9 +1,9 @@
 <?php
 
 // date interval ref: http://php.net/manual/en/dateinterval.construct.php
-
 include_once './_database/DatabaseQuery.php';
 include_once './_dao/TimetableDAO.php';
+include_once './_util/Time.php';
 
 class TimetableModel
 {
@@ -75,7 +75,7 @@ class TimetableModel
     $startDate = $this->setDateToMonday($startDate);
 
     $startDate = strtotime($startDate->format('Y-m-d'));
-    $endDate = $startDate + $this->days(5);
+    $endDate = $startDate + Time::fromDays(5);
 
     $timetable = [];
     $timespaces = $this->getTimespaces();
@@ -94,7 +94,7 @@ class TimetableModel
     $startDate = $this->setDateToMonday($startDate);
 
     $startDate = strtotime($startDate->format('Y-m-d'));
-    $endDate = $startDate + $this->days(5);
+    $endDate = $startDate + Time::fromDays(5);
 
     $db = new DatabaseQuery();
     $db->select('SELECT MIN(StartTime) AS Earliest, MAX(EndTime) AS Latest FROM Timetable');
@@ -102,57 +102,59 @@ class TimetableModel
 
     if ( $data ) extract($data);
     $startTime = strtotime($Earliest);
-    $endTime = strtotime($Latest) + $this->hours(1);
+    $endTime = strtotime($Latest) + Time::fromHours(1);
 
     $timespaces = [];
 
-    while ( ($this->minute($endTime - $startTime) + 15) > 0 )
+    while ( ( Time::toMinutes($endTime - $startTime) + 15) > 0 )
     {
       $startDateTemp = $startDate;
-      while ( $this->day($endDate - $startDateTemp) > 0 )
+      while ( Time::toDays($endDate - $startDateTemp) > 0 )
       {
         $timespaces[date('H:i', $startTime)][date('D', $startDateTemp)] = date('D', $startDateTemp) . " " . date('H:i', $startTime);
-        $startDateTemp += $this->days(1);
+        $startDateTemp += Time::fromDays(1);
       }
-
-      $startTime += $this->minutes(15);
+      $startTime += Time::fromMinutes(15);
     }
 
     return $timespaces;
   }
 
-  private function days($t)
-  {
-    return ((($t * 60) * 60) * 24);
-  }
+  // private function days($t)
+  // {
+  //   return ((($t * 60) * 60) * 24);
+  // }
 
-  private function hours($t)
-  {
-    return ($t * 60) * 60;
-  }
+  // private function hours($t)
+  // {
+  //   return ($t * 60) * 60;
+  // }
 
-  private function minutes($t)
-  {
-    return $t * 60;
-  }
+  // private function minutes($t)
+  // {
+  //   return $t * 60;
+  // }
 
-  private function day($t)
-  {
-    return $this->hour($t) / 24;
-  }
+  // private function day($t)
+  // {
+  //   return $this->hour($t) / 24;
+  // }
 
-  private function hour($t)
-  {
-    return $this->minute($t) / 60;
-  }
+  // private function hour($t)
+  // {
+  //   return $this->minute($t) / 60;
+  // }
 
-  private function minute($t)
-  {
-    return $this->second($t) / 60;
-  }
+  // private function minute($t)
+  // {
+  //   // return $this->second($t) / 60;
+  //   return $t / 60;
+  // }
 
-  private function second($t)
-  {
-    return $t - strtotime(date("Y-d-m")) / 1000;
-  }
+  // private function second($t)
+  // {
+  //   return ($t - strtotime(date("Y-m-d"))) / 1000;
+  // }
 }
+
+

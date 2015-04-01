@@ -1,4 +1,6 @@
+DROP DATABASE db_eco;
 
+USE db_eco;
 
 INSERT INTO Student (idStudent, Title, FirstName, Surname, TermAddress, HomeAddress, Mobile, Email)
 VALUES

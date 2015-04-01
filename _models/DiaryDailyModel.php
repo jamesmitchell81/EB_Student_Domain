@@ -2,6 +2,8 @@
 
 include '_entities/Diary.php';
 include './_dao/TimetableDAO.php';
+include './_dao/EventDAO.php';
+include_once './_util/Time.php';
 
 class DiaryDailyModel
 {
@@ -25,19 +27,40 @@ class DiaryDailyModel
     $this->username = Input::session('username');
   }
 
-  public function getDate($format = '')
+  public function getDate($daysOffset = 0)
   {
-    if ( $format == '' )
-    {
-      return $this->date->format('Y-m-d H:i:s');
+    if ( $daysOffset == 0) return $this->date;
+
+    $newDate = clone $this->date;
+
+    if ( $daysOffset > 0 ) {
+      $newDate->add(new DateInterval("P{$daysOffset}D"));
     }
-    return $this->date->format($format);
+
+    if ( $daysOffset < 0 ) {
+      $daysOffset = abs($daysOffset);
+      $newDate->sub(new DateInterval("P{$daysOffset}D"));
+    }
+
+    return $newDate;
   }
 
   private function getTimetable()
   {
     $dao = new TimetableDAO();
     return $dao->selectUserTimetableEvent($this->username, $this->date->format('Y-m-d'));
+  }
+
+  private function getEvents()
+  {
+    $dao = new EventDAO();
+    return $dao->getUserEventsByDay($this->username, $this->date->format('Y-m-d'));
+  }
+
+  public function getDiaryTypes()
+  {
+    $dao = new EventDAO();
+    return $dao->getUserEventTypes($this->username);
   }
 
   public function getDiaryEvents()
@@ -48,6 +71,10 @@ class DiaryDailyModel
       $this->diary->addEvent($event);
     }
 
+    foreach ($this->getEvents() as $event) {
+      $this->diary->addEvent($event);
+    }
+
     return $this->diary;
   }
 
@@ -55,5 +82,23 @@ class DiaryDailyModel
   {
     $date = $this->date->format('Y/m/d');
     return BASE_PATH . "$this->username/diary/add/$date";
+  }
+
+  public function getDiaryPath($daysOffset = 0)
+  {
+    if ( $daysOffset == 0) return BASE_PATH . "$this->username/diary/$this->date->format('Y/m/d')";
+
+    $newDate = clone $this->date;
+
+    if ( $daysOffset > 0 ) {
+      $newDate->add(new DateInterval("P{$daysOffset}D"));
+    }
+
+    if ( $daysOffset < 0 ) {
+      $daysOffset = abs($daysOffset);
+      $newDate->sub(new DateInterval("P{$daysOffset}D"));
+    }
+
+    return BASE_PATH . "$this->username/diary/{$newDate->format('Y/m/d')}";
   }
 }

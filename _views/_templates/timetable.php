@@ -35,7 +35,6 @@ if ( date('i', strtotime($key)) == "0" ) {
               $from = strtotime($key);
               $to = ($from + $durarion) - (15 * 60);
 
-              // echo "<td class='tt-session' rowspan='$rowcount'>";
               echo "<td rowspan='$rowcount'>";
               echo " <span class='tt-session'>";
               echo "  <span class='tt-session-times'>{$session->getStartTime('H:i')} - {$session->getEndTime('H:i')}</span>";

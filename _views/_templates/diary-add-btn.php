@@ -1,1 +1,0 @@
-<a class='diary-add' href='<?= $this->data['add-link']; ?>'>add</a>

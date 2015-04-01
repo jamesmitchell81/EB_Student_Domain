@@ -30,6 +30,11 @@ class DatabaseConnection
     return $this->db;
   }
 
+  // public function getDB()
+  // {
+  //   return $this->db;
+  // }
+
   public function closeConnection()
   {
     $this->db = null;

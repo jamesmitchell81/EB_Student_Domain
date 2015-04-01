@@ -30,13 +30,53 @@ class EventDAO
     return $event;
   }
 
-  public function createNewEvent(Event $event)
+  public function getUserEventsByDay($username, $date)
+  {
+    $this->db = new DatabaseQuery();
+    $this->db->setInt('username', $username);
+    $this->db->setStr('date', $date);
+
+    $this->db->select('SELECT e.Title, e.Description, e.StartDateTime, e.EndDateTime, e.Type
+                       FROM Events e
+                       INNER JOIN StudentDiary s ON s.idEvents = e.idEvents
+                       WHERE s.idStudent = :username AND date(e.StartDateTime) = :date');
+
+    $data = $this->db->all();
+
+    $events = [];
+
+    foreach ($data as $index => $event) {
+
+      extract($event);
+
+      $events[$index] = new Event();
+      $events[$index]->setDiaryName($Type);
+      $events[$index]->setTitle($Title);
+      $events[$index]->setDescription($Description);
+      $events[$index]->setStartDateTime(strtotime($StartDateTime));
+      $events[$index]->setEndDateTime(strtotime($EndDateTime));
+
+    }
+    return $events;
+  }
+
+  public function getUserEventTypes($username)
+  {
+    $this->db = new DatabaseQuery();
+    $this->db->setInt('username', $username);
+    $this->db->select('SELECT DISTINCT e.Type FROM Events e
+                       INNER JOIN StudentDiary s ON s.idEvents = e.idEvents
+                       WHERE s.idStudent = :username');
+    return $this->db->all();
+  }
+
+  public function createNewEvent(Event $event, $username)
   {
     $this->db = new DatabaseQuery();
     $this->db->set('title', $event->getTitle());
     $this->db->set('description', $event->getDescription());
-    $this->db->set('start', $event->getStartDateTime());
-    $this->db->set('end', $event->getEndDateTime());
+    $this->db->set('start', date('Y-m-d H:i:s', $event->getStartDateTime()));
+    $this->db->set('end', date('Y-m-d H:i:s', $event->getEndDateTime()));
 
     $sql = 'INSERT INTO Events (Title, Description, StartDateTime, EndDateTime)
             VALUES (:title, :description, :start, :end)';
@@ -44,7 +84,14 @@ class EventDAO
     // do insert.
     $this->db->insert($sql);
 
-    // for each attendee.
+    $id = $this->db->getLastID();
+
+    var_dump($id);
+    $this->db = new DatabaseQuery();
+    $this->db->setInt('eventid', $id);
+    $this->db->setInt('username', $username);
+    $this->db->insert('INSERT INTO StudentDiary(idStudent, idEvents) VALUES (:username, :eventid)');
+
       // insert.
 
   }

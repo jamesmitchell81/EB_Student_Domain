@@ -11,7 +11,10 @@ class DiaryEditController
     $this->model = $model;
 
     $action = $this->model->getAction();
-    $this->model->$action();
+    if ( method_exists($this->model, $action) && is_callable(array($this->model, $action)) )
+    {
+      call_user_func(array($this->model, $action));
+    }
 
     $this->view->getData();
     $this->view->display();
