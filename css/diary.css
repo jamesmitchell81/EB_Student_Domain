@@ -1,8 +1,13 @@
-.heat-1 { background: #55ff55; cursor: pointer;}
-.heat-2 { background: #78ff78; cursor: pointer;}
-.heat-3 { background: #98ff98; cursor: pointer;}
-.heat-4 { background: #caffca; cursor: pointer;}
-.heat-5 { background: #efffef; cursor: pointer;}
+.heat-10 { background: #0f0; cursor: pointer;}
+.heat-9 { background:  #11ff11; cursor: pointer;}
+.heat-8 { background:  #22ff22; cursor: pointer;}
+.heat-7 { background:  #33ff33; cursor: pointer;}
+.heat-6 { background:  #50ff50; cursor: pointer;}
+.heat-5 { background:  #65ff65; cursor: pointer;}
+.heat-4 { background:  #78ff78; cursor: pointer;}
+.heat-3 { background:  #98ff98; cursor: pointer;}
+.heat-2 { background:  #caffca; cursor: pointer;}
+.heat-1 { background:  #efffef; cursor: pointer;}
 
 .diary-day {
   padding: 1em 0;
@@ -285,6 +290,13 @@
   transition: margin-left 0.5s;
 } */
 
+.diary-month-title {
+  width: 100%;
+  text-align: center;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
 .diary-month {
   margin-left: 20%;
   width: 80%;
@@ -294,32 +306,56 @@
   table-layout: fixed;
 }
 
+.diary-month-cal-header-row {
+  max-height 1em;
+  display: table-row;
+
+}
+
 .diary-month-cal-row {
-  max-width: 3em;
   max-height 3em;
   display: table-row;
 }
 
-.diary-month-cal-cell {
-  border: 1px solid #000;
-  display: table-cell;
+.diary-month-cal-head-cell {
   width: 14.285714286%;
-  height: 20%;
-  font-weight: 300;  
-  height: 6em;
-  vertical-align: top;
-  text-align: right;
-  padding: 0.5em;  
+  display: table-cell;
+  height: 2em;
+  text-align: center;
+  border-bottom: 1px solid #efefef;
 }
 
+.diary-month-cal-cell-link {
+  width: 100%;
+  height: 6em;
+  max-height: 6em;
+  min-height: 6em;
+  min-width: 6em;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s;
+  padding: 0.5em;
+  color: #000;
+}
+
+.diary-month-cal-cell {
+  font-size: 0.9em;
+  border: 1px solid #efefef;
+  display: table-cell;
+  width: 14.285714286%;
+  height: 6em;
+  /*vertical-align: top;*/
+  text-align: right;
+}
+
+.diary-month-cal-cell-link:hover {
+  background: #3E97EB;
+}
 
 .diary-month td {
   cursor: pointer;
   transition: background 0.5s;
-}
-
-.diary-month td:hover {
-  background: #3E97EB;
 }
 
 .diary-month-tabs {
@@ -358,6 +394,21 @@
   vertical-align: top;
   text-align: right;
   padding: 0.5em;
+}
+
+span.diary-count {
+  color: #000;
+  box-shadow: 1px 1px 4px #555;
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  padding: 0.25em;
+  margin-top: 3em;
+  margin-left: -5.5em;
+  display: inline-block;
+  text-align: center;
+  border-radius: 100%;
+  z-index: 0;
 }
 
 /******************/

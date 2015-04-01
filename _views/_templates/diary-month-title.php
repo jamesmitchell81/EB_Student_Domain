@@ -1,0 +1,1 @@
+<h3 class='diary-month-title'><?= $this->data['month']; ?></h3>

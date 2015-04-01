@@ -28,8 +28,6 @@ class DiaryAddModel
 
     if ( empty($data) ) return;
 
-    var_dump($data);
-
     $dao = new EventDAO();
     $event = new Event();
 
@@ -44,7 +42,8 @@ class DiaryAddModel
     $event->setDateTime($startDateTime, $endDateTime);
 
     $dao->createNewEvent($event, $this->username);
-    Redirect::to('diary/2015/02/02');
+    $back = "diary/" . date('Y/m/d', $data['start-date']);
+    Redirect::to($back);
   }
 
   public function edit()

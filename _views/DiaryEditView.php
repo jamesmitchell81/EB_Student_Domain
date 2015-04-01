@@ -16,6 +16,7 @@ class DiaryEditView implements View
     $this->data['entity'] = "Diary";
     $this->data['action-event'] = "insert"; //$this->model->getActionEvent();
     $this->data['event'] = $this->model->getEvent();
+    // date
   }
 
   public function display($viewPath = '')
