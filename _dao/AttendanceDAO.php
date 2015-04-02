@@ -38,7 +38,7 @@ class AttendanceDAO
       $module = $moduleDAO->getModuleById($idModuleCode);
 
       $attendanceSummary[] = new AttendanceSummary();
-      $attendanceSummary[$index]->setModule($module[0]);
+      $attendanceSummary[$index]->setModule($module);
       $attendanceSummary[$index]->setResult('Absent', $Absent);
       $attendanceSummary[$index]->setResult('Present', $Present);
       $attendanceSummary[$index]->setResult('Authorised', $Authorised);

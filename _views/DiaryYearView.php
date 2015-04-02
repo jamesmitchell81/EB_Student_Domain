@@ -14,9 +14,9 @@ class DiaryYearView implements View
   {
     $this->data["action"] = "View";
     $this->data["entity"] = "Diary Year";
-    $this->data['this year'] = $this->model->getYear(0);
-    $this->data['last year'] = [ "href" => $this->model->getDiaryPath(-1), "date" => $this->model->getYear(-1)->format('Y')];
-    $this->data['next year'] = ["href" => $this->model->getDiaryPath(1), "date" => $this->model->getYear(1)->format('Y')];
+    $this->data['current'] = $this->model->getYear(0);
+    $this->data['last'] = [ "href" => $this->model->getDiaryPath(-1), "date" => $this->model->getYear(-1)->format('Y')];
+    $this->data['next'] = ["href" => $this->model->getDiaryPath(1), "date" => $this->model->getYear(1)->format('Y')];
     $this->data['days'] = $this->model->getDaysOfTheWeek();
     $this->data['months'] = $this->model->getMonths();
     $this->data['calender'] = $this->model->getCalenderYear();

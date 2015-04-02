@@ -14,11 +14,6 @@
         <a class='notice-mark-read' href='notifications/delete/<?= "{$notice->getID()}"; ?>'>Delete</a>
         <a class='notice-mark-read' href='notifications/save/<?= "{$notice->getID()}"; ?>'>Save</a>
 
-        <span class="notice-cat">
-          <span class='notice-filter-tag'>#tutor, </span>
-          <span class="notice-filter-tag">#module</span>
-        </span>
-
         <p class="notice">
           <?= $notice->getBody(); ?>
         </p>

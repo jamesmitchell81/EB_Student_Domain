@@ -17,7 +17,6 @@ class DiaryMonthView implements View
 
     // $this->data['diary'] = $this->model->getDiaryEvents();
     $this->data['heat'] = ["#55ff55", "#78ff78","#98ff98","#caffca","#efffef"];
-
     $this->data['months'] = $this->model->getMonthRange();
     $this->data['month'] = $this->model->getMonth();
     $this->data['calender'] = $this->model->getCalender();

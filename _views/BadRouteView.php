@@ -21,6 +21,8 @@ class BadRouteView implements View
     //   $data = "signin";
     //   $this->buffer->addData('home', $data);
     // }
+    $this->data['action'] = "Sorry";
+    $this->data['entity'] = "This page does not exist";
     $this->data['home'] = "signin";
   }
 

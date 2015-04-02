@@ -19,8 +19,8 @@ class DiaryDailyView implements View
     $this->data['today'] = $this->model->getDate();
     $this->data['hours'] = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"];
     $this->data['diary'] = $this->model->getDiaryEvents();
-    $this->data['yesterday'] = [ "href" => $this->model->getDiaryPath(-1), "date" => $this->model->getDate(-1)->format('Y-m-d')];
-    $this->data['tomorrow'] = ["href" => $this->model->getDiaryPath(1), "date" => $this->model->getDate(1)->format('Y-m-d')];
+    $this->data['last'] = [ "href" => $this->model->getDiaryPath(-1), "date" => $this->model->getDate(-1)->format('Y-m-d')];
+    $this->data['next'] = ["href" => $this->model->getDiaryPath(1), "date" => $this->model->getDate(1)->format('Y-m-d')];
     $this->data['add-link'] = $this->model->getDiaryAddPath();
     $this->data['types'] = $this->model->getDiaryTypes();
   }

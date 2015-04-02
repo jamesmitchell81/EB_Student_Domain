@@ -20,6 +20,35 @@ class TimetableModel
     $this->username = Input::session('username');
   }
 
+  public function getWeek($offset = 0)
+  {
+    $dt = new DateTime();
+    $dt->setDate((int)$this->args[':yyyy'], (int)$this->args[':mm'], (int)$this->args[':dd']);
+
+    if ( $offset == 0 )
+    {
+
+      return $this->setDateToMonday($dt);
+    }
+
+    if ( $offset > 0 ) {
+      $dt->modify("+7 days");
+      return $this->setDateToMonday($dt);
+    }
+
+    if ( $offset < 0 )
+    {
+      $dt->modify("-7 days");
+      return $this->setDateToMonday($dt);
+    }
+  }
+
+  public function getPath($offset = 0)
+  {
+    $dt = $this->getWeek($offset);
+    return BASE_PATH . "$this->username/timetable/{$dt->format('Y/m/d')}";
+  }
+
   private function dateArgsSet()
   {
     if ( !isset($this->args[':yyyy']) || !isset($this->args[':mm']) || !isset($this->args[':dd']) )

@@ -28,15 +28,24 @@ h3 {
 
 /* layout */
 .col-1 {
-  width: 10%;
-  float: left;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  /*float: left;*/
+  min-height: 100%;
+  /*padding-bottom: 4em;*/
+}
+
+/*.col-2 {
+  width: 90%;
+  margin-left: 10%;
   min-height: 100%;
   padding-bottom: 4em;
 }
-
+*/
+/* new */
 .col-2 {
-  width: 90%;
-  margin-left: 10%;
+  width: 100%;
   min-height: 100%;
   padding-bottom: 4em;
 }
@@ -108,7 +117,8 @@ footer ul li {
 }
 
 #nav-core-2 {
-  width: 90%;
+  /*width: 90%;*/
+  width: 100%;
   float: right;
   clear: both;
   /*right: -1400px;*/

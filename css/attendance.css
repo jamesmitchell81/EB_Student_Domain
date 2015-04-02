@@ -6,6 +6,10 @@
   line-height: 3;
 }
 
+td.add-date {
+  line-height: 1;
+}
+
 .att-summary {
   width: 100%;
 }

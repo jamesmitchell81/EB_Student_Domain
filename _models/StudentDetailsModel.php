@@ -2,7 +2,7 @@
 
 include './_dao/StudentDAO.php';
 include './_dao/ModuleDAO.php';
-include '_entities/Module.php';
+include_once '_entities/Module.php';
 
 class StudentDetailsModel
 {

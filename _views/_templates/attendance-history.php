@@ -12,7 +12,7 @@
   <tbody>
   <?php foreach($this->data['days'] as $day) : ?>
     <tr>
-      <td class='att-date'><?= "{$day['Date']}"; ?></td>
+      <td class='att-date'><?= date('D jS M Y', strtotime($day['Date'])); ?></td>
       <?php foreach($this->data['history'] as $history) : ?>
 
         <?php if ( $history->hasSession($day['Date']) ) : ?>

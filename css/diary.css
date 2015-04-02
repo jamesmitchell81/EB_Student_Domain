@@ -206,7 +206,7 @@
 /******************/
 /*  Weekly View   */
 /******************/
-
+/*
 .diary-week-item {
   width: 100px;
   height: 3em;
@@ -221,19 +221,20 @@
   box-shadow: 2px 2px 5px #48E7B3;
   cursor: pointer;
 }
+*/
 
 .diary-week {
   /*border: 1px solid #000;*/
   width: 100%;
 }
 
-.diary-week th {
-  font-weight: 300;
-  line-height: 2;
+.diary-week .diary-day-week {
+  width: 14%;
+  float: left;
 }
 
-.diary-week td {
-  padding: 2%;
+.diary-day-week-time {
+  float: left;
 }
 
 .diary-weekday-date {
