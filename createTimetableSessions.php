@@ -5,8 +5,8 @@ include '_database/DatabaseQuery.php';
 $dtStart = new DateTime();
 $dtEnd = new DateTime();
 
-$dtStart->setDate(2015, 1, 12);
-$dtEnd->setDate(2015, 4, 3);
+$dtStart->setDate(2015, 9, 29);
+$dtEnd->setDate(2015, 12, 19);
 
 $db = new DatabaseQuery();
 
