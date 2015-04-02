@@ -1,7 +1,12 @@
+<!--<?php var_dump($this->data['summary']); ?>-->
+
+<?php foreach( $this->data['summary'] as $summary ) : ?>
+  <h5 class='ass-sum-module'>
+    <?= $summary[0]->getAssignment()->getModule()->getTitle(); ?>
+  </h5>
 <table class='assignment-summary'>
   <thead>
     <tr>
-      <th>Module</th>
       <th class='ass-title'>Title</th>
       <th class='ass-due'>Due Date</th>
       <th class='ass-sub'>Submission Date</th>
@@ -10,19 +15,15 @@
     </tr>
   </thead>
   <tbody>
-  <?php foreach( $this->data['summary'] as $summary ) : ?>
-    <?php foreach ($summary as $i => $assignment) : ?>
+  <?php foreach ($summary as $i => $assignment) : ?>
     <tr>
-      <?php if ( $i == 0 ) : ?>
-        <td rowspan='2'><?= $assignment->getAssignment()->getModule()->getTitle(); ?></td>
-      <?php endif; ?>
-      <td><?= $assignment->getAssignment()->getTitle(); ?></td>
-      <td><?= $assignment->getAssignment()->getDueDate('d/m/Y H:i'); ?></td>
-      <td><?= $assignment->getAssignmentSubmission()->getSubmissionDate('d/m/Y H:i'); ?></td>
-      <td><?= $assignment->getAssignmentSubmission()->getGradePC(); ?></td>
-      <td><?= $assignment->getAssignment()->getWeighting(); ?></td>
+      <td class='ass-title'><?= $assignment->getAssignment()->getTitle(); ?></td>
+      <td class='ass-due'><?= $assignment->getAssignment()->getDueDate('d/m/Y H:i'); ?></td>
+      <td class='ass-sub'><?= $assignment->getAssignmentSubmission()->getSubmissionDate('d/m/Y H:i'); ?></td>
+      <td class='ass-grade'><?= $assignment->getAssignmentSubmission()->getGradePC(); ?></td>
+      <td class='ass-weight'><?= $assignment->getAssignment()->getWeighting(); ?></td>
     </tr>
-    <?php endforeach; ?>
   <?php endforeach; ?>
   </tbody>
 </table>
+<?php endforeach; ?>

@@ -48,7 +48,7 @@ class PersonalTutorDAO
       $tutorFeedback[] = new PersonalTutorFeedback();
       $tutorFeedback[$index]->setDate($Date);
       $tutorFeedback[$index]->setDetail($Detail);
-      $tutorFeedback[$index]->setTutor($lecturer[0]);
+      $tutorFeedback[$index]->setTutor($lecturer);
       $tutorFeedback[$index]->setStudent($student);
     }
 

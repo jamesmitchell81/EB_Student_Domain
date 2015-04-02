@@ -33,6 +33,7 @@ class AssignmentDAO
             $module = $moduleDAO->getModuleById($idModuleCode);
             $criteria = $this->getAssignmentCriteria($idAssignment);
 
+            $assignment->setId($idAssignment);
             $assignment->setTitle($Title);
             $assignment->setReleaseDate($ReleaseDate);
             $assignment->setDueDate($DueDate);

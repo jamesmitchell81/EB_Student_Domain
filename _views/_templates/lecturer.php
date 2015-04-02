@@ -1,4 +1,3 @@
-
 <?php if ( empty($this->data['lecturer-details']) ) : ?>
   <p>No lecturers have been set at the moment</p>
 <?php else : ?>

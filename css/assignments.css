@@ -1,27 +1,46 @@
 .assignment-summary {
   width: 100%;
-  margin: 1.2em 0 1em 0;
+  margin: 2em 0 5em 0;
   table-layout: fixed;
+  line-height: 1.5;
+}
+
+.assignment-summary th {
+  border-bottom: 2px solid #000;
+  line-height: 1.5;
+}
+
+.assignment-summary td {
+  border-bottom: 1px dotted #cacaca;
+  line-height: 2;
+}
+
+.ass-sum-module {
+
 }
 
 .ass-title {
-  /*width: 30%;*/
+
 }
 
 .ass-due {
-
+  line-height: 1.5;
+  text-align: center;
 }
 
 .ass-sub {
-
+  line-height: 1.5;
+  text-align: center;
 }
 
 .ass-grade {
-
+  line-height: 1.5;
+  text-align: center;
 }
 
 .ass-weight {
-
+  line-height: 1.5;
+  text-align: center;
 }
 
 .assignment-front-sheet {
@@ -80,3 +99,31 @@ td.ass-feedback-start {
 .ass-marking-title {
   border-bottom: 1px solid #000;
 }
+
+.assignment-details {
+  margin: 3em 0;
+  padding-bottom: 2em;
+  border-bottom: 1px solid #cacaca;
+}
+
+.ass-dates {
+  line-height: 1.5;
+}
+
+.ass-details-title {
+  color: #0C93F1;
+  text-decoration: none;
+  line-height: 2;
+}
+
+.ass-critrea {
+  margin: 1em 0;
+}
+
+.ass-description {
+  text-indent: 1em;
+  line-height: 1.5em;
+  margin-bottom: 1.25em;
+}
+
+

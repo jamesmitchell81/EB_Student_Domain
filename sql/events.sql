@@ -1,3 +1,4 @@
+
 use db_eco;
 
 INSERT INTO Events (Title, Description, StartDateTime, EndDateTime, Type)

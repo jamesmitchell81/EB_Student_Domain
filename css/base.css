@@ -3,7 +3,8 @@ html, body {
 }
 
 body {
-  font-family: "Fira Sans", sans-serif;
+  /*font-family: "Fira Sans", sans-serif;*/
+  font-family: sans-serif;
 }
 
 h3 {

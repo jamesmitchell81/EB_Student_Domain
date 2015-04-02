@@ -2,8 +2,6 @@
 
 include '_database/DatabaseQuery.php';
 
-use Database\DatabaseQuery;
-
 $dtStart = new DateTime();
 $dtEnd = new DateTime();
 

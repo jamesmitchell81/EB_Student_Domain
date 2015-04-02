@@ -17,7 +17,8 @@ class LecturerModel
   {
     $dao = new LecturerDAO();
     if ( !empty($this->args) ) {
-      return $dao->getLecturerById($this->args[':id:id']);
+      $lecturer[] = $dao->getLecturerById($this->args[':id:id']);
+      return $lecturer;
     } else {
       return $dao->getLecturerByStudent($this->username);
     }

@@ -1,13 +1,30 @@
 
-.att-summary, .att-history {
+.att-summary {
   text-align: center;
   table-layout: fixed;
   margin-bottom: 4em;
   line-height: 3;
 }
 
-td.add-date {
-  line-height: 1;
+.att-history {
+  text-align: center;
+  table-layout: fixed;
+  margin-bottom: 4em;
+  line-height: 2;
+}
+
+.att-history td {
+  border-top: 1px dotted #cacaca;
+}
+
+.att-history tr:hover {
+  background: #48E7B3;
+}
+
+.att-date {
+  border-right: 2px solid #000;
+  text-align: left;
+  font-size: 0.8em;
 }
 
 .att-summary {

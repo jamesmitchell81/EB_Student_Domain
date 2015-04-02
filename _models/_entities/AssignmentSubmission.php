@@ -9,12 +9,12 @@ class AssignmentSubmission
 
     public function getAssignmentID()
     {
-
+        return $this->assignmentID;
     }
 
     public function getStudentID()
     {
-
+        return $this->studentID;
     }
 
     public function setStudentID($id)
