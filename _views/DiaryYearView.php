@@ -13,8 +13,13 @@ class DiaryYearView implements View
   public function getData()
   {
     $this->data["action"] = "View";
-    $this->data["entity"] = $this->model->getYear();
-    $this->data["start"] = $this->model->getStartDate();
+    $this->data["entity"] = "Diary Year";
+    $this->data['this year'] = $this->model->getYear(0);
+    $this->data['last year'] = [ "href" => $this->model->getDiaryPath(-1), "date" => $this->model->getYear(-1)->format('Y')];
+    $this->data['next year'] = ["href" => $this->model->getDiaryPath(1), "date" => $this->model->getYear(1)->format('Y')];
+    $this->data['days'] = $this->model->getDaysOfTheWeek();
+    $this->data['months'] = $this->model->getMonths();
+    $this->data['calender'] = $this->model->getCalenderYear();
   }
 
   public function display()
@@ -24,9 +29,10 @@ class DiaryYearView implements View
     include "_templates/logo-column.php";
     include "_templates/header-nav.php";
     include "_templates/content-header.php";
+    include "_templates/diary-year-controls.php";
     include "_templates/diary-year.php";
     include "_templates/content-end.php";
-    include "_templates/footer.php";
+    // include "_templates/footer.php";
     include "_templates/page-end.php";
     ob_end_flush();
   }
