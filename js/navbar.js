@@ -11,7 +11,8 @@
     win.clearTimeout(delay);
     // nav_two.style.top = to + "px";
     delay = win.setTimeout(function() {
-      nav_two.style.top = "64px";
+      // nav_two.style.top = "64px";
+      nav_two.style.top = "90px";
     }, 300)
   }, false);
 
@@ -28,7 +29,7 @@
     // var srcBottom = src.getBoundingClientRect().top;
     win.clearTimeout(timeout);
 
-    nav_two.style.top = "64px";
+    nav_two.style.top = "90px";
   }, false);
 
   nav_two.addEventListener("mouseout", function(e) {

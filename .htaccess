@@ -1,6 +1,7 @@
 # http://www.mydigitallife.info/add-trailing-slash-to-the-end-of-the-url-with-htaccess-rewrite-rules/
 
 RewriteEngine On
+# RewriteRule \.(css|js)$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond $1#%{REQUEST_URI} ([^#]*)#(.*)\1$

@@ -1,3 +1,10 @@
+<div class='logo-header'>
+  <h3 class='logo-header-title'>
+    Woodland University College
+  </h3>
+  <a class='logo-header-sign-out' href='/~jm/group_project/'>Sign out</a>
+</div>
+
 <div class="col-2">
 <header>
   <nav id='nav-core-1'>

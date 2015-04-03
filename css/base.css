@@ -27,6 +27,53 @@ h3 {
   width: 80%;
 }
 
+.btn {
+  width: 70px;
+  display: inline-block;
+  /*margin: 0 0 0 1em;*/
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  border: 2px solid;
+  transition: background 0.5s, color 0.5s;
+}
+
+.btn-green {
+  border-color: #00cc89;
+  color: #00cc89;
+}
+
+.btn-green:hover {
+  color: #fff;
+  background: #00cc89;
+}
+
+.btn-white {
+  color: #fff;
+  background: #00cc89;
+}
+
+.btn-white:hover {
+  border-color: #00cc89;
+  color: #00cc89;
+}
+
+.btn-blue {
+  border-color: #3E97EB;
+  color: #3E97EB;
+}
+
+.btn-blue:hover {
+  color: #fff;
+  background: #3E97EB;
+}
+
+
 /* layout */
 .col-1 {
   width: 100%;
@@ -38,18 +85,45 @@ h3 {
 }
 
 .logo-header {
-  text-align: center;
+  padding: 0.5em 0 0.5em 1em;
   width: 100%;
-  background: url(img/header.jpg) no-repeat center center fixed;
+  color: #fff;
+  /*background: url('../img/header.png'); /*no-repeat center center fixed;*/
+  background: #00cc89;
+  /*background: #3E97EB;*/
+  position: relative;
 }
 
-/*.col-2 {
-  width: 90%;
-  margin-left: 10%;
-  min-height: 100%;
-  padding-bottom: 4em;
+.logo-header-title,
+.logo-header-sign-out {
+  color: #fff;
+  text-transform: uppercase;
 }
-*/
+
+.logo-header-title {
+  letter-spacing: 1px;
+  text-align: left;
+  font-size: 1em;
+  margin: auto;
+  display: inline-block;
+  padding: 0;
+  font-weight: 400;
+  max-width: 55em;
+  min-width: 320px;
+}
+
+.logo-header-sign-out {
+  font-size: 0.9em;
+  font-weight: 200;
+  min-width: 70px;
+  text-decoration: none;
+  /*float: right;*/
+  position: absolute;
+  top: 15%;
+  right: 0;
+  padding: 0.25em 1em;
+}
+
 /* new */
 .col-2 {
   width: 100%;
@@ -116,32 +190,6 @@ footer ul li {
   float: left;
 }
 
-.diary-controls {
-  margin-bottom: 4em;
-}
-
-.diary-current {
-  padding-top: 0.75em;
-  font-size: 1.5em;
-}
-
-.diary-next, .diary-last, .diary-add {
-  max-width: 10em;
-  margin: 5px;
-  display: block;
-  color: #0C93F1;
-  text-decoration: none;
-  border-radius: 3px;
-  box-shadow: 1px 1px 3px #555;
-}
-
-.diary-last {
-  text-align: left;
-}
-
-.diary-next {
-  text-align: right;
-}
 
 .nav-core-1-item {
   color: #000;
@@ -163,7 +211,7 @@ footer ul li {
   float: right;
   clear: both;
   /*right: -1400px;*/
-  top: -500px;
+  top: -550px;
   position: absolute;
   transition: top 0.1s;
   z-index: 1;

@@ -21,12 +21,12 @@
             if ( !empty($date['events']->getEvents() ) ) {
               $count = $date['events']->getEventsCount(date('Y-m-d', strtotime($date['date'])));
               echo "<a class='heat-$count diary-month-cal-cell-link' href='{$date['href']}'>";
-              echo date('jS', strtotime($date['date']));
+              echo date('j', strtotime($date['date'])) . "<span class='dt-suffix'>" . date('S', strtotime($date['date'])) . "</span>";
               echo "<span class='diary-count'>$count</span>";
               echo "</a>";
             } else {
               echo "<a class='heat-0 diary-month-cal-cell-link' href='{$date['href']}'>";
-              echo date('jS', strtotime($date['date']));
+              echo date('j', strtotime($date['date'])) . "<span class='dt-suffix'>" . date('S', strtotime($date['date'])) . "</span>";
               echo "</a>";
             }
 

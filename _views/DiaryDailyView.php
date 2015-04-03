@@ -15,7 +15,8 @@ class DiaryDailyView implements View
   public function getData()
   {
     $this->data['action'] = "View";
-    $this->data['entity'] = "Diary";
+    $this->data['entity'] = "Diary <span class='diary-current'>{$this->model->getDate()->format('l jS F Y')}</span>";
+    $this->data['title'] = $this->model->getDate()->format('l jS F Y');
     $this->data['today'] = $this->model->getDate();
     $this->data['hours'] = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"];
     $this->data['diary'] = $this->model->getDiaryEvents();
@@ -32,7 +33,6 @@ class DiaryDailyView implements View
     include "_templates/logo-column.php";
     include "_templates/header-nav.php";
     include "_templates/content-header.php";
-    include "_templates/diary-date.php";
     include "_templates/diary-controls.php";
     include "_templates/diary-types.php";
     include "_templates/diary-day.php";

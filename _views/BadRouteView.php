@@ -28,7 +28,6 @@ class BadRouteView implements View
 
   public function display()
   {
-   ob_start();
     include "_templates/head.php";
     include "_templates/logo-column.php";
     include "_templates/header-nav.php";
@@ -37,7 +36,6 @@ class BadRouteView implements View
     include "_templates/content-end.php";
     include "_templates/footer.php";
     include "_templates/page-end.php";
-    ob_end_flush();
   }
 
 }

@@ -1,6 +1,8 @@
 
 use db_eco;
 
+SELECT * FROM NotificationReceivers;
+
 INSERT INTO Events (Title, Description, StartDateTime, EndDateTime, Type)
 VALUES 
 ("Personal tutor meeting", "Meeting to discuss current progress", '2015-02-02 10:00:00', '2015-02-02 11:00:00', "Tutorials");
