@@ -42,7 +42,7 @@ class DiaryAddModel
     $event->setDateTime($startDateTime, $endDateTime);
 
     $dao->createNewEvent($event, $this->username);
-    $back = "diary/" . date('Y/m/d', $data['start-date']);
+    $back = "diary/" . date('Y/m/d', $startDateTime);
     Redirect::to($back);
   }
 

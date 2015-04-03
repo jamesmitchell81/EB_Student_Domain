@@ -1,4 +1,4 @@
-  <?php foreach($this->data['modules'] as $module) : ?>
+<?php foreach($this->data['modules'] as $module) : ?>
 
 <div class='module'>
   <h3 class='module-header'>

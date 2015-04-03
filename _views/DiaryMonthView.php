@@ -34,7 +34,7 @@ class DiaryMonthView implements View
     include "_templates/diary-month-tabs.php";
     include "_templates/diary-month.php";
     include "_templates/content-end.php";
-    // include "_templates/footer.php";
+    include "_templates/footer.php";
     include "_templates/page-end.php";
     ob_end_flush();
   }

@@ -30,7 +30,7 @@ class ModuleModel
       $modules = $moduleData->getUserModules($this->username);
     } else {
       $code = array_shift($this->args);
-      $modules = $moduleData->getModuleById($code);
+      $modules[] = $moduleData->getModuleById($code);
     }
 
     foreach ($modules as $module) {

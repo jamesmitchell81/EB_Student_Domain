@@ -86,7 +86,7 @@ class EventDAO
 
     $id = $this->db->getLastID();
 
-    var_dump($id);
+    // var_dump($id);
     $this->db = new DatabaseQuery();
     $this->db->setInt('eventid', $id);
     $this->db->setInt('username', $username);

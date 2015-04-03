@@ -83,3 +83,13 @@ AND idStudent = 20150001;
 SELECT Title, Details, Weighting
 FROM AssignmentCritrea
 WHERE idAssignment = 1;
+
+SELECT * FROM Lecturer;
+
+SELECT l.idLecturer, s.Title,
+                       s.FirstName, s.Surname, s.Mobile, s.Email
+                       FROM Lecturer l
+                       INNER JOIN Staff s ON s.idStaff = l.idStaff
+                       WHERE l.idLecturer = 990001 AND s.Status = "Active";
+
+SELECT * FROM AssignmentSubmission;
