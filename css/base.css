@@ -30,7 +30,6 @@ h3 {
 .btn {
   width: 70px;
   display: inline-block;
-  /*margin: 0 0 0 1em;*/
   padding: 5px 10px;
   font-weight: bold;
   font-size: 0.8em;
@@ -73,7 +72,6 @@ h3 {
   background: #3E97EB;
 }
 
-
 /* layout */
 .col-1 {
   width: 100%;
@@ -88,10 +86,9 @@ h3 {
   padding: 0.5em 0 0.5em 1em;
   width: 100%;
   color: #fff;
-  /*background: url('../img/header.png'); /*no-repeat center center fixed;*/
   background: #00cc89;
-  /*background: #3E97EB;*/
   position: relative;
+  transition: background 0.5s;
 }
 
 .logo-header-title,
@@ -201,6 +198,8 @@ footer ul li {
 }
 
 .nav-core-1-item a {
+  display: block;
+  width: 100%;
   color: #000;
   text-decoration: none;
 }

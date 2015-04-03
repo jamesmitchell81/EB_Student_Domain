@@ -1,4 +1,4 @@
-<div class='logo-header'>
+<div id='logo-header' class='logo-header'>
   <h3 class='logo-header-title'>
     Woodland University College
   </h3>
@@ -10,14 +10,14 @@
   <nav id='nav-core-1'>
     <ul>
       <li class='nav-core-1-item g1'>
-        <a href='<?= BASE_PATH . Input::session('username') . "/notifications"; ?>'>Notifications</a>
+        <a class='g1' href='<?= BASE_PATH . Input::session('username') . "/notifications"; ?>'>Notifications</a>
       </li>
       <li class='nav-core-1-item g2'>Course</li>
       <li class='nav-core-1-item g3'>
-        <a href='<?= Navigation::defaultDiary(); ?>'>Diary</a>
+        <a class='g3' href='<?= Navigation::defaultDiary(); ?>'>Diary</a>
       </li>
       <li class='nav-core-1-item g4'>
-        <a href="<?= Navigation::personalDetails(); ?>">Me</a>
+        <a class='g4' href="<?= Navigation::personalDetails(); ?>">Me</a>
       </li>
     </ul>
   </nav>

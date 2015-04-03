@@ -2,18 +2,22 @@
 
   var nav_one = doc.getElementById("nav-core-1");
   var nav_two = doc.getElementById("nav-core-2");
+  var header = doc.getElementById("logo-header");
   var timeout, delay;
 
   nav_one.addEventListener("mouseover", function(e) {
     var src = e.target || e.srcElement;
+    var clr = window.getComputedStyle(src, null).getPropertyValue("background-color");
+
+    header.style.backgroundColor = clr;
 
     win.clearTimeout(timeout);
     win.clearTimeout(delay);
-    // nav_two.style.top = to + "px";
+
     delay = win.setTimeout(function() {
-      // nav_two.style.top = "64px";
       nav_two.style.top = "90px";
     }, 300)
+
   }, false);
 
   nav_one.addEventListener("mouseout", function(e) {
