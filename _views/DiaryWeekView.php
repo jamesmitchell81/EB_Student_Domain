@@ -23,6 +23,8 @@ class DiaryWeekView implements View
     // $this->data['tomorrow'] = ["href" => $this->model->getDiaryPath(1), "date" => $this->model->getDate(1)->format('Y-m-d')];
     // $this->data['add-link'] = $this->model->getDiaryAddPath();
     // $this->data['types'] = $this->model->getDiaryTypes();
+
+    $this->data['scripts'] = [];
   }
 
   public function display()

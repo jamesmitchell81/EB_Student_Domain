@@ -27,10 +27,6 @@ class Controller
     $model = new $this->route->model($this->router->getArguments(), $this->router->getAction());
     $view = new $this->route->view($model);
     $controller = new $this->route->controller($model, $view);
-    // $view->display();
-
-    // var_dump($this->route);
-    // var_dump(explode('/', $data));
   }
 
 }

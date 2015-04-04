@@ -15,6 +15,8 @@ class StudentDetailsView implements View
     $this->data['action'] = "View";
     $this->data['entity'] = "Personal Details";
     $this->data['details'] = $this->model->getStudentDetails();
+
+    $this->data['scripts'] = [];
   }
 
   public function display()

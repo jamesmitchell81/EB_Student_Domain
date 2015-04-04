@@ -17,6 +17,13 @@ class DiaryEditController
     }
 
     $this->view->getData();
-    $this->view->display();
+
+    if ( $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest' )
+    {
+      $this->view->getCoreContentArea();
+    } else {
+      $this->view->display();
+    }
+
   }
 }

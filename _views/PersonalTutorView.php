@@ -16,6 +16,8 @@ class PersonalTutorView implements View
     $this->data['entity'] = "Personal Tutor Feedback";
     $this->data['lecturer-details'] = $this->model->getPersonalTutorDetails();
     $this->data['feedback'] = $this->model->getPersonalTutorFeedback();
+
+    $this->data['scripts'] = [];
   }
 
   public function display()

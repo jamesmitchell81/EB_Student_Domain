@@ -16,6 +16,8 @@ class NotificationsView implements View
     $this->data['entity'] = "Notifications";
     $this->data['title'] = "Notifications";
     $this->data['notifications'] = $this->model->getNotifications();
+
+    $this->data['scripts'] = [];
   }
 
   public function display()

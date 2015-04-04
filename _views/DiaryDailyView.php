@@ -24,6 +24,8 @@ class DiaryDailyView implements View
     $this->data['next'] = ["href" => $this->model->getDiaryPath(1), "date" => $this->model->getDate(1)->format('Y-m-d')];
     $this->data['add-link'] = $this->model->getDiaryAddPath();
     $this->data['types'] = $this->model->getDiaryTypes();
+
+    $this->data['scripts'][] = BASE_PATH . "js/diary-add.js";
   }
 
   public function display()

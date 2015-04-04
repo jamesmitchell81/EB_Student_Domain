@@ -20,6 +20,8 @@ class AttendanceView implements View
     // $this->data['weeks'] = $this->model->getAttendanceWeeks();
     $this->data['days'] = $this->model->getSessionDays();
     $this->data['history'] = $this->model->getAttendanceHistory();
+
+    $this->data['scripts'] = [];
   }
 
   public function display()

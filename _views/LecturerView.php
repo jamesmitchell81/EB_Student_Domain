@@ -14,6 +14,8 @@ class LecturerView implements View
     $this->data['action'] = "View";
     $this->data['entity'] = "Lecturers";
     $this->data['lecturer-details'] = $this->model->getLecturerDetails();
+
+    $this->data['scripts'] = [];
   }
 
   public function display()

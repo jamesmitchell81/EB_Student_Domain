@@ -16,6 +16,8 @@ class AssignmentFrontSheetView implements View
     $this->data['entity'] = "Assignments";
     $this->data['student'] = $this->model->getStudentDetails();
     $this->data['assignments'] = $this->model->getAssignments();
+
+    $this->data['scripts'] = [];
   }
 
   public function display()

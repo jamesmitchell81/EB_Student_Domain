@@ -20,6 +20,8 @@ class DiaryYearView implements View
     $this->data['days'] = $this->model->getDaysOfTheWeek();
     $this->data['months'] = $this->model->getMonths();
     $this->data['calender'] = $this->model->getCalenderYear();
+
+    $this->data['scripts'] = [];
   }
 
   public function display()

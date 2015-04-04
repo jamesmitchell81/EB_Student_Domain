@@ -21,6 +21,8 @@ class TimetableView implements View
     $this->data['last'] = [ "href" => $this->model->getPath(-1), "date" => $this->model->getWeek(-1)->format('Y-m-d')];
     $this->data['timespaces'] = $this->model->getTimespaces();
     $this->data['timetable'] = $this->model->getTimetable();
+
+    $this->data['scripts'] = [];
   }
 
   public function display()

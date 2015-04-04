@@ -16,20 +16,26 @@ class DiaryEditView implements View
     $this->data['entity'] = "Diary";
     $this->data['action-event'] = "insert"; //$this->model->getActionEvent();
     $this->data['event'] = $this->model->getEvent();
-    // date
+
+    $this->data['scripts'] = [];
   }
 
-  public function display($viewPath = '')
+  public function getCoreContentArea()
   {
-    ob_start();
+    include "_templates/diary-edit.php"; // just this is ajax.
+  }
+
+  public function display()
+  {
     include "_templates/head.php";
     include "_templates/logo-column.php";
     include "_templates/header-nav.php";
     include "_templates/content-header.php";
-    include "_templates/diary-edit.php";
+
+    $this->getCoreContentArea();
+
     include "_templates/content-end.php";
     include "_templates/footer.php";
     include "_templates/page-end.php";
-    ob_end_flush();
   }
 }

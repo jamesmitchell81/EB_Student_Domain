@@ -19,6 +19,8 @@ class DiaryMonthView implements View
     $this->data['month'] = $this->model->getMonth();
     $this->data['calender'] = $this->model->getCalender();
     $this->data['days'] = $this->model->getDaysOfTheWeek();
+
+    $this->data['scripts'] = [];
   }
 
   public function display()

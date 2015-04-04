@@ -16,6 +16,8 @@ class AssignmentsView implements View
     $this->data['entity'] = "Assignments";
     $this->data['summary'] = $this->model->getAssignmentSummary();
     $this->data['assignments'] = $this->model->getAssignments();
+
+    $this->data['scripts'] = [];
   }
 
   public function display()

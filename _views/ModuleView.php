@@ -15,6 +15,8 @@ class ModuleView implements View
     $this->data['action'] = "View";
     $this->data['entity'] = "Modules";
     $this->data['modules'] = $this->model->getModules();
+
+    $this->data['scripts'] = [];
   }
 
   public function display()
