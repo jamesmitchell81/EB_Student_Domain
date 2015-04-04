@@ -7,11 +7,24 @@ include './_dao/EventDAO.php';
 class DiaryEditModel
 {
   private $arguments = [];
+  private $year;
+  private $month;
+  private $day;
+  private $hours;
+  private $minutes;
+  private $seconds = 0;
   private $action;
 
   public function __construct($args = [], $action = '')
   {
-    $this->arguments = $args;
+    var_dump($args);
+
+    $this->year = isset($args[':yyyy']) ? $args[':yyyy'] : date('Y');
+    $this->month = isset($args[':mm']) ? $args[':mm']   : date('m');
+    $this->day  = isset($args[':dd']) ? $args[':dd']   : date('d');
+    $this->hours = isset($args[':time']) ? split(':', $args[':time'])[0] : date('H');
+    $this->minutes = isset($args[':time']) ? split(':', $args[':time'])[1] : date('i');
+
     $this->action = $action;
   }
 
@@ -24,7 +37,8 @@ class DiaryEditModel
   {
     $event = new Event();
     $date = new DateTime();
-    $date->setDate($this->arguments[':yyyy'], $this->arguments[':mm'], $this->arguments[':dd']);
+    $date->setDate($this->year, $this->month, $this->day);
+    $date->setTime($this->hours, $this->minutes, 0);
 
     $event->setStartDateTime(strtotime($date->format('d/m/Y H:i')));
     $date->add(new DateInterval('PT1H'));

@@ -12,6 +12,7 @@ class SignInView implements View
 
   public function getData()
   {
+    $this->data['title'] = "Sign in";
     $this->data['scripts'] = [];
   }
 

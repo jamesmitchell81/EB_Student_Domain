@@ -12,6 +12,21 @@ h3 {
   margin: 1em 0 2em 0;
 }
 
+#new-content-container {
+  transition: left 0.25s;
+  width: 100%;
+  position: absolute;
+  top: 25%;
+}
+
+.content-container-hidden {
+  left: -500px;
+}
+
+.show {
+  left: 0px;
+}
+
 #content-header {
   margin-top: 1em;
   margin-bottom: 1em;

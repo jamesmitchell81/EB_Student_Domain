@@ -17,15 +17,10 @@ class EventDAO
     $data = $this->db->first();
 
     $event = new Event();
+    $event->setId($data['idEvents']);
     $event->setTitle($data['Title']);
     $event->setDescription($data['Description']);
     $event->setDateTime($data['StartDateTime'], $data['EndDateTime']);
-
-    // get attendees...staff
-    // 'SELECT idStaff FROM StaffDiary WHERE idEvents = {:id}'
-
-    // get attendees...student
-    // 'SELECT idStudent FROM StudentDiary WHERE idEvents = {:id}'
 
     return $event;
   }
@@ -36,7 +31,7 @@ class EventDAO
     $this->db->setInt('username', $username);
     $this->db->setStr('date', $date);
 
-    $this->db->select('SELECT e.Title, e.Description, e.StartDateTime, e.EndDateTime, e.Type
+    $this->db->select('SELECT e.idEvents, e.Title, e.Description, e.StartDateTime, e.EndDateTime, e.Type
                        FROM Events e
                        INNER JOIN StudentDiary s ON s.idEvents = e.idEvents
                        WHERE s.idStudent = :username AND date(e.StartDateTime) = :date');
@@ -50,6 +45,7 @@ class EventDAO
       extract($event);
 
       $events[$index] = new Event();
+      $events[$index]->setId($idEvents);
       $events[$index]->setDiaryName($Type);
       $events[$index]->setTitle($Title);
       $events[$index]->setDescription($Description);

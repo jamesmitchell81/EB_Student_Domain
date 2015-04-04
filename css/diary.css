@@ -11,7 +11,6 @@
 
 .dt-suffix {
   font-size: 0.7em;
-  /*border: 1px solid;*/
   vertical-align: top;
 }
 
@@ -52,10 +51,10 @@
   float: right;
 }
 
-.diary-day a {
+/*.diary-day a {
   padding: 1em 0;
   width: 100%;
-}
+}*/
 
 .diary-day:first-child {
   margin-top: 1em;
@@ -72,6 +71,9 @@
   max-height: 6em;
   display: block;
   border-top: 1px solid #cacaca;
+  position: relative;
+  text-decoration: none;
+  color: #000;
 }
 
 .diary-time {
@@ -79,7 +81,6 @@
   bottom: 0;
   min-height: 6em;
   max-height: 6em;
-  /*border: 1px solid #000;*/
   position: relative;
   padding: 10px 10px 10px 0;
   display: inline-block;
@@ -87,20 +88,19 @@
 }
 
 .diary-event {
+  color: #000;
+  text-decoration: none;
   font-size: 0.85em;
-  padding: 0;
   background: #48E7B3;
+  display: inline;
   padding: 0.25em;
   margin: 0.25em;
   box-shadow: 2px 2px 2px #cacaca;
   border-radius: 4px;
-  /*width: 50px;*/
-  /*display: inline-block;*/
 }
 
 .diary-event span {
   padding: 0;
-  /*display: block;*/
 }
 
 .diary-item {
@@ -116,9 +116,10 @@
 }
 
 .diary-edit-wrap {
-  width: 50%;
+  background: #fff;
+  max-width: 320px;
   min-width: 320px;
-  margin: 1%;
+  margin: 1% auto;
   box-shadow: 2px 2px 7px #afafaf;
   border-radius: 0.25em;
 }

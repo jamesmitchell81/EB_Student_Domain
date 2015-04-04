@@ -25,6 +25,7 @@ class Wildcards
     static::$wildcards[':lecturerid'] = '(\d{6})';
     static::$wildcards[':period'] = '(\d{4}-\d{4})';
     static::$wildcards[':week'] = '(week\d{1,2})';
+    static::$wildcards[':time'] = '(\d{2}:\d{2})';
   }
 
   public static function getWildcards()
