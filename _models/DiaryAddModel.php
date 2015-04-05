@@ -31,8 +31,8 @@ class DiaryAddModel
     $dao = new EventDAO();
     $event = new Event();
 
-    $event->setTitle($data['title']);
-    $event->setDescription($data['details']);
+    $event->setTitle(trim($data['title']));
+    $event->setDescription(trim($data['details']));
 
     $startDateTime = "{$data['start-date']} {$data['start-time']}";
     $endDateTime = "{$data['finish-date']} {$data['finish-time']}";

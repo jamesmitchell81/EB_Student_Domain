@@ -34,6 +34,7 @@
       exit = container.querySelectorAll('.diary-edit-exit')[0];
       exit.addEventListener('click', function(e) {
         var src = e.target || e.srcElement;
+        e.preventDefault();
         container.className = "content-container-hidden";
         timeout = setTimeout(function() {
           body.removeChild(container);
