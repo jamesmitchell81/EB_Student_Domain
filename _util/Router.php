@@ -12,6 +12,7 @@ class Router
   private $data;
   private $arguments = [];
   private $action;
+  private $routeMatch;
 
   public function __construct($data = '')
   {
@@ -50,12 +51,15 @@ class Router
     for ($i = 0; $i < count($routekeys); $i++ ) {
       $domain = $routekeys[$i];
 
+      // var_dump($domain);
+
       if ( preg_match("/^($domain)$/", $this->routePath))
       {
-        $route = $routevalues[$i];
-        return Routes::getRoute($route);
+        $this->routeMatch = $routevalues[$i];
+        return Routes::getRoute($this->routeMatch);
       }
     }
+    // where no route found 404.
     return Routes::getRoute('404');
   }
 
@@ -76,20 +80,34 @@ class Router
   private function setArguments()
   {
     $args = $this->data;
+    $match = explode("/", $this->routeMatch);
 
+    // remove the domain part.
     foreach ($this->domains as $value) {
       $index = array_search($value, $args);
       unset($args[$index]);
+
+      $index = array_search($value, $match);
+      unset($match[$index]);
     }
 
+    // remove the action part.
     $this->action = preg_grep("/^{$this->wildcards[':action']}$/", $args);
+    $matchAction = preg_grep("/^{$this->wildcards[':action']}$/", $match);
     if ( !empty($this->action) )
     {
       $this->action = array_shift($this->action);
       $index = array_search($this->action, $args);
       unset($args[$index]);
+
+      $matchAction = array_shift($matchAction);
+      $index = array_search($matchAction, $match);
+      unset($match[$index]);
     }
 
+    var_dump($match);
+
+    // get the arguments.
     foreach ($args as $arg) {
       $key = $this->getArgWildcard($arg);
       $this->arguments[$key] = $arg;
