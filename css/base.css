@@ -15,7 +15,7 @@ h3 {
 #new-content-container {
   transition: left 0.25s;
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 25%;
 }
 
@@ -100,7 +100,8 @@ h3 {
 .logo-header {
   padding: 0.5em 0 0.5em 1em;
   width: 100%;
-  color: #fff;
+  /*color: #fff;*/
+  color: #000;
   background: #00cc89;
   position: relative;
   transition: background 0.5s;
@@ -109,6 +110,7 @@ h3 {
 .logo-header-title,
 .logo-header-sign-out {
   color: #fff;
+  color: #000;
   text-transform: uppercase;
 }
 

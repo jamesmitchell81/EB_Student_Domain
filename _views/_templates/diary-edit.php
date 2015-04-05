@@ -1,9 +1,8 @@
 <?php $event = $this->data['event']; ?>
 
 <div class="diary-edit-wrap">
-  <form action='<?= "http://localhost/~jm/group_project/20150001/diary/add"; ?>' method='post'>
-    <!-- <span class="diary-edit-title">Edit</span> -->
-    <span class="diary-edit-exit">&times;</span>
+  <form action='<?= "http://localhost/~jm/group_project/20150001/diary/{$this->data['action']}"; ?>' method='post'>
+    <a href='<?= "http://localhost/~jm/group_project/20150001/diary/{$event->getDate('Y/m/d')}"; ?>' class="diary-edit-exit">&times;</a>
     <span class="diary-input-wrap">
       <span class="diary-field-wrap">
         <label for="title" class="diary-label">Title:</label>
@@ -30,8 +29,8 @@
         </span>
       </span>
     <!-- <input type="submit"> -->
-      <button class="action-btn diary-edit-confirm">Confirm</button>
-      <button class="action-btn diary-edit-delete">Delete</button>
+      <button name='action' class="action-btn diary-edit-confirm" type='submit' value='confirm'>Confirm</button>
+      <button name='action' class="action-btn diary-edit-delete" type='submit' value='delete'>Delete</button>
     </span>
   </form>
 </div>

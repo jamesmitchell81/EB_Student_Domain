@@ -6,7 +6,7 @@ include './_dao/EventDAO.php';
 
 class DiaryEditModel
 {
-  private $arguments = [];
+  private $args = [];
   private $year;
   private $month;
   private $day;
@@ -17,13 +17,13 @@ class DiaryEditModel
 
   public function __construct($args = [], $action = '')
   {
-    var_dump($args);
+    $this->args = $args;
 
-    $this->year = isset($args[':yyyy']) ? $args[':yyyy'] : date('Y');
-    $this->month = isset($args[':mm']) ? $args[':mm']   : date('m');
-    $this->day  = isset($args[':dd']) ? $args[':dd']   : date('d');
-    $this->hours = isset($args[':time']) ? split(':', $args[':time'])[0] : date('H');
-    $this->minutes = isset($args[':time']) ? split(':', $args[':time'])[1] : date('i');
+    $this->year = isset($this->args[':yyyy']) ? $this->args[':yyyy'] : date('Y');
+    $this->month = isset($this->args[':mm']) ? $this->args[':mm']   : date('m');
+    $this->day  = isset($this->args[':dd']) ? $this->args[':dd']   : date('d');
+    $this->hours = isset($this->args[':time']) ? split(':', $this->args[':time'])[0] : date('H');
+    $this->minutes = isset($this->args[':time']) ? split(':', $this->args[':time'])[1] : date('i');
 
     $this->action = $action;
   }
@@ -36,13 +36,20 @@ class DiaryEditModel
   public function getEvent()
   {
     $event = new Event();
+
+    if ( isset($this->args[':id']) )
+    {
+      $dao = new EventDAO();
+      $id = $this->args[':id'];
+      return $dao->getEventById($id);
+    }
+
     $date = new DateTime();
     $date->setDate($this->year, $this->month, $this->day);
     $date->setTime($this->hours, $this->minutes, 0);
-
-    $event->setStartDateTime(strtotime($date->format('d/m/Y H:i')));
+    $event->setStartDateTime($date->format('d/m/Y H:i'));
     $date->add(new DateInterval('PT1H'));
-    $event->setEndDateTime(strtotime($date->format('d/m/Y H:i')));
+    $event->setEndDateTime($date->format('d/m/Y H:i'));
 
     return $event;
   }

@@ -48,7 +48,7 @@ class DiaryAddModel
 
   public function edit()
   {
-
+    var_dump(Input::post());
   }
 
   public function delete()

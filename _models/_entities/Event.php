@@ -45,7 +45,7 @@ class Event
     {
         if ( $format == '' )
         {
-            return date('H:i:s', strtotime($this->startDateTime)); // default
+            return date('H:i:s', $this->startDateTime); // default
         }
         return ($this->startDateTime) ? date($format, $this->startDateTime) : "";
     }
@@ -54,7 +54,7 @@ class Event
     {
         if ( $format == '' )
         {
-            return date('H:i:s', strtotime($this->endDateTime)); // default
+            return date('H:i:s', $this->endDateTime); // default
         }
         return ($this->endDateTime) ? date($format, $this->endDateTime) : "";
     }
@@ -62,13 +62,13 @@ class Event
 
     public function setDateTime($startDateTime, $endDateTime)
     {
-        $this->startDateTime = $startDateTime;
-        $this->endDateTime = $endDateTime;
+        $this->setStartDateTime($startDateTime);
+        $this->setEndDateTime($endDateTime);
     }
 
     public function setEndDateTime($endDateTime)
     {
-        $this->endDateTime = $endDateTime;
+        $this->endDateTime = strtotime($endDateTime);
     }
 
     public function getEndDateTime()
@@ -78,7 +78,7 @@ class Event
 
     public function setStartDateTime($startDateTime)
     {
-        $this->startDateTime = $startDateTime;
+        $this->startDateTime = strtotime($startDateTime);
     }
 
     public function getStartDateTime()

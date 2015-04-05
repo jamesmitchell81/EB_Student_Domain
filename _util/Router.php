@@ -105,12 +105,25 @@ class Router
       unset($match[$index]);
     }
 
-    var_dump($match);
-
     // get the arguments.
     foreach ($args as $arg) {
-      $key = $this->getArgWildcard($arg);
+      $key = $this->matchWildcard($match, $arg);
+      // $key = $this->getArgWildcard($arg);
       $this->arguments[$key] = $arg;
+    }
+  }
+
+  // more exact method of matching wildcards.
+  private function matchWildcard(&$domainMatchedWildcards, $arg)
+  {
+    foreach ($domainMatchedWildcards as $key) {
+      $pattern = $this->wildcards[$key];
+      if ( preg_match("/^$pattern$/", $arg) )
+      {
+        $index = array_search($key, $domainMatchedWildcards);
+        unset($domainMatchedWildcards[$index]);
+        return $key;
+      }
     }
   }
 

@@ -12,8 +12,8 @@ class EventDAO
   public function getEventByID($id)
   {
     $this->db = new DatabaseQuery();
-    $this->db->set('id', $id, PDO::PARAM_INT);
-    $this->db->select("SELECT * FROM Events WHERE idEvents = {:id}");
+    $this->db->setInt('id', $id);
+    $this->db->select("SELECT * FROM Events WHERE idEvents = :id");
     $data = $this->db->first();
 
     $event = new Event();
@@ -49,8 +49,8 @@ class EventDAO
       $events[$index]->setDiaryName($Type);
       $events[$index]->setTitle($Title);
       $events[$index]->setDescription($Description);
-      $events[$index]->setStartDateTime(strtotime($StartDateTime));
-      $events[$index]->setEndDateTime(strtotime($EndDateTime));
+      $events[$index]->setStartDateTime($StartDateTime);
+      $events[$index]->setEndDateTime($EndDateTime);
 
     }
     return $events;

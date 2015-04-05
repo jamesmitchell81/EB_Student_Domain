@@ -3,19 +3,25 @@
   var diaryAdd = doc.getElementById("diary-add-event");
   var diaryHourAdd = doc.querySelectorAll(".diary-hour");
 
-  // for ( var i = 0; i < diaryHourAdd.length; i++ ) {
-  //   diaryHourAdd[i].addEventListener('click', , false);
-  // }
+  for ( var i = 0; i < diaryHourAdd.length; i++ ) {
+    diaryHourAdd[i].addEventListener('click', function(e) {
+      var src = e.target || e.srcElement;
+      var href = src.getAttribute('data-url');
+      displayDiaryEdit(src, href);
+    }, false);
+  }
 
-  // diaryAdd.addEventListener("click", displayDiaryEdit, false);
-
-  function displayDiaryEdit(e)
-  {
+  diaryAdd.addEventListener("click", function(e) {
     var src = e.target || e.srcElement;
     var href = src.getAttribute('href');
-    var body = doc.getElementsByTagName('body')[0];
-
     e.preventDefault();
+    displayDiaryEdit(src, href);
+  }, false);
+
+  function displayDiaryEdit(src, href)
+  {
+    console.log(src);
+    var body = doc.getElementsByTagName('body')[0];
 
     ajax.get(href, function(text) {
       var container = doc.createElement('div');

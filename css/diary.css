@@ -51,11 +51,6 @@
   float: right;
 }
 
-/*.diary-day a {
-  padding: 1em 0;
-  width: 100%;
-}*/
-
 .diary-day:first-child {
   margin-top: 1em;
 }
@@ -74,6 +69,12 @@
   position: relative;
   text-decoration: none;
   color: #000;
+  cursor: pointer;
+  transition: background 0.5s;
+}
+
+.diary-hour:hover {
+  background: #D3FEF0;
 }
 
 .diary-time {
