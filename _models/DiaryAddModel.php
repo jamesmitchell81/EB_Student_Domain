@@ -42,28 +42,46 @@ class DiaryAddModel
     $event->setDateTime($startDateTime, $endDateTime);
 
     $dao->createNewEvent($event, $this->username);
-    $back = "diary/" . date('Y/m/d', $startDateTime);
-    Redirect::to($back);
+
+    if ( Input::server('HTTP_X_REQUESTED_WITH') != 'XMLHttpRequest' )
+    {
+      $back = "diary/" . date('Y/m/d', $startDateTime);
+      Redirect::to($back);
+    }
   }
 
   public function edit()
   {
-    var_dump(Input::post());
+    $data = Input::post();
+
+    if ( empty($data) ) return;
+
+    $dao = new EventDAO();
+    $event = new Event();
+
+    $event->setId($data['id']);
+    $event->setTitle(trim($data['title']));
+    $event->setDescription(trim($data['details']));
+
+    $startDateTime = "{$data['start-date']} {$data['start-time']}";
+    $endDateTime = "{$data['finish-date']} {$data['finish-time']}";
+    $event->setDateTime($startDateTime, $endDateTime);
+
+    if ( $data['action'] == 'delete' ) {
+      $dao->deleteUserEvent($event, $this->username);
+    } else {
+      $dao->updateEvent($event);
+    }
+
+    if ( Input::server('HTTP_X_REQUESTED_WITH') != 'XMLHttpRequest' )
+    {
+      $back = "diary/" . date('Y/m/d', $startDateTime);
+      Redirect::to($back);
+    }
   }
 
-  public function delete()
+  public function getEvent()
   {
-
+    return new Event();
   }
-
-  public function updateEvent($args = [])
-  {
-
-  }
-
-  public function deleteEvent($args = [])
-  {
-
-  }
-
 }

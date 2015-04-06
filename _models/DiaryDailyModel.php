@@ -27,6 +27,11 @@ class DiaryDailyModel
     $this->username = Input::session('username');
   }
 
+  public function getUsername()
+  {
+    return $this->username;
+  }
+
   public function getDate($daysOffset = 0)
   {
     if ( $daysOffset == 0) return $this->date;

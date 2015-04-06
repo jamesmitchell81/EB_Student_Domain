@@ -93,6 +93,11 @@ class DatabaseQuery
     return $this->query($sql);
   }
 
+  public function update($sql)
+  {
+    return $this->query($sql);
+  }
+
   public function delete($sql)
   {
     return $this->query($sql);

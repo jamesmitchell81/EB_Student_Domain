@@ -69,27 +69,56 @@ class EventDAO
   public function createNewEvent(Event $event, $username)
   {
     $this->db = new DatabaseQuery();
-    $this->db->set('title', $event->getTitle());
-    $this->db->set('description', $event->getDescription());
-    $this->db->set('start', date('Y-m-d H:i:s', $event->getStartDateTime()));
-    $this->db->set('end', date('Y-m-d H:i:s', $event->getEndDateTime()));
+    $this->db->setStr('title', $event->getTitle());
+    $this->db->setStr('description', $event->getDescription());
+    $this->db->setStr('start', date('Y-m-d H:i:s', $event->getStartDateTime()));
+    $this->db->setStr('end', date('Y-m-d H:i:s', $event->getEndDateTime()));
 
     $sql = 'INSERT INTO Events (Title, Description, StartDateTime, EndDateTime)
             VALUES (:title, :description, :start, :end)';
-
-    // do insert.
     $this->db->insert($sql);
 
     $id = $this->db->getLastID();
-
-    // var_dump($id);
     $this->db = new DatabaseQuery();
     $this->db->setInt('eventid', $id);
     $this->db->setInt('username', $username);
     $this->db->insert('INSERT INTO StudentDiary(idStudent, idEvents) VALUES (:username, :eventid)');
+  }
 
-      // insert.
+  public function updateEvent(Event $event)
+  {
+    $this->db = new DatabaseQuery();
+    $this->db->setInt('id', $event->getId());
+    $this->db->setStr('title', $event->getTitle());
+    $this->db->setStr('description', $event->getDescription());
+    $this->db->setStr('start', date('Y-m-d H:i:s', $event->getStartDateTime()));
+    $this->db->setStr('end', date('Y-m-d H:i:s', $event->getEndDateTime()));
 
+    $sql = 'UPDATE Events SET Title = :title, Description = :description,
+                   StartDateTime = :start, EndDateTime = :end
+            WHERE idEvents = :id';
+
+    $this->db->update($sql);
+  }
+
+  public function deleteUserEvent(Event $event, $username)
+  {
+    $this->db = new DatabaseQuery();
+    $this->db->setInt('id', $event->getId());
+    // count event users
+    $this->db->select('SELECT COUNT(idStudent) FROM StudentDiary WHERE idEvents = :id');
+
+    $count = $this->db->first();
+
+    // where student is only subjset of event.
+    if ( !($count > 1) )
+    {
+      $sql = 'DELETE FROM Events WHERE idEvents = :id';
+      $this->db->delete($sql);
+    }
+
+    $this->db->setInt('username', $username);
+    $this->db->delete('DELETE FROM StudentDiary WHERE idEvents = :id AND idStudent = :username');
   }
 
 }
