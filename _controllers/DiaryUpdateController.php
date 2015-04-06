@@ -1,9 +1,7 @@
 <?php
 
-class DiaryEditController
+class DiaryUpdateController
 {
-  private $view;
-  private $model;
 
   public function __construct($model, View $view)
   {
@@ -21,7 +19,7 @@ class DiaryEditController
 
     if ( Input::server('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest' )
     {
-      $this->view->getCoreContentArea();
+      // $this->view->getCoreContentArea();
     } else {
       $this->view->display();
     }

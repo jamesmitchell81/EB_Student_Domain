@@ -4,7 +4,7 @@ include_once './_util/Redirect.php';
 include '_entities/Event.php';
 include './_dao/EventDAO.php';
 
-class DiaryAddModel
+class DiaryUpdateModel
 {
   private $arguments = [];
   private $action;
@@ -78,10 +78,5 @@ class DiaryAddModel
       $back = "diary/" . date('Y/m/d', $startDateTime);
       Redirect::to($back);
     }
-  }
-
-  public function getEvent()
-  {
-    return new Event();
   }
 }
