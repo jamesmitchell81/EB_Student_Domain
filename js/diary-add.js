@@ -82,7 +82,14 @@
 
         ajax.post(action, makeDataString(data),
           function(text) {
+
+            // remove edit box.
             console.log(text);
+            container.className = "content-container-hidden";
+            timeout = setTimeout(function() {
+              body.removeChild(container);
+              clearTimeout(timeout);
+            }, 100);
           });
 
       }, false)
