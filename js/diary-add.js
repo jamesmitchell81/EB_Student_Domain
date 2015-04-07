@@ -67,7 +67,7 @@
 
       confirmBtn = container.querySelectorAll('.diary-edit-confirm')[0];
       confirmBtn.addEventListener('click', function(e) {
-        var src = e.target || e.srcElement;
+        var btn = e.target || e.srcElement;
         var data = {};
         e.preventDefault();
 
@@ -78,13 +78,45 @@
         data['start-time'] = doc.getElementById('start-time').value;
         data['finish-date'] = doc.getElementById('finish-date').value;
         data['finish-time'] = doc.getElementById('finish-time').value;
-        data['action'] = src.value;
+        data['action'] = btn.value;
+
+        console.log(action);
+        console.log(makeDataString(data));
 
         ajax.post(action, makeDataString(data),
           function(text) {
-
-            // remove edit box.
             console.log(text);
+
+            var url = win.location.href.split('/');
+
+            dt = url.pop();
+            month = url.pop();
+            year = url.pop();
+
+            thisDate = new Date(year, month - 1, dt);
+            thatDate = new Date(data['start-date']);
+
+            if ( thisDate.getDate() == thatDate.getDate() ) {
+
+              for ( var i = 0; i < diaryHourAdd.length - 1; i++ ) {
+                time = diaryHourAdd[i].getAttribute('data-time');
+                thisDate.setHours(time.split(':')[0]);
+
+                nextHour = new Date(thisDate.getTime());
+                nextHour.setHours(thisDate.getHours() + 1);
+
+                thatDate.setHours(data['start-time'].split(':')[0]);
+
+                console.log(thisDate, nextHour, thatDate);
+
+                if ( (thatDate.getTime() >= thisDate.getTime()) &&
+                     (thatDate.getTime() < nextHour.getTime()) ) {
+
+                  diaryHourAdd[i].appendChild(createEvent(data));
+                }
+              }
+            }
+
             container.className = "content-container-hidden";
             timeout = setTimeout(function() {
               body.removeChild(container);
@@ -101,6 +133,29 @@
       }, 10);
     });
 
+  }
+
+  function createEvent(data) {
+    var a = doc.createElement('a');
+    var span = doc.createElement('span');
+    span.className =
+    span.innerHTML = data['start-time'];
+    span.className = "diary-event-start";
+    a.appendChild(span);
+
+    span = doc.createElement('span');
+    span.innerHTML = " " + data.title + " ";
+    span.className = "diary-event-title";
+    a.appendChild(span);
+
+    span = doc.createElement('span');
+    span.innerHTML = data.details;
+    span.className = "diary-event-description";
+    a.appendChild(span);
+
+    a.href = '#';
+    a.className = 'diary-event';
+    return a;
   }
 
   function makeDataString(obj)

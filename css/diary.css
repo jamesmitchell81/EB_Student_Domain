@@ -62,8 +62,8 @@
 
 .diary-hour {
   width: 100%;
+  padding-left: 3em;
   min-height: 6em;
-  max-height: 6em;
   display: block;
   border-top: 1px solid #cacaca;
   position: relative;
@@ -78,17 +78,16 @@
 }
 
 .diary-time {
-  top: -1.4em;
-  bottom: 0;
-  min-height: 6em;
-  max-height: 6em;
-  position: relative;
-  padding: 10px 10px 10px 0;
-  display: inline-block;
-  background: #fff;
+  top: -0.8em;
+  left: 0;
+  position: absolute;
+  padding: 0 10px 0 0;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 2em;
 }
 
 .diary-event {
+  vertical-align: top;
   color: #000;
   text-decoration: none;
   font-size: 0.85em;
@@ -98,6 +97,7 @@
   margin: 0.25em;
   box-shadow: 2px 2px 2px #cacaca;
   border-radius: 4px;
+  max-width: 8em;
 }
 
 .diary-event span {

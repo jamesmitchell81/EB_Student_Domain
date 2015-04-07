@@ -25,9 +25,8 @@ class Input
 
   private function clean($value = '')
   {
-    // do clean ..
 
-    return $value;
+    return htmlentities($value);
   }
 
   private function cleanArray($array = [])

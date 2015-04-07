@@ -36,11 +36,8 @@ class DiaryUpdateModel
 
     $startDateTime = "{$data['start-date']} {$data['start-time']}";
     $endDateTime = "{$data['finish-date']} {$data['finish-time']}";
-    $startDateTime = strtotime($startDateTime);
-    $endDateTime = strtotime($endDateTime);
 
     $event->setDateTime($startDateTime, $endDateTime);
-
     $dao->createNewEvent($event, $this->username);
 
     if ( Input::server('HTTP_X_REQUESTED_WITH') != 'XMLHttpRequest' )
