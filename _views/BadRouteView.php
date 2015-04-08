@@ -31,12 +31,9 @@ class BadRouteView implements View
   public function display()
   {
     include "_templates/head.php";
-    include "_templates/logo-column.php";
-    include "_templates/header-nav.php";
     include "_templates/content-header.php";
     include "_templates/404.php";
     include "_templates/content-end.php";
-    include "_templates/footer.php";
     include "_templates/page-end.php";
   }
 
