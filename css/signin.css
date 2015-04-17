@@ -22,12 +22,29 @@ html {
 }
 
 .signin-header {
-  width: 100%;
-  min-width: 70%;
+  /*width: 100%;*/
+  /*min-width: 70%;*/
+  min-width: 320px;
+  max-width: 460px;
   margin: 0 auto;
   display: block;
   overflow: hidden;
   padding: 2em 0 0 0;
+}
+
+.signin-sub-header {
+  min-width: 320px;
+  max-width: 460px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.signin-sub-header h2 {
+  line-height: 1;
+  padding: 1.5em 0 0 0;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 200;
 }
 
 .title-wrap {
@@ -37,14 +54,11 @@ html {
 }
 
 .signin-header h1 {
-  text-align: center;
   line-height: 1;
-  padding: 1.5em 0em 1.5em 0;
-  /*float: left;*/
+  padding: 0.5em 0em 1.5em 0;
   color: #fff;
   text-transform: uppercase;
   font-weight: 200;
-  /*letter-spacing: 2px;*/
 }
 
 .signin-logo {

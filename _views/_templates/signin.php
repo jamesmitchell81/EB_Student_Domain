@@ -1,14 +1,19 @@
-<?php include 'head.php'; ?>
-
   <!-- <img id='background' src='<?= BASE_PATH; ?>img/woodland-blue.png'/> -->
   <img id='background' src='<?= BASE_PATH; ?>img/woodland-blue-blur.png'/>
 
   <header class='signin-header'>
     <div class='title-wrap'>
-      <!-- <img src="/~jm/group_project/img/ne  w_logo_web_3.svg" alt='logo-home' class="signin-logo"> -->
+      <img src="/~jm/group_project/img/tree-white.png" alt='logo-home' class="signin-logo">
       <h1>Woodlands University College</h1>
     </div>
   </header>
+
+  <div class='signin-sub-header'>
+    <!-- Student Companion -->
+    <h2>
+      Student Supplement
+    </h2>
+  </div>
 
   <form id='signin-form' action="" > <!-- method='post'> -->
     <ul>
