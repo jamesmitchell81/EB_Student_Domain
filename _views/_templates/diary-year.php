@@ -3,7 +3,7 @@
     <thead>
       <tr>
         <th colspan="7" class="diary-year-month-label">
-          <a href='<?= "{$month['href']}"; ?>' ><?= "{$month['title']}"; ?></a>
+          <a class='btn btn-green' href='<?= "{$month['href']}"; ?>' ><?= "{$month['title']}"; ?></a>
         </th>
       </tr>
       <tr>

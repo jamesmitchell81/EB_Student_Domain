@@ -8,7 +8,7 @@
     <a id='diary-add-event' class='btn btn-green' href='<?= $this->data['add-link']; ?>'>add</a>
   </span>
   <span class='diary-next'>
-    <a class='btn btn-green ' href='<?= $this->data['next']['href']; ?>'>
+    <a class='btn btn-green' href='<?= $this->data['next']['href']; ?>'>
       <?= date('l jS M Y', strtotime($this->data['next']['date'])); ?>
     </a>
   </span>
