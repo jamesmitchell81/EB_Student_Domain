@@ -43,7 +43,7 @@ h3 {
 }
 
 .btn {
-  width: 70px;
+  min-width: 70px;
   display: inline-block;
   padding: 5px 10px;
   font-weight: bold;
@@ -92,15 +92,16 @@ h3 {
   width: 100%;
   top: 0;
   position: fixed;
-  /*float: left;*/
   min-height: 100%;
-  /*padding-bottom: 4em;*/
+}
+
+.header-logo {
+  height: 2em;
+  margin: 0.35em 0 0em 1em;
 }
 
 .logo-header {
-  padding: 0.5em 0 0.5em 1em;
   width: 100%;
-  /*color: #fff;*/
   color: #000;
   background: #00cc89;
   position: relative;
@@ -115,12 +116,15 @@ h3 {
 }
 
 .logo-header-title {
+  padding-left: 1em;
+  top: 0;
+  position: absolute;
+  line-height: 2.75;
   letter-spacing: 1px;
   text-align: left;
   font-size: 1em;
   margin: auto;
   display: inline-block;
-  padding: 0;
   font-weight: 400;
   max-width: 55em;
   min-width: 320px;
@@ -203,7 +207,6 @@ footer ul li {
 #nav-core-1 li {
   float: left;
 }
-
 
 .nav-core-1-item {
   color: #000;
