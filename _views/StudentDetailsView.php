@@ -27,6 +27,7 @@ class StudentDetailsView implements View
     include "_templates/header-nav.php";
     include "_templates/content-header.php";
     include "_templates/student-details.php";
+    include "_templates/student-details-email-form.php";
     include "_templates/content-end.php";
     include "_templates/footer.php";
     include "_templates/page-end.php";
