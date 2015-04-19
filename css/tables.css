@@ -1,0 +1,50 @@
+.lecturer-details,
+.student-details {
+  table-layout: fixed;
+  min-width: 320px;
+  max-width: 620px;
+  box-shadow: 1px 1px 4px #555;
+  margin: 0 0 2em 0;
+}
+
+.lecturer-details th,
+.student-details th {
+  text-align: left;
+  font-weight: 500;
+  padding-left: 0.5em;
+}
+
+.lecturer-details th,
+.lecturer-details td,
+.student-details th,
+.student-details td {
+  padding: 0.5em 1em;
+  line-height: 1.5;
+  border-bottom: 1px dotted #cacaca;
+}
+
+th.lecturer-modules,
+th.student-qualifications,
+th.student-modules {
+  padding: 1.5em 1em 0 1em;
+  border-bottom: 1px solid #cacaca;
+}
+
+td.table-cell-link {
+  padding: 0;
+  margin: 0;
+}
+
+.table-cell-link a {
+  padding: 0.5em 1em;
+  display: block;
+  width: 100%;
+  color: #0C93F1;
+  text-decoration: none;
+  transition: background 0.5s;
+}
+
+.table-cell-link a:hover {
+  background: #CDEAFF;
+}
+

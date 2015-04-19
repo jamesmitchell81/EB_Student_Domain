@@ -3,27 +3,27 @@
 <?php else : ?>
 
 <?php foreach ($this->data['lecturer-details'] as $details) : ?>
-  <table>
+  <table class='lecturer-details'>
     <thead>
     </thead>
     <tbody>
       <tr>
-        <td>Name</td>
+        <th>Name</th>
         <td><?= $details->getFullName(); ?></td>
       </tr>
       <tr>
-        <td>Tel Ext.</td>
+        <th>Tel Ext.</th>
         <td><?= $details->getTelExt(); ?></td>
       </tr>
       <tr>
-        <td>Email Address</td>
+        <th>Email Address</th>
         <td><?= $details->getEmailAddress(); ?></td>
       </tr>
-      <td colspan='2'>Modules</td>
+      <th class='lecturer-modules' colspan='2'>Modules</th>
     </tr>
     <?php foreach ($details->getModules() as $module) : ?>
     <tr>
-      <td colspan='2'>
+      <td class='table-cell-link' colspan='2'>
         <a href='<?= BASE_PATH . Input::session('username') . "/modules/{$module->getModuleCode()}"; ?>'>
         <?= "{$module->getModuleCode()} {$module->getTitle()}"; ?>
         </a>

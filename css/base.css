@@ -87,6 +87,11 @@ h3 {
   background: #3E97EB;
 }
 
+.link-blue {
+  color: #0C93F1;
+  text-decoration: none;
+}
+
 /* layout */
 .col-1 {
   width: 100%;

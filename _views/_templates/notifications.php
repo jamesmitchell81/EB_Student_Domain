@@ -14,7 +14,7 @@
       <a class='btn btn-green' href='notifications/save/<?= "{$notice->getID()}"; ?>'>Save</a>
     </span>
 
-    <span class="notice-date"><?= date('l jS F Y - H:i', $notice->getSentDatetime() ); ?> &bull; <?= $notice->getSender()->getFullName(); ?></span>
+    <span class="notice-details"><?= date('l jS F Y - H:i', $notice->getSentDatetime() ); ?> &bull; <?= $notice->getSender()->getFullName(); ?></span>
 
     <p class="notice">
       <?= $notice->getBody(); ?>
