@@ -1,8 +1,6 @@
 <!-- http://php.net/manual/en/control-structures.foreach.php#88578 -->
-
 <?php $timespaces = $this->data['timespaces']; ?>
 <?php $timetable = $this->data['timetable']; ?>
-
 <table class='timetable'>
   <thead>
     <tr>
@@ -17,13 +15,10 @@
   <tbody>
     <?php
         while ( list($key, $value) = each($timespaces) ) {
-
 echo "<tr>";
-
 if ( date('i', strtotime($key)) == "0" ) {
   echo " <td class='tt-timespaces' rowspan='4'>$key</td>";
 }
-
           foreach($value as $cellkey => $cell) {
 
             if ( $timetable->hasSession($cellkey, $key) )
@@ -62,11 +57,8 @@ if ( date('i', strtotime($key)) == "0" ) {
             }
 
           }
-
 echo "</tr>";
-
       }
 ?>
-
   </tbody>
 </table>

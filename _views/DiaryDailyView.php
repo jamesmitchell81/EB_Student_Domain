@@ -41,7 +41,6 @@ class DiaryDailyView implements View
   {
     // ob_start();
     include "_templates/head.php";
-    include "_templates/logo-column.php";
     include "_templates/header-nav.php";
     include "_templates/content-header.php";
     include "_templates/diary-controls.php";

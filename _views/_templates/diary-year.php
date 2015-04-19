@@ -8,7 +8,7 @@
       </tr>
       <tr>
         <?php foreach ($this->data['days'] as $day) : ?>
-          <th class="diary-year-day"><?= $day; ?></th>
+          <th><?= $day; ?></th>
         <?php endforeach; ?>
       </tr>
     </thead>

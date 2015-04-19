@@ -6,7 +6,6 @@
   padding: 1em;
 }
 
-
 .timetable tr:nth-child(4n) {
   border-bottom: 1px solid #cacaca;
 }

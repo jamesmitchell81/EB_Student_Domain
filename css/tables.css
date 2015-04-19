@@ -1,28 +1,3 @@
-.lecturer-details,
-.student-details {
-  table-layout: fixed;
-  min-width: 320px;
-  max-width: 620px;
-  box-shadow: 1px 1px 4px #555;
-  margin: 0 0 2em 0;
-}
-
-.lecturer-details th,
-.student-details th {
-  text-align: left;
-  font-weight: 500;
-  padding-left: 0.5em;
-}
-
-.lecturer-details th,
-.lecturer-details td,
-.student-details th,
-.student-details td {
-  padding: 0.5em 1em;
-  line-height: 1.5;
-  border-bottom: 1px dotted #cacaca;
-}
-
 th.lecturer-modules,
 th.student-qualifications,
 th.student-modules {
@@ -46,5 +21,38 @@ td.table-cell-link {
 
 .table-cell-link a:hover {
   background: #CDEAFF;
+}
+
+.table-1 { width: 20%;  }
+.table-2 { width: 40%;  }
+.table-3 { width: 60%;  }
+.table-4 { width: 80%;  }
+.table-5 { width: 100%; }
+
+table {
+
+  table-layout: fixed;
+  width: 100%;
+  min-width: 320px;
+  box-shadow: 1px 1px 4px #555;
+  margin: 0 0 4em 0;
+}
+
+table th {
+  text-align: left;
+  font-weight: 500;
+  padding-left: 0.5em;
+}
+
+table td,
+table th {
+  padding: 0.5em 1em;
+  line-height: 1.5;
+  border-bottom: 1px dotted #cacaca;
+}
+
+td.table-cell-link {
+  padding: 0;
+  margin: 0;
 }
 

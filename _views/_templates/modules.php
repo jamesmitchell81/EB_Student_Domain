@@ -1,24 +1,24 @@
 <?php foreach($this->data['modules'] as $module) : ?>
 
-<div class='module'>
-  <h3 class='module-header'>
+<div class='notice-block'>
+  <h3>
       <span class='page-action'><?= "{$module->getModuleCode()}"; ?></span>
       <span class='page-entity'><?= "{$module->getTitle()}"; ?></span>
   </h3>
 
-  <div class='module-lecturers'>
+  <div><!-- class='module-lecturers'>-->
     <p>Lecturers</p>
   <?php foreach ($module->getLecturers() as $lecturer) : ?>
-      <p>
-        <a href='<?= BASE_PATH . Input::session('username') . "/lecturers/{$lecturer->getID()}"; ?>'>
+      <h5>
+        <a class='link-blue' href='<?= BASE_PATH . Input::session('username') . "/lecturers/{$lecturer->getID()}"; ?>'>
           <?= "{$lecturer->getFullName()}"; ?>
         </a>
-      </p>
+      </h5>
   <?php endforeach; ?>
   </div>
 
-  <div class='module-description'>
-    <h4>Module description</h4>
+  <h4>Module description</h4>
+  <div class='notice'>
     <p>
       <?= "{$module->getDescription()}"; ?>
     </p>

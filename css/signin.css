@@ -12,18 +12,9 @@ html {
   top: -10%;
   left: -10%;
   z-index: -1;
-/*
-  -webkit-filter: blur(40px) grayscale(30%);
-  -moz-filter: blur(40px) grayscale(30%);
-  -o-filter: blur(40px) grayscale(30%);
-  -ms-filter: blur(40px) grayscale(30%);
-  filter: blur(40px) grayscale(30%);
-*/
 }
 
 .signin-header {
-  /*width: 100%;*/
-  /*min-width: 70%;*/
   min-width: 320px;
   max-width: 460px;
   margin: 0 auto;

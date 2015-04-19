@@ -3,7 +3,7 @@
 <?php else : ?>
 
 <?php foreach ($this->data['lecturer-details'] as $details) : ?>
-  <table class='lecturer-details'>
+  <table class='table-3'>
     <thead>
     </thead>
     <tbody>

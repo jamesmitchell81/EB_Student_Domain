@@ -1,6 +1,6 @@
 
 <h3>Attendance Daily</h3>
-<table class='att-history'>
+<table class='table-5'>
   <thead>
     <tr>
       <th class='att-date'>Date</th>

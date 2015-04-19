@@ -1,4 +1,4 @@
-<table class='student-details'>
+<table class='table-3'>
   <thead>
   </thead>
   <tbody>

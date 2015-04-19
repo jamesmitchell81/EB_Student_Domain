@@ -30,7 +30,7 @@ class AssignmentsModel
       {
         return $dao->getAssignmentsByModuleCode($this->args[':code']);
       }
-      $assignment[] = $dao->getAssignmentByID($this->args[':id:id']); // ?
+      $assignment[] = $dao->getAssignmentByID($this->args[':id']); // ?
       return $assignment;
     }
     return $dao->getUserAssignments($this->username);
@@ -48,7 +48,7 @@ class AssignmentsModel
         {
           return $summary[$this->args[':code']] = $assignDAO->getAssignmentSummary($this->args[':code']);
         }
-        return []; // summary.
+        return [];
     }
 
     $modules = $moduleDAO->getUserModules($this->username);

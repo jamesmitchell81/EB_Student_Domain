@@ -80,6 +80,7 @@ class TimetableModel
     $weekday = (int)date('w', strtotime($date->format('Y-m-d')));
     if ( $weekday == 1 ) return $date;
     $weekday -= 1;
+    $weekday = abs($weekday);
     $interval = "P{$weekday}D";
     $date->sub(new DateInterval($interval));
     return $date;

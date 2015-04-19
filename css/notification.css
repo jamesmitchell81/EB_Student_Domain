@@ -1,9 +1,14 @@
 .notice-block {
-  /*width: 80%;*/
-  margin: 2em 0 4.5em 0;
-  padding-bottom: 3.5em;
+  margin: 2em 0 5em 0;
+  padding-bottom: 1.5em;
   border-bottom: 1px dotted #00cc89;
   position: relative;
+}
+
+.notice {
+
+  text-indent: 1em;
+  margin: 1em 0 3em 0;
 }
 
 .notice-actions {

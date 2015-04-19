@@ -28,7 +28,6 @@ class DiaryEditView implements View
   public function display()
   {
     include "_templates/head.php";
-    include "_templates/logo-column.php";
     include "_templates/header-nav.php";
     include "_templates/content-header.php";
 

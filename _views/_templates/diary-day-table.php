@@ -1,8 +1,6 @@
 <!-- http://php.net/manual/en/control-structures.foreach.php#88578 -->
-
 <?php $timespaces = $this->data['timespaces']; ?>
 <?php $diary = $this->data['diary']; ?>
-
 <table class='timetable'>
   <thead>
     <tr>
@@ -26,10 +24,6 @@ if ( date('i', strtotime($key)) == "0" ) {
             $time = date('H:i', strtotime($key));
             $events = $diary->getEventsAt($today, $time);
 
-            // var_dump($events);
-            // echo "!";
-
-            // foreach ($events as $event) {
               $durarion = $events[0]->getDuration();
               $rowcount = (($durarion / 60) / 60) * 4;
 
@@ -45,27 +39,11 @@ if ( date('i', strtotime($key)) == "0" ) {
                 $timestr = date('H:i', $from);
                 unset($timespaces[$timestr]);
               }
-
-            // }
-
-          //   {
-
-          //     while ( $from < $to ) {
-
-          //       $from += (15 * 60);
-          //       $timestr = date('H:i', $from);
-          //       unset($timespaces[$timestr][$cellkey]);
-          //     }
             } else {
               echo "<td></td>"  . PHP_EOL;;
             }
-
-          // }
-
 echo "</tr>" . PHP_EOL;;
-
       }
 ?>
-
   </tbody>
 </table>
