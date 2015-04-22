@@ -16,36 +16,23 @@
       if ( text === '' ) return;
 
       block = doc.getElementById('notice-' + text);
-      block.style.height = block.getBoundingClientRect().height;
+      block.style.height = block.getBoundingClientRect().height + "px";
+      block.style.opacity = 0;
 
-      parentTimeoutTime = block.children.length * 500;
-
-      var i = block.children.length - 1;
-
-      interval = setInterval(function() {
-        if ( i === 0 ) {
-          clearInterval(interval);
-          return;
-        }
-
-        var fadeSteps = 10;
-        fadeInterval = setInterval(function() {
-          if ( fadeSteps === 0 ) {
-            clearInterval(fadeInterval);
-            return;
-          }
-          block.children[i].style.opacity = fadeSteps / 10;
-          fadeSteps--;
-        }, 30);
-
-        block.removeChild(block.children[i]);
-        i--;
-      }, 500);
+      for ( var i = block.children.length - 1; i >= 0; i-- ) {
+        // block.removeChild(block.children[i]);
+        block.children[i].style.opacity = "0";
+      }
 
       parentTimeout = setTimeout(function() {
         block.parentElement.removeChild(block);
         clearTimeout(parentTimeout);
-      }, parentTimeoutTime);
+      }, 1000);
+
+      block.style.height = "0px";
+      block.style.margin = "0";
+      block.style.paddingBottom = "0";
+
     });
   }
 

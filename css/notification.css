@@ -1,8 +1,16 @@
 .notice-block {
   margin: 2em 0 5em 0;
-  padding-bottom: 1.5em;
+  padding: 0 0 1.5em 0;
   border-bottom: 1px dotted #00cc89;
   position: relative;
+  background: #fff;
+  opacity: 1;
+  transition: opacity 0.75s, height 1s, margin 1s, padding 1s;
+}
+
+.notice-block > * {
+  opacity: 1;
+  transition: opacity 0.75s;
 }
 
 .notice {
