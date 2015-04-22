@@ -53,6 +53,8 @@
       container.className = "content-container-hidden";
       container.innerHTML = text;
 
+      console.log(text);
+
       form = container.querySelectorAll('form')[0];
       action = form.getAttribute('action');
 
