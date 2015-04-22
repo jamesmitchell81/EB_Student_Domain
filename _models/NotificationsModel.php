@@ -56,7 +56,13 @@ class NotificationsModel
       $id = array_shift($this->args);
       $dao = new NotificationDAO();
       $dao->deleteNotificationById($id, $this->username);
-      Redirect::to('notifications');
+
+      if ( Input::server('HTTP_X_REQUESTED_WITH') != 'XMLHttpRequest' )
+      {
+        Redirect::to('notifications');
+      } else {
+        echo $id;
+      }
     }
   }
 }

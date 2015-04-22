@@ -17,7 +17,7 @@ class NotificationsView implements View
     $this->data['title'] = "Notifications";
     $this->data['notifications'] = $this->model->getNotifications();
 
-    $this->data['scripts'] = [];
+    $this->data['scripts'][] = BASE_PATH . "js/notifications.js";
   }
 
   public function display()

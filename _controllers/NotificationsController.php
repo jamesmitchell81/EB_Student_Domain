@@ -1,4 +1,4 @@
-<?php //namespace Controllers;
+<?php
 
 class NotificationsController
 {
@@ -19,6 +19,10 @@ class NotificationsController
     }
 
     $this->view->getData();
-    $this->view->display();
+
+    if ( Input::server('HTTP_X_REQUESTED_WITH') != 'XMLHttpRequest' )
+    {
+      $this->view->display();
+    }
   }
 }
