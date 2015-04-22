@@ -14,11 +14,25 @@ class Controller
   {
     $this->router = new Router($data);
 
-    $username = $this->router->getUsername();
-    // authenticate username.
-    $_SESSION['username'] = $username;
+    if ( session_status() != PHP_SESSION_ACTIVE)
+    {
+      session_start();
+    }
 
-    $this->route = $this->router->getRoute();
+    // authenticate username.
+    if ( Input::session('username') ) {
+      $username = $this->router->getUsername();
+      if ( Input::session('username') == $username )
+      {
+        $this->route = $this->router->getRoute();
+      } else {
+        $this->route = Routes::getRoute('signin');
+      }
+    } else {
+      $this->route = Routes::getRoute('signin');
+    }
+
+    // $_SESSION['username'] = $username;
 
     include("./_models/{$this->route->model}.php");
     include("{$this->route->controller}.php");

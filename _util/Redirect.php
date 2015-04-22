@@ -9,7 +9,9 @@ class Redirect
   private function __construct($to = '')
   {
     $username = Input::session('username');
-    $newPath = "{$this->base}/{$username}/{$to}";
+    $newPath = "{$this->base}{$username}/{$to}";
+
+    var_dump($newPath);
 
     header("Location: {$newPath}");
     exit();

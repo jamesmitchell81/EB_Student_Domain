@@ -51,8 +51,6 @@ class Router
     for ($i = 0; $i < count($routekeys); $i++ ) {
       $domain = $routekeys[$i];
 
-      // var_dump($domain);
-
       if ( preg_match("/^($domain)$/", $this->routePath))
       {
         $this->routeMatch = $routevalues[$i];

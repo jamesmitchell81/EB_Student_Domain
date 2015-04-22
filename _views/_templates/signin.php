@@ -13,12 +13,26 @@
     </h2>
   </div>
 
-  <form id='signin-form' action="" > <!-- method='post'> -->
+  <form id='signin-form' action="signin" method="post"> <!-- method='post'> -->
     <ul>
         <label class='signin-label' for="username">Username</label>
-        <input class='signin-text' type="text" name='username' id='username'>
+        <?php if ( array_key_exists('errors', $this->data) ) : ?>
+          <?php if ( array_key_exists('username', $this->data['errors'] ) ) : ?>
+           <span class='sign-in-error'><?= $this->data['errors']['username']; ?></span>
+           <?php endif; ?>
+        <?php endif; ?>
+        <?php if ( array_key_exists('username', $this->data)) : ?>
+          <input class='signin-text' type="text" name='username' id='username' value='<?= $this->data['username']; ?>'>
+        <?php else : ?>
+          <input class='signin-text' type="text" name='username' id='username'>
+        <?php endif; ?>
         <label class='signin-label' for="password">Password</label>
-        <input class='signin-text' type="text" name='password' id='password'>
+        <?php if ( array_key_exists('errors', $this->data) ) : ?>
+          <?php if ( array_key_exists('password', $this->data['errors'] ) ) : ?>
+           <span class='sign-in-error'><?= $this->data['errors']['password']; ?></span>
+           <?php endif; ?>
+        <?php endif; ?>
+        <input class='signin-text' type="password" name='password' id='password'>
         <input class='signin-btn' type="submit" value='Sign in'>
     </ul>
   </form>

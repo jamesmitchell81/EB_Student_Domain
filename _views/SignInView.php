@@ -16,6 +16,16 @@ class SignInView implements View
     $this->data['scripts'] = [];
   }
 
+  public function setErrors($errors)
+  {
+    $this->data['errors'] = $errors;
+  }
+
+  public function setEnteredUsername($username)
+  {
+    $this->data['username'] = $username;
+  }
+
   public function display()
   {
     ob_start();

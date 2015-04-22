@@ -8,6 +8,16 @@ VALUES
 (20150002, "Mr", "Owen", "Routier", "99 The Avenue", "16 The Avenue", "00789 000 001", "or@jm.co.uk"),
 (20150003, "Miss", "Isla", "Routier", "22 The Avenue", "90 The Avenue", "00789 000 002", "ir@jm.co.uk");
 
+SELECT * FROM Student;
+
+UPDATE Student SET Password = "Password" WHERE idStudent = 20150001;
+UPDATE Student SET Password = "Password" WHERE idStudent = 20150002;
+UPDATE Student SET Password = "Password" WHERE idStudent = 20150003;
+
+UPDATE Student SET Status = "Live" WHERE idStudent = 20150001;
+UPDATE Student SET Status = "Live" WHERE idStudent = 20150002;
+UPDATE Student SET Status = "Live" WHERE idStudent = 20150003;
+
 INSERT INTO Staff (Title, FirstName, Surname, Mobile, Email, Status, AccessLevel)
 VALUES 
 ("Mr", "James", "Mitchell", "07789000000", "jm@jm.co.uk", "Active", "1"),
@@ -39,6 +49,12 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 '2015-02-06 12:00:00', 1);
+
+DELETE FROM Notifications;
+
+SELECT * FROM Notifications;
+
+DELETE FROM NotificationReceivers;
 
 INSERT INTO NotificationReceivers (idStudent, idNotifications)
 VALUES 
