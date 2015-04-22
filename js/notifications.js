@@ -12,16 +12,40 @@
     var href = src.getAttribute('href');
 
     ajax.get(href, function(text) {
-      var block;
+      var block, timeout, parentTimeout;
       if ( text === '' ) return;
 
       block = doc.getElementById('notice-' + text);
+      block.style.height = block.getBoundingClientRect().height;
 
-      for ( var i = block.children.length - 1; i >= 0; i-- ) {
+      parentTimeoutTime = block.children.length * 500;
+
+      var i = block.children.length - 1;
+
+      interval = setInterval(function() {
+        if ( i === 0 ) {
+          clearInterval(interval);
+          return;
+        }
+
+        var fadeSteps = 10;
+        fadeInterval = setInterval(function() {
+          if ( fadeSteps === 0 ) {
+            clearInterval(fadeInterval);
+            return;
+          }
+          block.children[i].style.opacity = fadeSteps / 10;
+          fadeSteps--;
+        }, 30);
 
         block.removeChild(block.children[i]);
-      }
+        i--;
+      }, 500);
 
+      parentTimeout = setTimeout(function() {
+        block.parentElement.removeChild(block);
+        clearTimeout(parentTimeout);
+      }, parentTimeoutTime);
     });
   }
 

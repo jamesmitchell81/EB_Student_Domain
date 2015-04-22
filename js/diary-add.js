@@ -63,6 +63,7 @@
         var src = e.target || e.srcElement;
         e.preventDefault();
         container.className = "content-container-hidden";
+
         timeout = setTimeout(function() {
           body.removeChild(container);
           clearTimeout(timeout);
@@ -155,7 +156,7 @@
           function(text) {
             var events;
             var href;
-            
+
             var url = win.location.href.split('/');
             dt = url.pop();
             month = url.pop();
