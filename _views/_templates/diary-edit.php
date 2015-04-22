@@ -1,7 +1,7 @@
 <?php $event = $this->data['event']; ?>
 
 <div class="diary-edit-wrap">
-  <form action='<?= "http://localhost/~jm/group_project/20150001/diary/{$this->data['action']}"; ?>' method='post'>
+  <form action='<?= BASE_PATH . "/20150001/diary/{$this->data['action']}"; ?>' method='post'>
     <a href='<?= "http://localhost/~jm/group_project/20150001/diary/{$event->getDate('Y/m/d')}"; ?>' class="diary-edit-exit">&times;</a>
     <span class="diary-input-wrap">
       <input name="id" id="id" type="hidden" value='<?= $event->getId(); ?>'>

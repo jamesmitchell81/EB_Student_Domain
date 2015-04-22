@@ -1,5 +1,5 @@
 <div id='logo-header' class='logo-header'>
-  <img src="/~jm/group_project/img/header-logo.png" alt='logo-home' class="header-logo">
+  <img src="<?= BASE_PATH; ?>img/header-logo.png" alt='logo-home' class="header-logo">
   <h3 class='logo-header-title'>
     Woodland University College
   </h3>

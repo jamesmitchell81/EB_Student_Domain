@@ -105,7 +105,8 @@ class DiaryYearModel
     $monthNum = (int)$dt->format('m');
     $yearNum = (int)$this->year;
 
-    $days = cal_days_in_month(CAL_GREGORIAN, $monthNum, $yearNum); //http://php.net/manual/en/function.cal-days-in-month.php
+	$days = date('t', mktime(0, 0, 0, $monthNum, 1, $yearNum));
+/*     $days = cal_days_in_month(CAL_GREGORIAN, $monthNum, $yearNum); //http://php.net/manual/en/function.cal-days-in-month.php */
     $rows = ($days / 7) + 1;
 
     $calender = [];

@@ -2,7 +2,7 @@
 
 include_once './_util/Input.php';
 include_once './_util/Navigation.php';
-include './_util/Router.php';
+include_once './_util/Router.php';
 
 // FrontController
 class Controller

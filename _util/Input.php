@@ -7,7 +7,7 @@ class Input
 
   }
 
-  private function process($arr = [], $key = '')
+  private static function process($arr = [], $key = '')
   {
     if ( !isset($arr) ) return false;
 
@@ -23,13 +23,13 @@ class Input
     return false;
   }
 
-  private function clean($value = '')
+  private static function clean($value = '')
   {
 
     return htmlentities($value);
   }
 
-  private function cleanArray($array = [])
+  private static function cleanArray($array = [])
   {
     $newArray = [];
     foreach ($array as $key => $value)

@@ -12,11 +12,18 @@ class DatabaseConnection
 
   public function __construct()
   {
+
     $this->host = "localhost";
     $this->db_name = "db_eco";
     $this->connection_str = "mysql:host={$this->host};dbname={$this->db_name}";
     $this->user = "root";
     $this->password = "donkey";
+
+    // $this->host = "194.81.104.22";
+    // $this->db_name = "db_eco";
+    // $this->connection_str = "mysql:host={$this->host};dbname={$this->db_name}";
+    // $this->user = "ecobabylon";
+    // $this->password = "group0402";
  }
 
   public function connect()
@@ -30,10 +37,6 @@ class DatabaseConnection
     return $this->db;
   }
 
-  // public function getDB()
-  // {
-  //   return $this->db;
-  // }
 
   public function closeConnection()
   {

@@ -1,5 +1,22 @@
-body {
-  font-family: "Fira Sans", sans-serif;
+.header-logo {
+  width: 2em;
+  margin: 2em auto 0 auto;
+}
+
+.logo-header-title {
+  position: absolute;
+  margin-left: 3em;
+  top: 1.5em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.wrap {
+  width: 100%;
+}
+
+#content-header {
+  margin: 0;
 }
 
 .page-action {
@@ -13,6 +30,9 @@ body {
   width: 80%;
 }
 
+#nav-sub-1,
+.logo-header-sign-out,
+.btn,
 #nav-core-1,
 #nav-core-2 {
   display: none;
@@ -24,7 +44,12 @@ body {
 }
 
 .timetable td, .timetable th {
-  border: 1px solid #000;
+  border: 1px solid #cacaca;
+  padding: 4px;
+}
+
+.tt-session {
+  /*padding: 10px;*/
 }
 
 .tt-time-row {
@@ -39,3 +64,4 @@ body {
 .tt-day-column {
   width: 18%;
 }
+

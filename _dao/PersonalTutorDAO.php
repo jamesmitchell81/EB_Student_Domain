@@ -30,7 +30,7 @@ class PersonalTutorDAO
                       INNER JOIN Lecturer l ON l.idLecturer = p.idLecturer
                       INNER JOIN Staff sf ON sf.idStaff = l.idStaff
                       INNER JOIN Student st ON st.idStudent = p.idStudent
-                      INNER JOIN PersonalTutorFeedback f ON f.AssignRef = p.AssignRef
+                      INNER JOIN PersonalTutorFeedBack f ON f.AssignRef = p.AssignRef
                       WHERE st.idStudent = 20150001');
     $data = $this->db->all();
 

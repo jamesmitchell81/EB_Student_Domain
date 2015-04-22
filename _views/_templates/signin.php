@@ -2,7 +2,7 @@
 
   <header class='signin-header'>
     <div class='title-wrap'>
-      <img src="/~jm/group_project/img/tree-white-simple-border.png" alt='logo-home' class="signin-logo">
+      <img src='<?= BASE_PATH; ?>img/tree-white-simple-border.png' alt='logo-home' class="signin-logo">
       <h1>Woodlands University College</h1>
     </div>
   </header>

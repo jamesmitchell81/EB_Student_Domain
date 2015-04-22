@@ -22,8 +22,8 @@ class DiaryEditModel
     $this->year = isset($this->args[':yyyy']) ? $this->args[':yyyy'] : date('Y');
     $this->month = isset($this->args[':mm']) ? $this->args[':mm']   : date('m');
     $this->day  = isset($this->args[':dd']) ? $this->args[':dd']   : date('d');
-    $this->hours = isset($this->args[':time']) ? split(':', $this->args[':time'])[0] : date('H');
-    $this->minutes = isset($this->args[':time']) ? split(':', $this->args[':time'])[1] : date('i');
+    $this->hours = isset($this->args[':time']) ? explode(':', $this->args[':time'])[0] : date('H');
+    $this->minutes = isset($this->args[':time']) ? explode(':', $this->args[':time'])[1] : date('i');
 
     $this->action = $action;
   }

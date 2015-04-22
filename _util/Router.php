@@ -1,8 +1,8 @@
 <?php
 
-include('./_configuration/Routes.php');
-include('./_configuration/Domains.php');
-include('./_configuration/Wildcards.php');
+include './_configuration/Routes.php';
+include './_configuration/Domains.php';
+include './_configuration/Wildcards.php';
 
 class Router
 {
