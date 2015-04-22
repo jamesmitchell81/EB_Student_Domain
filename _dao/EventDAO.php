@@ -83,6 +83,8 @@ class EventDAO
     $this->db->setInt('eventid', $id);
     $this->db->setInt('username', $username);
     $this->db->insert('INSERT INTO StudentDiary(idStudent, idEvents) VALUES (:username, :eventid)');
+
+    return $id;
   }
 
   public function updateEvent(Event $event)

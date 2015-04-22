@@ -34,16 +34,27 @@ class DiaryUpdateModel
     $event->setTitle(trim($data['title']));
     $event->setDescription(trim($data['details']));
 
-    $startDateTime = "{$data['start-date']} {$data['start-time']}";
-    $endDateTime = "{$data['finish-date']} {$data['finish-time']}";
+    $startDateTime = new DateTime();
+    $dateParts = explode("/", $data['start-date']);
+    $timeParts = explode(":", $data['start-time']);
+    $startDateTime->setDate($dateParts[2], $dateParts[1], $dateParts[0]);
+    $startDateTime->setTime($timeParts[0], $timeParts[1]);
 
-    $event->setDateTime($startDateTime, $endDateTime);
-    $dao->createNewEvent($event, $this->username);
+    $endDateTime = new DateTime();
+    $dateParts = explode("/", $data['finish-date']);
+    $timeParts = explode(":", $data['finish-time']);
+    $endDateTime->setDate($dateParts[2], $dateParts[1], $dateParts[0]);
+    $endDateTime->setTime($timeParts[0], $timeParts[1]);
+
+    $event->setDateTime($startDateTime->format('Y/m/d H:i'), $endDateTime->format('Y/m/d H:i'));
+    $id = $dao->createNewEvent($event, $this->username);
 
     if ( Input::server('HTTP_X_REQUESTED_WITH') != 'XMLHttpRequest' )
     {
-      $back = "diary/" . date('Y/m/d', $startDateTime);
+      $back = "diary/" . $startDateTime->format('Y/m/d');
       Redirect::to($back);
+    } else {
+      echo BASE_PATH . Input::session('username') . "/diary/edit/" . $id;
     }
   }
 
@@ -60,9 +71,17 @@ class DiaryUpdateModel
     $event->setTitle(trim($data['title']));
     $event->setDescription(trim($data['details']));
 
-    $startDateTime = "{$data['start-date']} {$data['start-time']}";
-    $endDateTime = "{$data['finish-date']} {$data['finish-time']}";
-    $event->setDateTime($startDateTime, $endDateTime);
+    $startDateTime = new DateTime();
+    $dateParts = explode("/", $data['start-date']);
+    $timeParts = explode(":", $data['start-time']);
+    $startDateTime->setDate($dateParts[2], $dateParts[1], $dateParts[0]);
+    $startDateTime->setTime($timeParts[0], $timeParts[1]);
+
+    $endDateTime = new DateTime();
+    $dateParts = explode("/", $data['finish-date']);
+    $timeParts = explode(":", $data['finish-time']);
+    $endDateTime->setDate($dateParts[2], $dateParts[1], $dateParts[0]);
+    $endDateTime->setTime($timeParts[0], $timeParts[1]);
 
     if ( $data['action'] == 'delete' ) {
       $dao->deleteUserEvent($event, $this->username);
@@ -72,7 +91,7 @@ class DiaryUpdateModel
 
     if ( Input::server('HTTP_X_REQUESTED_WITH') != 'XMLHttpRequest' )
     {
-      $back = "diary/" . date('Y/m/d', $startDateTime);
+      $back = "diary/" . $startDateTime->format('Y/m/d');
       Redirect::to($back);
     }
   }

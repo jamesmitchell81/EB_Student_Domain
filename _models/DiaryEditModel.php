@@ -20,8 +20,8 @@ class DiaryEditModel
     $this->args = $args;
 
     $this->year = isset($this->args[':yyyy']) ? $this->args[':yyyy'] : date('Y');
-    $this->month = isset($this->args[':mm']) ? $this->args[':mm']   : date('m');
-    $this->day  = isset($this->args[':dd']) ? $this->args[':dd']   : date('d');
+    $this->month = isset($this->args[':mm']) ? $this->args[':mm']    : date('m');
+    $this->day  = isset($this->args[':dd']) ? $this->args[':dd']     : date('d');
     $this->hours = isset($this->args[':time']) ? explode(':', $this->args[':time'])[0] : date('H');
     $this->minutes = isset($this->args[':time']) ? explode(':', $this->args[':time'])[1] : date('i');
 
@@ -47,9 +47,9 @@ class DiaryEditModel
     $date = new DateTime();
     $date->setDate($this->year, $this->month, $this->day);
     $date->setTime($this->hours, $this->minutes, 0);
-    $event->setStartDateTime($date->format('d/m/Y H:i'));
+    $event->setStartDateTime($date->format('Y/m/d H:i'));
     $date->add(new DateInterval('PT1H'));
-    $event->setEndDateTime($date->format('d/m/Y H:i'));
+    $event->setEndDateTime($date->format('Y/m/d H:i'));
 
     return $event;
   }

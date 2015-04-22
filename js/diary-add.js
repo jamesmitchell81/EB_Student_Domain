@@ -40,6 +40,9 @@
   function displayDiaryEdit(src, href)
   {
     var body = doc.getElementsByTagName('body')[0];
+    var cont = doc.getElementById('new-content-container');
+
+    if ( cont ) return; // prevent multiple diary edit dialogs;
 
     ajax.get(href, function(text) {
       var container = doc.createElement('div');
@@ -85,16 +88,20 @@
 
         ajax.post(action, makeDataString(data),
           function(text) {
-            console.log(text);
+
+            var event;
 
             var url = win.location.href.split('/');
-
             dt = url.pop();
             month = url.pop();
             year = url.pop();
-
             thisDate = new Date(year, month - 1, dt);
-            thatDate = new Date(data['start-date']);
+
+            startDate = data['start-date'].split("/");
+            year = startDate.pop();
+            month = startDate.pop();
+            dt = startDate.pop();
+            thatDate = new Date(year, month - 1, dt);
 
             if ( thisDate.getDate() == thatDate.getDate() ) {
 
@@ -107,12 +114,13 @@
 
                 thatDate.setHours(data['start-time'].split(':')[0]);
 
-                console.log(thisDate, nextHour, thatDate);
-
                 if ( (thatDate.getTime() >= thisDate.getTime()) &&
                      (thatDate.getTime() < nextHour.getTime()) ) {
 
-                  diaryHourAdd[i].appendChild(createEvent(data));
+                  event = createEvent(data);
+                  event.setAttribute('href', text);
+
+                  diaryHourAdd[i].appendChild(event);
                 }
               }
             }
@@ -124,6 +132,63 @@
             }, 100);
           });
 
+      }, false);
+
+      deleteBtn = container.querySelectorAll('.diary-edit-delete')[0];
+      deleteBtn.addEventListener('click', function(e) {
+        var btn = e.target || e.srcElement;
+        var data = {};
+        e.preventDefault();
+
+        data.id = doc.getElementById('id').value;
+        data.title = doc.getElementById('title').value;
+        data.details = doc.getElementById('details').value;
+        data['start-date'] = doc.getElementById('start-date').value;
+        data['start-time'] = doc.getElementById('start-time').value;
+        data['finish-date'] = doc.getElementById('finish-date').value;
+        data['finish-time'] = doc.getElementById('finish-time').value;
+        data['action'] = btn.value;
+
+        ajax.post(action, makeDataString(data),
+          function(text) {
+            var events;
+            var href;
+            
+            var url = win.location.href.split('/');
+            dt = url.pop();
+            month = url.pop();
+            year = url.pop();
+            thisDate = new Date(year, month - 1, dt);
+
+            startDate = data['start-date'].split("/");
+            year = startDate.pop();
+            month = startDate.pop();
+            dt = startDate.pop();
+            thatDate = new Date(year, month - 1, dt);
+
+            if ( thisDate.getDate() == thatDate.getDate() ) {
+              events = doc.querySelectorAll('.diary-event');
+
+              for ( var i = 0; i < events.length; i++ ) {
+                href = events[i].getAttribute('href');
+                parts = href.split("/");
+                id = parts.pop();
+
+                if ( id === data.id ) {
+                  events[i].parentElement.removeChild(events[i]);
+                }
+              }
+
+            }
+
+            container.className = "content-container-hidden";
+            timeout = setTimeout(function() {
+              body.removeChild(container);
+              clearTimeout(timeout);
+            }, 100);
+
+          });
+
       }, false)
 
       body.appendChild(container);
@@ -132,6 +197,10 @@
         clearTimeout(timeout);
       }, 10);
     });
+
+  }
+
+  function addNewEvent() {
 
   }
 
