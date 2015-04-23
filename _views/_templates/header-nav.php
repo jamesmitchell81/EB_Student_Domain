@@ -3,7 +3,7 @@
   <h3 class='logo-header-title'>
     Woodland University College
   </h3>
-  <a class='logo-header-sign-out' href='/~jm/group_project/'>Sign out</a>
+  <a class='logo-header-sign-out' href='<?= BASE_PATH; ?>'>Sign out</a>
 </div>
 
 <div class="col-2">
