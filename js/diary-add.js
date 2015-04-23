@@ -13,21 +13,25 @@
     }, true);
   }
 
-  for ( var i = 0; i < diaryEvent.length; i++ ) {
-    diaryEvent[i].addEventListener('click', function(e) {
-      var src = e.target || e.srcElement;
-      var href;
-      e.preventDefault();
+  function updateDiaryEventListeners()
+  {
+    diaryEvent = doc.querySelectorAll('.diary-event');
+    for ( var i = 0; i < diaryEvent.length; i++ ) {
+      diaryEvent[i].addEventListener('click', function(e) {
+        var src = e.target || e.srcElement;
+        var href;
+        e.preventDefault();
 
-      // needs proper fix.
-      while ( !src.getAttribute('href') ) {
-        src = src.parentElement;
-      }
+        // needs proper fix.
+        while ( !src.getAttribute('href') ) {
+          src = src.parentElement;
+        }
 
-      href = src.getAttribute('href');
+        href = src.getAttribute('href');
 
-      displayDiaryEdit(src, href);
-    }, false);
+        displayDiaryEdit(src, href);
+      }, false);
+    }
   }
 
   diaryAdd.addEventListener("click", function(e) {
@@ -52,8 +56,6 @@
       container.id = "new-content-container";
       container.className = "content-container-hidden";
       container.innerHTML = text;
-
-      console.log(text);
 
       form = container.querySelectorAll('form')[0];
       action = form.getAttribute('action');
@@ -85,9 +87,6 @@
         data['finish-date'] = doc.getElementById('finish-date').value;
         data['finish-time'] = doc.getElementById('finish-time').value;
         data['action'] = btn.value;
-
-        console.log(action);
-        console.log(makeDataString(data));
 
         ajax.post(action, makeDataString(data),
           function(text) {
@@ -126,6 +125,7 @@
                   diaryHourAdd[i].appendChild(event);
                 }
               }
+              updateDiaryEventListeners();
             }
 
             container.className = "content-container-hidden";
@@ -239,5 +239,6 @@
     return encodeURI(str);
   }
 
+  updateDiaryEventListeners();
 
 }(document, window))
