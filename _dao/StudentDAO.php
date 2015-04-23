@@ -29,8 +29,35 @@ class StudentDAO
       $student->setMobile($data['Mobile']);
       $student->setEmailAddress($data['Email']);
       $student->setGender($data['Gender']);
+
+      foreach ($this->getStudentQuailifications($data['idStudent']) as $q) {
+        $student->addQuailification($q);
+      }
+
     }
 
     return $student;
+  }
+
+  private function getStudentQuailifications($studentID)
+  {
+    $this->db = new DatabaseQuery();
+    $this->db->setInt('username', $studentID);
+    $this->db->select('SELECT Type, Grade, Subject
+                       FROM StudentQualifications
+                       WHERE idStudent = :username');
+    $data = $this->db->all();
+
+    $quailifications = [];
+
+    foreach ( $data as $quailification )
+    {
+      $q = new Quailification();
+      $q->setType($quailification['Type']);
+      $q->setSubject($quailification['Subject']);
+      $q->setGrade($quailification['Grade']);
+      $quailifications[] = $q;
+    }
+    return $quailifications;
   }
 }

@@ -1,6 +1,7 @@
 <?php
 
 include_once 'Person.php';
+include_once 'Quailification.php';
 
 class Student extends Person
 {
@@ -11,6 +12,7 @@ class Student extends Person
     private $mobile;
     private $password = "";
     private $gender = "";
+    private $quailifications = [];
 
     /**
      * @return mixed
@@ -127,5 +129,15 @@ class Student extends Person
     public function setGender($gender)
     {
         $this->gender = $gender;
+    }
+
+    public function addQuailification(Quailification $quailification)
+    {
+        $this->quailifications[] = $quailification;
+    }
+
+    public function getQuailifications()
+    {
+        return $this->quailifications;
     }
 }

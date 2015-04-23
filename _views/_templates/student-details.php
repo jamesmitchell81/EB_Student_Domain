@@ -31,9 +31,13 @@
       <td><?= $this->data['details']->getGender(); ?></td>
     </tr>
     <tr>
-      <th class='student-qualifications'>Qualifications</th>
-      <td></td>
+      <th class='student-qualifications' colspan='2'>Qualifications</th>
     </tr>
+    <?php foreach ($this->data['details']->getQuailifications() as $qualification) : ?>
+      <td colspan='2'>
+        <?= $qualification->getQuailification(); ?>
+      </td>
+    <?php endforeach; ?>
     <tr>
       <th class='student-modules' colspan='2'>Modules</th>
     </tr>
