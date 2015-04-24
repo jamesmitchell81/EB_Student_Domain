@@ -1,4 +1,8 @@
-<table class='table-3'>
+<a style='margin-bottom:3em;' href='mailto:admin@woodlanes.co.uk?subject=Please Update My Information' class='btn btn-blue'>
+  Send Request to update My Information.
+</a>
+
+<table class='table-3' stlye='margin-top; 2em;'>
   <thead>
   </thead>
   <tbody>

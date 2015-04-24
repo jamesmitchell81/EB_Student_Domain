@@ -63,14 +63,6 @@ class Navigation
     return BASE_PATH . $username . "/diary/" . $dt;
   }
 
-  public static function defaultWeekDiary()
-  {
-    $username = Input::session('username');
-    $year = date('Y');
-    $week = date('W');
-    return BASE_PATH . $username . "/diary/$year/week{$week}";
-  }
-
   public static function defaultMonthDiary()
   {
     $username = Input::session('username');

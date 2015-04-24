@@ -11,7 +11,6 @@
 
     <span class="notice-actions">
       <a class='btn btn-blue notification-delete' href='notifications/delete/<?= "{$notice->getID()}"; ?>'>Delete</a>
-      <a class='btn btn-green' href='notifications/save/<?= "{$notice->getID()}"; ?>'>Save</a>
     </span>
 
     <span class="notice-details"><?= date('l jS F Y - H:i', $notice->getSentDatetime() ); ?> &bull; <?= $notice->getSender()->getFullName(); ?></span>

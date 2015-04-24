@@ -44,7 +44,6 @@ class DiaryDailyView implements View
     include "_templates/header-nav.php";
     include "_templates/content-header.php";
     include "_templates/diary-controls.php";
-    include "_templates/diary-types.php";
     include "_templates/diary-day.php";
     include "_templates/content-end.php";
     include "_templates/footer.php";

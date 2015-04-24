@@ -54,9 +54,6 @@
         <a href='<?= Navigation::defaultDailyDiary(); ?>'>Today</a>
       </li>
       <li class='nav-core-2-item'>
-        <a href="<?= Navigation::defaultWeekDiary(); ?>">This Week</a>
-      </li>
-      <li class='nav-core-2-item'>
         <a href="<?= Navigation::defaultMonthDiary(); ?>">This Month</a>
       </li>
       <li class='nav-core-2-item'>
