@@ -7,6 +7,10 @@ body {
   font-family: "Calibri", sans-serif;
 }
 
+h2 {
+
+}
+
 h3 {
   font-size: 1.25em;
   margin: 2em 0 1em 0;
@@ -35,6 +39,11 @@ p {
 
 .content-container-hidden {
   left: -500px;
+}
+
+.diary-edit-wrap form input[type=text] {
+  color: #313131;
+  font-weight: 200;
 }
 
 .show {
@@ -293,19 +302,9 @@ footer ul li {
   background: #48E7B3;
 }
 
-/*.g1:hover { background: #D2EAFF; }
-.g2:hover { background: #99CDFF; }
-.g3:hover { background: #69B4F9; }
-.g4:hover { background: #3E97EB; }*/
-
 .b1 { background: #D2EAFF; }
 .b2 { background: #99CDFF; }
 .b3 { background: #69B4F9; }
 .b4 { background: #3E97EB; }
-
-/*.b1:hover { background: #D2EAFF; }*/
-/*.b2:hover { background: #99CDFF; }*/
-/*.b3:hover { background: #69B4F9; }*/
-/*.b4:hover { background: #3E97EB; }*/
 
 

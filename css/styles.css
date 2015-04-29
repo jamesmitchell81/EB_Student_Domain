@@ -1,0 +1,1334 @@
+html, body, div, article, header, nav, ul, ol, li, a, form,
+legend, input, label, p, img, textarea,
+h1, h2, h3, h4, h5, h6, span {
+  margin: 0; padding: 0;
+  list-style: none;
+}
+
+/*
+Reference: [Paul Irish](http://www.paulirish.com/2012/box-sizing-border-box-ftw/)
+*/
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  /*font-family: "Fira Sans", sans-serif;*/
+  font-family: "Calibri", sans-serif;
+}
+
+h2 {
+
+}
+
+h3 {
+  font-size: 1.25em;
+  margin: 2em 0 1em 0;
+}
+
+h4 {
+  font-size: 1em;
+  margin: 1.75em 0 0.75em 0;
+}
+
+h5 {
+  font-weight: 500;
+  margin: 0.5em 0 0.75em 0;
+}
+
+p {
+  line-height: 1.5;
+}
+
+#new-content-container {
+  transition: left 0.25s;
+  width: 100%;
+  position: fixed;
+  top: 25%;
+}
+
+.content-container-hidden {
+  left: -500px;
+}
+
+.diary-edit-wrap form input[type=text] {
+  color: #313131;
+  font-weight: 200;
+}
+
+.show {
+  left: 0px;
+}
+
+#content-header {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.page-action {
+  width: 20%;
+  display: inline-block;
+}
+
+.page-entity {
+  font-weight: 300;
+  width: 80%;
+}
+
+.btn {
+  min-width: 70px;
+  display: inline-block;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  border: 2px solid;
+  transition: background 0.5s, color 0.5s;
+}
+
+.btn-green {
+  border-color: #00cc89;
+  color: #00cc89;
+}
+
+.btn-green:hover {
+  color: #fff;
+  background: #00cc89;
+}
+
+.btn-white {
+  color: #fff;
+  background: #00cc89;
+}
+
+.btn-white:hover {
+  border-color: #00cc89;
+  color: #00cc89;
+}
+
+.btn-blue {
+  border-color: #3E97EB;
+  color: #3E97EB;
+}
+
+.btn-blue:hover {
+  color: #fff;
+  background: #3E97EB;
+}
+
+.link-blue {
+  color: #0C93F1;
+  text-decoration: none;
+}
+
+/* layout */
+.col-1 {
+  width: 100%;
+  top: 0;
+  position: fixed;
+  min-height: 100%;
+}
+
+.header-logo {
+  height: 2em;
+  margin: 0.35em 0 0em 1em;
+}
+
+.logo-header {
+  width: 100%;
+  color: #000;
+  background: #00cc89;
+  position: relative;
+  transition: background 0.5s;
+}
+
+.logo-header-title,
+.logo-header-sign-out {
+  color: #fff;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.logo-header-title {
+  padding-left: 1em;
+  top: 0;
+  position: absolute;
+  line-height: 2.75;
+  letter-spacing: 1px;
+  text-align: left;
+  font-size: 1em;
+  margin: auto;
+  display: inline-block;
+  font-weight: 400;
+  max-width: 55em;
+  min-width: 320px;
+}
+
+.logo-header-sign-out {
+  font-size: 0.9em;
+  font-weight: 200;
+  min-width: 70px;
+  text-decoration: none;
+  /*float: right;*/
+  position: absolute;
+  top: 15%;
+  right: 0;
+  padding: 0.25em 1em;
+}
+
+/* new */
+.col-2 {
+  width: 100%;
+  min-height: 100%;
+  padding-bottom: 4em;
+}
+
+.wrap {
+  padding: 0 1.5em 3.5em 1.5em;
+  max-width: 55em;
+  min-width: 320px;
+  margin: auto;
+}
+
+#content {
+  padding-top: 6.5em;
+}
+
+header {
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+  min-height: 100%;
+  height: auto;  /*!important;*/
+  position: relative;
+}
+
+footer {
+  margin-top: 10em;
+  background: #F8F8F8;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 4em;
+}
+
+footer ul {
+  width: 100%;
+  margin: auto;
+}
+
+footer ul li {
+  float: left;
+  width: 25%;
+  text-align: center;
+  line-height: 4em;
+}
+
+/* navigation */
+.logo {
+  width: 100%;
+  min-width: 75px;
+  padding: 0.5em 0.40em;
+}
+
+#nav-core-1 {
+  width: 100%;
+  z-index: 2;
+}
+
+#nav-core-1 li {
+  float: left;
+}
+
+.nav-core-1-item {
+  color: #000;
+  text-decoration: none;
+  width: 25%;
+  padding: 0 0 0 3%;
+  line-height: 4;
+  cursor: pointer;
+}
+
+.nav-core-1-item a {
+  display: block;
+  width: 100%;
+  color: #000;
+  text-decoration: none;
+}
+
+#nav-core-2 {
+  /*width: 90%;*/
+  width: 100%;
+  float: right;
+  clear: both;
+  left: -1400px;
+  /*top: -550px;*/
+  position: absolute;
+  transition: left 0.35s;
+  z-index: 1;
+}
+
+.nav-core-2-list {
+  width: 25%;
+  float: left;
+  line-height: 4;
+}
+
+.nav-core-2-item a {
+  display: block;
+  padding: 1em 0 1em 12%;
+  line-height: 1;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  transition: background ease-in 0.5s;
+  border-width: 3px;
+}
+
+.nav-core-2-item a:hover {
+  background: #00CC89;
+}
+
+.g1 {
+  background: #D3FEF0;
+}
+
+.g2 {
+  background: #9CFBDC;
+}
+
+.g3 {
+  background: #6FF5C9;
+}
+
+.g4 {
+  background: #48E7B3;
+}
+
+.b1 { background: #D2EAFF; }
+.b2 { background: #99CDFF; }
+.b3 { background: #69B4F9; }
+.b4 { background: #3E97EB; }
+
+.heat-10 { background: #0f0; cursor: pointer;}
+.heat-9 { background:  #11ff11; cursor: pointer;}
+.heat-8 { background:  #22ff22; cursor: pointer;}
+.heat-7 { background:  #33ff33; cursor: pointer;}
+.heat-6 { background:  #50ff50; cursor: pointer;}
+.heat-5 { background:  #65ff65; cursor: pointer;}
+.heat-4 { background:  #78ff78; cursor: pointer;}
+.heat-3 { background:  #98ff98; cursor: pointer;}
+.heat-2 { background:  #caffca; cursor: pointer;}
+.heat-1 { background:  #efffef; cursor: pointer;}
+
+.dt-suffix {
+  font-size: 0.7em;
+  vertical-align: top;
+}
+
+.diary-controls {
+  height: 50px;
+  margin: 1em 0 5em 0;
+  width: 100%;
+  position: relative;
+}
+
+.diary-add {
+  width: 20%;
+  left: 40%;
+  position: absolute;
+  display: inline-block;
+}
+
+.diary-last {
+  left: 0;
+  position: absolute;
+  display: inline-block;
+}
+
+.diary-next {
+  right: 0;
+  position: absolute;
+  display: inline-block;
+}
+
+.diary-next .btn,
+.diary-add .btn,
+.diary-last .btn {
+  width: 100%;
+  line-height: 2;
+}
+
+.diary-current {
+  float: right;
+}
+
+.diary-day:first-child {
+  margin-top: 1em;
+}
+
+.diary-date {
+  text-align: right;
+  float: right;
+}
+
+.diary-hour {
+  width: 100%;
+  padding-left: 3em;
+  min-height: 6em;
+  display: block;
+  border-top: 1px solid #cacaca;
+  position: relative;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.5s;
+}
+
+.diary-hour:hover {
+  background: #D3FEF0;
+}
+
+.diary-time {
+  top: -0.8em;
+  left: 0;
+  position: absolute;
+  padding: 0 10px 0 0;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 2em;
+}
+
+.diary-event {
+  vertical-align: top;
+  color: #000;
+  text-decoration: none;
+  font-size: 0.85em;
+  background: #48E7B3;
+  display: inline-block;
+  padding: 0.25em;
+  margin: 0.25em;
+  box-shadow: 2px 2px 2px #cacaca;
+  border-radius: 4px;
+  max-width: 8em;
+}
+
+.diary-event span {
+  padding: 0;
+}
+
+.diary-item {
+  font-size: 0.7em;
+  min-height: 3em;
+  display: inline-block;
+  float: right;
+  width: 70%;
+  padding: 1% 2% 1% 4%;
+  margin: 1px;
+  background: #ff7896;
+  border-radius: 0.5em;
+}
+
+.diary-edit-wrap {
+  background: #fff;
+  max-width: 320px;
+  min-width: 320px;
+  margin: 1% auto;
+  box-shadow: 2px 2px 7px #afafaf;
+  border-radius: 0.25em;
+}
+
+.diary-edit-title {
+  font-weight: bold;
+  width: 75%;
+  display: inline-block;
+  padding: 3% 5%;
+  margin-bottom: 4%;
+  float: left;
+}
+
+.diary-edit-exit {
+  padding: 0.5% 4%;
+  font-size: 1.75em;
+  float: right;
+  border-radius:  0 0.5em 0 0;
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+}
+
+.diary-input-wrap {
+  padding: 5%;
+  display: block;
+}
+
+.diary-field-wrap {
+  display: inline-block;
+  border-bottom: 1px solid #000;
+  margin: 1em 0;
+  width: 100%;
+}
+
+.diary-label {
+  width: 20%;
+  display: inline-block;
+  line-height: 1.5;
+  font-size: 1.125em;
+}
+
+.diary-date-time-wrap {
+  width: 75%;
+  display: inline-block;
+}
+
+#start-time, #start-date,
+#finish-time, #finish-date {
+  width: 45%;
+  display: inline-block;
+  text-align: center;
+}
+
+#title {
+  width: 75%;
+}
+
+.diary-text {
+  font-size: 1.125em;
+  border: none;
+  outline: none;
+}
+
+.diary-textarea {
+  font-size: 1.125em;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.action-btn {
+  line-height: 2;
+  border: none;
+  font-weight: 500;
+  font-size: 1.25em;
+  background: #fff;
+  margin-top: 1em;
+}
+
+.diary-edit-confirm {
+  width: 50%;
+  color: #000;
+  border-color: #caffca;
+  border-radius: 0 0 0 0.25em;
+  background: #caffca;
+}
+
+.diary-edit-delete {
+  background: #ffcaca;
+  width: 50%;
+  float: right;
+  color: #000;
+  border-color: #f00;
+  border-radius: 0 0 0.25em 0;
+}
+
+/******************/
+/*  Weekly View   */
+/******************/
+/*
+.diary-week-item {
+  width: 100px;
+  height: 3em;
+  display: block;
+  font-size: 0.7em;
+  line-height: 1;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #48E7B3;
+  cursor: pointer;
+}
+*/
+
+.diary-week {
+  width: 100%;
+}
+
+.diary-week .diary-day-week {
+  width: 14%;
+  float: left;
+}
+
+.diary-day-week-time {
+  float: left;
+}
+
+.diary-weekday-date {
+  width: 14%;
+  padding: 2%;
+  cursor: pointer;
+}
+
+.diary-weekday-date .date-month-day {
+  font-size: 2.25em;
+  font-weight: bold;
+  line-height: 0.9;
+  width: 100%;
+  display: block;
+}
+
+.diary-weekday-date .date-day,
+.diary-weekday-date .date-month {
+  font-size: 0.9em;
+}
+
+.diary-week-day {
+  height: 8em;
+}
+
+.diary-weekday-date {
+}
+
+.diary-week-morning {
+  background: #D3FEF0;
+}
+
+.diary-week-afternoon {
+  background: #9CFBDC;
+}
+
+.diary-week-evening {
+  background: #6FF5C9;
+}
+
+.diary-week-current-day td {
+  background: #48E7B3;
+}
+
+/******************/
+/*  Month View    */
+/******************/
+
+.diary-month-title {
+  width: 100%;
+  text-align: center;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.diary-month {
+  margin-left: 20%;
+  width: 80%;
+  background: #fff;
+  display: table;
+  table-layout: fixed;
+}
+
+.diary-month-cal-header-row {
+  max-height 1em;
+  display: table-row;
+
+}
+
+.diary-month-cal-row {
+  max-height 3em;
+  display: table-row;
+}
+
+.diary-month-cal-head-cell {
+  width: 14.285714286%;
+  display: table-cell;
+  height: 2em;
+  text-align: center;
+  border-bottom: 1px solid #efefef;
+}
+
+.diary-month-cal-cell-link {
+  width: 100%;
+  height: 6em;
+  max-height: 6em;
+  min-height: 6em;
+  min-width: 6em;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s;
+  padding: 0.5em;
+  color: #000;
+}
+
+.diary-month-cal-cell {
+  font-size: 0.9em;
+  border: 1px solid #efefef;
+  display: table-cell;
+  width: 14.285714286%;
+  height: 6em;
+  /*vertical-align: top;*/
+  text-align: right;
+}
+
+.diary-month-cal-cell-link:hover {
+  background: #3E97EB;
+}
+
+.diary-month td {
+  cursor: pointer;
+  transition: background 0.5s;
+}
+
+.diary-month-tabs {
+  float: left;
+  margin-top: 1.5em;
+  left: 0;
+  transition: left 0.5s;
+}
+
+.diary-month-link {
+  color: #787878;
+  font-weight: 300;
+  font-size: 0.9em;
+  line-height: 2;
+  cursor: pointer;
+  transition: color 0.25s;
+  text-decoration: none;
+}
+
+.diary-month-link:hover {
+  color: #48E7B3;
+}
+
+.diary-month-link.current {
+  color: #48E7B3;
+}
+
+.diary-month-day {
+  width: 14.285714286%;
+  height: 20%;
+  font-weight: 300;
+}
+
+.diary-month td {
+  height: 6em;
+  vertical-align: top;
+  text-align: right;
+  padding: 0.5em;
+}
+
+span.diary-count {
+  background: #fff;
+  color: #000;
+  box-shadow: 1px 1px 4px #555;
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  padding: 0.4em;
+  margin-top: 3em;
+  margin-left: -5.5em;
+  display: inline-block;
+  text-align: center;
+  border-radius: 100%;
+  z-index: 0;
+}
+
+/******************/
+/*  Year View     */
+/******************/
+
+.diary-year-month {
+  table-layout: fixed;
+  width: 28%;
+  min-width: 150px;
+  float: left;
+  font-size: 0.85em;
+  text-align: center;
+  line-height: 2;
+  border-collapse: separate;
+  box-shadow: none;
+  transition: box-shadow 0.5s, border-radius 0.5s;
+  margin: 2em 5% 6% 0;
+  min-height: 20em;
+}
+
+.diary-year-month-wrap {
+  float: left;
+}
+
+.diary-year-month:hover {
+  box-shadow: 2px 2px 7px #9898aa;
+  border-radius: 5px;
+}
+
+.diary-year-month th {
+  font-weight: 600;
+  border: none;
+  padding: 0.5em 0;
+  text-align: center;
+  width: 14.285714286%;
+}
+
+th.diary-year-month-label {
+  text-align: center;
+  font-weight: bold;
+}
+
+.diary-year-month td {
+  padding: 0;
+  line-height: 2;
+  border: none;
+}
+
+.diary-year-month td a {
+  color: #313131;
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  border-radius: 17px;
+  transition: background 0.5s;
+}
+
+.diary-year-month td a:hover {
+  background: #3E97EB;
+}
+
+input[type="text"], textarea {
+  font-family: "Fira Sans", sans-serif;
+}
+
+::-webkit-input-placeholder {
+   color: #cacaca;
+   font-weight: 100;
+}
+
+.notice-block {
+  margin: 2em 0 5em 0;
+  padding: 0 0 1.5em 0;
+  border-bottom: 1px dotted #00cc89;
+  position: relative;
+  background: #fff;
+  opacity: 1;
+  transition: opacity 0.75s, height 1s, margin 1s, padding 1s;
+}
+
+.notice-block > * {
+  opacity: 1;
+  transition: opacity 0.75s;
+}
+
+.notice {
+  text-indent: 1em;
+  margin: 1em 0 3em 0;
+}
+
+.notice-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+}
+
+.notice-details {
+  display: inline-block;
+  width: 100%;
+  font-style: italic;
+  color: #787878;
+  margin-bottom: 1em;
+  font-size: 0.9em;
+}
+
+/*
+  Background Image Method: https://css-tricks.com/perfect-full-page-background-image/
+*/
+
+html {
+}
+
+#background {
+  min-height: 120%;
+  position: fixed;
+  width: 120%;
+  top: -10%;
+  left: -10%;
+  z-index: -1;
+}
+
+.signin-header {
+  min-width: 320px;
+  max-width: 460px;
+  margin: 0 auto;
+  display: block;
+  overflow: hidden;
+  padding: 2em 0 0 0;
+}
+
+.signin-sub-header {
+  min-width: 320px;
+  max-width: 460px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.signin-sub-header h2 {
+  line-height: 1;
+  padding: 1.5em 0 0 0;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 200;
+}
+
+.title-wrap {
+  width: 100%;
+  min-width: 320px;
+  margin: 0 auto;
+}
+
+.signin-header h1 {
+  line-height: 1;
+  padding: 0.5em 0em 1.5em 0;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 200;
+}
+
+.signin-logo {
+  float: left;
+  height: 6em;
+  margin: 1em 2.5em 1em 1em;
+}
+
+#signin-form {
+  min-width: 320px;
+  max-width: 460px;
+  display: block;
+  margin: 2em auto 0 auto;
+  padding: 2em 1.5em;
+}
+
+.signin-label,
+.signin-text,
+.signin-btn {
+  width: 100%;
+  display: block;
+}
+
+.signin-label {
+  color: #fff;
+  line-height: 2;
+  margin: 1.50em 0 0.30em 0;
+  padding: 0 0 0 1em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 200;
+}
+
+.signin-text {
+  outline: none;
+  font-size: 1.25em;
+  line-height: 1;
+  padding: 0.50em;
+  border: 3px solid #fff;
+  background: none;
+  color: #fff;
+  transition: background 0.25s, color 0.25s;
+}
+
+.signin-text:focus, .signin-btn:focus,
+.signin-text:hover, .signin-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+.signin-btn {
+  transition: background 0.25s, color 0.25s;
+  outline: none;
+  font-size: 1.25em;
+  padding: 1em;
+  margin: 3em 0 0 0;
+  border: 5px solid #fff;
+  background: none;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.signin-btn:active {
+  box-shadow: none;
+}
+
+.sign-in-error {
+  background: #fff;
+  display: block;
+  padding: 6px 6px 4px 1.3em;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+th.lecturer-modules,
+th.student-qualifications,
+th.student-modules {
+  padding: 1.5em 1em 0 1em;
+  border-bottom: 1px solid #cacaca;
+}
+
+td.table-cell-link {
+  padding: 0;
+  margin: 0;
+}
+
+.table-cell-link a {
+  padding: 0.5em 1em;
+  display: block;
+  width: 100%;
+  color: #0C93F1;
+  text-decoration: none;
+  transition: background 0.5s;
+}
+
+.table-cell-link a:hover {
+  background: #CDEAFF;
+}
+
+.table-1 { width: 20%;  }
+.table-2 { width: 40%;  }
+.table-3 { width: 60%;  }
+.table-4 { width: 80%;  }
+.table-5 { width: 100%; }
+
+table {
+
+  table-layout: fixed;
+  width: 100%;
+  min-width: 320px;
+  box-shadow: 1px 1px 4px #555;
+  margin: 0 0 4em 0;
+}
+
+table th {
+  text-align: left;
+  font-weight: 500;
+  padding-left: 0.5em;
+}
+
+table td,
+table th {
+  padding: 0.5em 1em;
+  line-height: 1.5;
+  border-bottom: 1px dotted #cacaca;
+}
+
+td.table-cell-link {
+  padding: 0;
+  margin: 0;
+}
+
+.timetable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  box-shadow: 1px 1px 2px #555;
+  padding: 1em;
+}
+
+.timetable tr:nth-child(4n) {
+  border-bottom: 1px solid #cacaca;
+}
+
+.timetable th {
+  line-height: 3;
+  border-bottom: 1px solid #cacaca;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+td.tt-timespaces  {
+  width: 7%;
+  text-align: left;
+  padding: 0;
+  font-size: 0.9em;
+}
+
+.tt-day {
+  width: 18%;
+}
+
+.timetable td {
+  height: 1em;
+  padding: 0 0.5em 0 0.5em;
+}
+
+span.tt-session {
+  font-size: 0.8em;
+  background: #48E7B3;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0.25em 0 0.5em 0.75em;
+  box-shadow: 2px 2px 2px #cacaca;
+  border-radius: 4px;
+}
+
+span.tt-session span {
+  display: block;
+}
+
+.tt-session-room,
+.tt-session-title,
+.tt-session-lecturer {
+  width: 100%;
+  display: block;
+  text-align: left;
+}
+
+.tt-session-times {
+  width: 100%;
+  line-height: 1;
+  display: block;
+  text-align: left;
+}
+.assignment-front-sheet {
+  width: 100%;
+  text-align: left;
+  table-layout: fixed;
+}
+
+th.ass-front-title {
+  height: 2em;
+  text-align: center;
+  background: #efefef;
+  font-size: 1.5em;
+}
+
+.ass-fs-date {
+  font-weight: bold;
+}
+
+.assignment-front-sheet td {
+  padding: 10px;
+  border: 1px dotted #cacaca;
+}
+
+td.ass-student-start {
+  border-top: 3px solid #000;
+}
+
+.ass-lect-fs {
+  height: 3em;
+}
+
+td.ass-lect-start {
+  border-top: 3px solid #000;
+}
+
+td.ass-feedback-start {
+  border-top: 3px solid #000;
+  text-align: center;
+  font-weight: bold;
+}
+
+.ass-feedback-title {
+  border-top: 1px solid #000;
+}
+
+.ass-feedback {
+  border-bottom: 1px solid #000;
+  height: 10em;
+}
+
+.ass-marking {
+  height: 3em;
+}
+
+.ass-marking-title {
+  border-bottom: 1px solid #000;
+}
+
+
+.att-summary,
+.att-history,
+th.att-data {
+  text-align: center;
+}
+
+.att-history tr:hover {
+  background: #48E7B3;
+}
+
+.att-date {
+  border-right: 2px solid #000;
+  text-align: left;
+  font-size: 0.8em;
+}
+
+.att-summary th, .att-history th {
+  font-weight: normal;
+  border-bottom: 2px solid #000;
+}
+
+.att-summ-total-column,
+.att-summ-total-row td {
+  background: #efefef;
+  font-weight: bold;
+}
+
+.att-summ-total-column {
+  border-left: 1px solid #555;
+}
+
+.att-summ-total-row td {
+  border-top: 1px solid #555;
+}
+
+.att-title-column {
+  text-align: left;
+  padding-left: 1em;
+  width: 40%;
+}
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+  .btn {
+    font-size: 2em;
+  }
+
+  #content {
+    padding-top: 10em;
+  }
+
+  .notice-details, .page-action, .page-entity {
+    font-size: 2em;
+  }
+
+  .logo-header {
+    width: 100%;
+    font-size: 2em;
+  }
+
+  .nav-core-1-item, .nav-core-2-item {
+    /*width: 100%;*/
+    font-size: 2em;
+  }
+
+  .diary-controls {
+    margin-bottom: 17em;
+  }
+
+  .diary-controls span {
+    /*width: 100%;*/
+    width: 100%;
+    display: block;
+    margin: 0;
+    top: 0;
+    left: 0;
+    position: relative;
+  }
+
+  .diary-time {
+    font-size: 2em;
+    top: -0.6em;
+  }
+
+  .diary-controls span a {
+    line-height: 1;
+    font-size: 1.75em;
+    padding: 0.5em 0;
+  }
+
+  .diary-edit-wrap, .diary-edit-wrap, .diary-edit-wrap form {
+    width: 80%;
+    max-width: 100%;
+    min-width: 80%;
+  }
+
+  .diary-edit-wrap form {
+    max-width: 100%;
+    min-width: 100%;
+    font-size: 2em;
+  }
+
+}
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+
+  .btn {
+    font-size: 2em;
+  }
+
+  #content {
+    padding-top: 10em;
+  }
+
+  .notice-details, .page-action, .page-entity {
+    font-size: 2em;
+  }
+
+  .logo-header {
+    width: 100%;
+    font-size: 2em;
+  }
+
+  .nav-core-1-item, .nav-core-2-item {
+    font-size: 2em;
+  }
+
+  .diary-controls {
+    margin-bottom: 17em;
+  }
+
+  .diary-controls span {
+    width: 100%;
+    display: block;
+    margin: 0;
+    top: 0;
+    left: 0;
+    position: relative;
+  }
+
+  .diary-time {
+    font-size: 2em;
+    top: -0.6em;
+  }
+
+  .diary-controls span a {
+    line-height: 1;
+    font-size: 1.75em;
+    padding: 0.5em 0;
+  }
+
+  .diary-edit-wrap, .diary-edit-wrap, .diary-edit-wrap form {
+    width: 80%;
+    max-width: 100%;
+    min-width: 80%;
+  }
+
+  .diary-edit-wrap form {
+    max-width: 100%;
+    min-width: 100%;
+    font-size: 2em;
+  }
+}
+

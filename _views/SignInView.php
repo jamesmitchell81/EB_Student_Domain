@@ -28,11 +28,9 @@ class SignInView implements View
 
   public function display()
   {
-    ob_start();
     include "_templates/head.php";
     include "_templates/signin.php";
     include "_templates/page-end.php";
-    ob_end_flush();
   }
 
 }

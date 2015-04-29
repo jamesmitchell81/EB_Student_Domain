@@ -1,53 +1,128 @@
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
 
-
-@media ( max-width: 600px) {
-  .col-1 {
-    display: none;
+  .btn {
+    font-size: 2em;
   }
 
-  .col-2 {
+  #content {
+    padding-top: 10em;
+  }
+
+  .notice-details, .page-action, .page-entity {
+    font-size: 2em;
+  }
+
+  .logo-header {
     width: 100%;
-    margin-left: 0;
+    font-size: 2em;
   }
 
-  #nav-core-2 {
+  .nav-core-1-item, .nav-core-2-item {
+    /*width: 100%;*/
+    font-size: 2em;
+  }
+
+  .diary-controls {
+    margin-bottom: 17em;
+  }
+
+  .diary-controls span {
+    /*width: 100%;*/
     width: 100%;
-  }
-
-  /* Notifications */
-  .notice-filter {
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 2em;
-  }
-
-  .notice-input-wrap {
-    width: 100%;
-  }
-
-  #notice-search {
-    width: 100%;
-  }
-
-  .notice-filter-tags {
-    margin-top: 0;
-  }
-
-  .notice-filter-tag {
-    float: left;
-    padding: 0.5% 3% 0 0;
-    display: inline-block;
-  }
-
-  .notice-cat {
-    width: 100%;
+    display: block;
     margin: 0;
-    display: none;
+    top: 0;
+    left: 0;
+    position: relative;
   }
 
-  .notice-block {
+  .diary-time {
+    font-size: 2em;
+    top: -0.6em;
+  }
+
+  .diary-controls span a {
+    line-height: 1;
+    font-size: 1.75em;
+    padding: 0.5em 0;
+  }
+
+  .diary-edit-wrap, .diary-edit-wrap, .diary-edit-wrap form {
+    width: 80%;
+    max-width: 100%;
+    min-width: 80%;
+  }
+
+  .diary-edit-wrap form {
+    max-width: 100%;
+    min-width: 100%;
+    font-size: 2em;
+  }
+
+}
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+
+  .btn {
+    font-size: 2em;
+  }
+
+  #content {
+    padding-top: 10em;
+  }
+
+  .notice-details, .page-action, .page-entity {
+    font-size: 2em;
+  }
+
+  .logo-header {
     width: 100%;
-    margin-left: 0;
-    margin-right: 0;
+    font-size: 2em;
+  }
+
+  .nav-core-1-item, .nav-core-2-item {
+    font-size: 2em;
+  }
+
+  .diary-controls {
+    margin-bottom: 17em;
+  }
+
+  .diary-controls span {
+    width: 100%;
+    display: block;
+    margin: 0;
+    top: 0;
+    left: 0;
+    position: relative;
+  }
+
+  .diary-time {
+    font-size: 2em;
+    top: -0.6em;
+  }
+
+  .diary-controls span a {
+    line-height: 1;
+    font-size: 1.75em;
+    padding: 0.5em 0;
+  }
+
+  .diary-edit-wrap, .diary-edit-wrap, .diary-edit-wrap form {
+    width: 80%;
+    max-width: 100%;
+    min-width: 80%;
+  }
+
+  .diary-edit-wrap form {
+    max-width: 100%;
+    min-width: 100%;
+    font-size: 2em;
   }
 }
