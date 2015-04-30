@@ -18,7 +18,8 @@ class DiaryDailyView implements View
     $this->data['entity'] = "Diary <span class='diary-current'>{$this->model->getDate()->format('l jS F Y')}</span>";
     $this->data['title'] = $this->model->getDate()->format('l jS F Y');
     $this->data['today'] = $this->model->getDate();
-    $this->data['hours'] = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"];
+    $this->data['hours'] = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00",
+                            "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "00:00"];
     $this->data['diary'] = $this->model->getDiaryEvents();
     $this->data['last'] = [
               "href" => $this->model->getDiaryPath(-1),
@@ -33,7 +34,6 @@ class DiaryDailyView implements View
     $this->data['types'] = $this->model->getDiaryTypes();
 
     $this->data['edit-link'] = BASE_PATH . "{$this->model->getUsername()}/diary/edit";
-
     $this->data['scripts'][] = BASE_PATH . "js/diary-add.js";
   }
 
