@@ -3,6 +3,9 @@
 include_once './_models/_entities/Student.php';
 include_once './_database/DatabaseQuery.php';
 
+/**
+ * Database Interaction for the Student Domain.
+ */
 class StudentDAO
 {
   private $db;

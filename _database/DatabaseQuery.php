@@ -2,6 +2,10 @@
 
 include 'DatabaseConnection.php';
 
+/**
+ * PDO Database abstraction.
+ * Simplifying Database Interaction
+ */
 class DatabaseQuery
 {
   private $db;
@@ -21,6 +25,10 @@ class DatabaseQuery
     $this->db->closeConnection();
   }
 
+  /**
+   * Prepare the SQL Statement
+   * Binding any parameters.
+   */
   private function prepare_statement($sql)
   {
     $this->statement = $this->connection->prepare($sql);
@@ -36,6 +44,11 @@ class DatabaseQuery
     return $this->statement;
   }
 
+  /**
+   * Creates the connection, Prepares and exectures the Statement.
+   * Revision required due to too many responsibilities.
+   * prevents making best use of prepared statements.
+   */
   private function query($sql)
   {
     $this->connection = $this->db->connect();
@@ -44,6 +57,11 @@ class DatabaseQuery
     return $success;
   }
 
+  /**
+   * Sets a parameter with all required values.
+   * Should be made private to prevent use of
+   * PDO constants outside of class and simplify API.
+   */
   public function set($name, $value, $type = PDO::PARAM_STR)
   {
     $this->parameters[] = [
@@ -54,12 +72,18 @@ class DatabaseQuery
     return $this;
   }
 
+  /**
+   * Sets and Integer Parameter.
+   */
   public function setInt($name, $value)
   {
     $this->set($name, $value, PDO::PARAM_INT);
     return $this;
   }
 
+  /**
+   * Sets a String Parameter
+   */
   public function setStr($name, $value)
   {
     $this->set($name, $value, PDO::PARAM_STR);

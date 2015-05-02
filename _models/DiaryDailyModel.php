@@ -50,6 +50,10 @@ class DiaryDailyModel
     return $newDate;
   }
 
+  /**
+   * Allow the inclusion
+   * of timetable events in diary.
+   */
   private function getTimetable()
   {
     $dao = new TimetableDAO();
@@ -62,6 +66,11 @@ class DiaryDailyModel
     return $dao->getUserEventsByDay($this->username, $this->date->format('Y-m-d'));
   }
 
+  /**
+   * implementation incomplete.
+   * allows for differenation
+   * between timetables events and diary events.
+   */
   public function getDiaryTypes()
   {
     $dao = new EventDAO();
@@ -83,6 +92,11 @@ class DiaryDailyModel
     return $this->diary;
   }
 
+  /**
+   * Create the url to allow the
+   * addition of Diary Events by user.
+   * Should be a 'View' responsibility.
+   */
   public function getDiaryAddPath()
   {
     $date = $this->date->format('Y/m/d');
@@ -91,19 +105,7 @@ class DiaryDailyModel
 
   public function getDiaryPath($daysOffset = 0)
   {
-    if ( $daysOffset == 0) return BASE_PATH . "$this->username/diary/$this->date->format('Y/m/d')";
-
-    $newDate = clone $this->date;
-
-    if ( $daysOffset > 0 ) {
-      $newDate->add(new DateInterval("P{$daysOffset}D"));
-    }
-
-    if ( $daysOffset < 0 ) {
-      $daysOffset = abs($daysOffset);
-      $newDate->sub(new DateInterval("P{$daysOffset}D"));
-    }
-
+    $newDate = $this->getDate($daysOffset);
     return BASE_PATH . "$this->username/diary/{$newDate->format('Y/m/d')}";
   }
 }

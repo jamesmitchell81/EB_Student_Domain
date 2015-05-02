@@ -27,7 +27,6 @@ class TimetableModel
 
     if ( $offset == 0 )
     {
-
       return $this->setDateToMonday($dt);
     }
 

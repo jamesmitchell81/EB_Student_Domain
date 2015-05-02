@@ -1,7 +1,6 @@
 <?php
 
 include_once './_database/DatabaseQuery.php';
-
 include_once './_dao/LecturerDAO.php';
 include_once './_dao/ModuleDAO.php';
 include_once './_models/_entities/Assignment.php';
@@ -9,6 +8,9 @@ include_once './_models/_entities/AssignmentSubmission.php';
 include_once './_models/_entities/AssignmentCriteria.php';
 include_once './_models/_entities/AssignmentSummary.php';
 
+/**
+ * Deals with database interaction for the assignment domain.
+ */
 class AssignmentDAO
 {
     private $db;

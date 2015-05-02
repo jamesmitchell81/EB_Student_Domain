@@ -5,6 +5,9 @@ include_once './_models/_entities/Person.php';
 include_once './_models/_entities/PersonInterface.php';
 include_once './_database/DatabaseQuery.php';
 
+/**
+ * Database Interaction for Diary Events Domain.
+ */
 class EventDAO
 {
   private $db;
@@ -69,6 +72,8 @@ class EventDAO
   public function createNewEvent(Event $event, $username)
   {
     $this->db = new DatabaseQuery();
+
+    // Bind Parameters.
     $this->db->setStr('title', $event->getTitle());
     $this->db->setStr('description', $event->getDescription());
     $this->db->setStr('start', date('Y-m-d H:i:s', $event->getStartDateTime()));
@@ -90,6 +95,8 @@ class EventDAO
   public function updateEvent(Event $event)
   {
     $this->db = new DatabaseQuery();
+
+    // Bind Parameters.
     $this->db->setInt('id', $event->getId());
     $this->db->setStr('title', $event->getTitle());
     $this->db->setStr('description', $event->getDescription());
@@ -112,7 +119,7 @@ class EventDAO
 
     $count = $this->db->first();
 
-    // where student is only subjset of event.
+    // where student is only subject of event.
     if ( !($count > 1) )
     {
       $sql = 'DELETE FROM Events WHERE idEvents = :id';

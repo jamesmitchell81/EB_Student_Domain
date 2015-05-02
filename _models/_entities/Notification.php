@@ -8,12 +8,6 @@ class Notification
     private $sender;
     private $id;
 
-    public function __construct()
-    {
-        // get data
-        // assign to variables.
-    }
-
     public function getID()
     {
         return $this->id;

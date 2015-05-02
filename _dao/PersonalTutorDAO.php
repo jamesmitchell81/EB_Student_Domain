@@ -7,6 +7,9 @@ include_once './_models/_entities/Lecturer.php';
 include_once './_dao/StudentDAO.php';
 include_once './_dao/LecturerDAO.php';
 
+/**
+ * Database Interaction for the Personal Tutor Domain.
+ */
 class PersonalTutorDAO
 {
   private $db;
@@ -26,12 +29,12 @@ class PersonalTutorDAO
     $this->db = new DatabaseQuery();
     $this->db->setInt('username', $username);
     $this->db->select('SELECT l.idLecturer, f.Date, f.Detail
-                      FROM PersonalTutor p
-                      INNER JOIN Lecturer l ON l.idLecturer = p.idLecturer
-                      INNER JOIN Staff sf ON sf.idStaff = l.idStaff
-                      INNER JOIN Student st ON st.idStudent = p.idStudent
-                      INNER JOIN PersonalTutorFeedBack f ON f.AssignRef = p.AssignRef
-                      WHERE st.idStudent = 20150001');
+                       FROM PersonalTutor p
+                       INNER JOIN Lecturer l ON l.idLecturer = p.idLecturer
+                       INNER JOIN Staff sf ON sf.idStaff = l.idStaff
+                       INNER JOIN Student st ON st.idStudent = p.idStudent
+                       INNER JOIN PersonalTutorFeedBack f ON f.AssignRef = p.AssignRef
+                       WHERE st.idStudent = 20150001');
     $data = $this->db->all();
 
     $studentDAO = new StudentDAO();

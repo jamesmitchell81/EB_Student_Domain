@@ -19,6 +19,7 @@ class DiaryEditModel
   {
     $this->args = $args;
 
+    // Where Date Time not provided use the current Date Time.
     $this->year = isset($this->args[':yyyy']) ? $this->args[':yyyy'] : date('Y');
     $this->month = isset($this->args[':mm']) ? $this->args[':mm']    : date('m');
     $this->day  = isset($this->args[':dd']) ? $this->args[':dd']     : date('d');

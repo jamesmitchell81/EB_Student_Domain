@@ -7,7 +7,6 @@ class Event
     private $startDateTime;
     private $endDateTime;
     private $location = "";
-    private $reminder;
     private $attendees = [];
     private $diaryName;
     private $id;

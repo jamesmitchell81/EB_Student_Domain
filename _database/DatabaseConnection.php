@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Abstracts logic for Database Connection
+ * Parameters.
+ */
 class DatabaseConnection
 {
   private $host;
@@ -36,7 +40,6 @@ class DatabaseConnection
     }
     return $this->db;
   }
-
 
   public function closeConnection()
   {

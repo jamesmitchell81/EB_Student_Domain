@@ -32,12 +32,12 @@ class Controller
       $this->route = Routes::getRoute('signin');
     }
 
-    // $_SESSION['username'] = $username;
-
+    // Include routed classes.
     include("./_models/{$this->route->model}.php");
     include("{$this->route->controller}.php");
     include("./_views/{$this->route->view}.php");
 
+    // create objects
     $model = new $this->route->model($this->router->getArguments(), $this->router->getAction());
     $view = new $this->route->view($model);
     $controller = new $this->route->controller($model, $view);

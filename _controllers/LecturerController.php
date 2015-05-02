@@ -13,6 +13,4 @@ class LecturerController
     $this->view->getData();
     $this->view->display();
   }
-
-
 }

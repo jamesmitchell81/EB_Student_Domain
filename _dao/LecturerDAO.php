@@ -4,6 +4,9 @@ include_once './_database/DatabaseQuery.php';
 include_once './_dao/ModuleDAO.php';
 include_once './_models/_entities/Lecturer.php';
 
+/**
+ * Database Interaction for Lecturer Domain.
+ */
 class LecturerDAO
 {
   private $db;
@@ -18,7 +21,6 @@ class LecturerDAO
                        INNER JOIN Staff s ON s.idStaff = l.idStaff
                        WHERE l.idLecturer = :id AND s.Status = "Active"');
     $data = $this->db->first();
-    // $lecturers = [];
 
     $moduleDAO = new ModuleDAO();
 

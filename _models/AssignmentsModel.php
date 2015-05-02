@@ -24,16 +24,17 @@ class AssignmentsModel
   {
     $dao = new AssignmentDAO();
 
-    if ( !empty($this->args) )
+    if ( empty($this->args) )
+      return $dao->getUserAssignments($this->username);
+
+    if ( array_key_exists(':code', $this->args))
     {
-      if ( array_key_exists(':code', $this->args))
-      {
-        return $dao->getAssignmentsByModuleCode($this->args[':code']);
-      }
-      $assignment[] = $dao->getAssignmentByID($this->args[':id']); // ?
-      return $assignment;
+      return $dao->getAssignmentsByModuleCode($this->args[':code']);
     }
-    return $dao->getUserAssignments($this->username);
+
+    $assignment[] = $dao->getAssignmentByID($this->args[':id']);
+    return $assignment;
+
   }
 
   public function getAssignmentSummary()

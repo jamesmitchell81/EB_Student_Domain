@@ -7,6 +7,9 @@ include_once './_models/_entities/Room.php';
 include_once './_models/_entities/Timetable.php';
 include_once './_models/_entities/Lecturer.php';
 
+/**
+ * Database Interaction for Timetable Domain.
+ */
 class TimetableDAO
 {
   private $db;

@@ -28,6 +28,16 @@ class DiaryMonthModel
     return $this->firstDayOfMonth->format('F Y');
   }
 
+  public function getDaysOfTheWeek()
+  {
+    return ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  }
+
+  /**
+   * Create list of months.
+   * 6 prior to current month.
+   * 10 after.
+   */
   public function getMonthRange()
   {
     $range = [];
@@ -43,62 +53,66 @@ class DiaryMonthModel
     return $range;
   }
 
-  private function getTimetable($dt)
+  private function getTimetable($date)
   {
     $dao = new TimetableDAO();
-    return $dao->selectUserTimetableEvent($this->username, $dt->format('Y-m-d'));
+    return $dao->selectUserTimetableEvent($this->username, $date->format('Y-m-d'));
   }
 
-  private function getEvents($dt)
+  private function getEvents($date)
   {
     $dao = new EventDAO();
-    return $dao->getUserEventsByDay($this->username, $dt->format('Y-m-d'));
+    return $dao->getUserEventsByDay($this->username, $date->format('Y-m-d'));
   }
 
-  private function getDiary($dt)
+
+  private function getDiary($date)
   {
     $this->diary = new Diary;
 
-    foreach ($this->getTimetable($dt) as $event) {
+    foreach ($this->getTimetable($date) as $event) {
       $this->diary->addEvent($event);
     }
 
-    foreach ($this->getEvents($dt) as $event) {
+    foreach ($this->getEvents($date) as $event) {
       $this->diary->addEvent($event);
     }
 
     return $this->diary;
   }
 
+  /**
+   * Create the base stucture
+   * of the calender month.
+   */
   public function getCalender()
   {
     $monthNum = (int)$this->firstDayOfMonth->format('m');
     $yearNum = (int)$this->firstDayOfMonth->format('Y');
-    $dt = clone $this->firstDayOfMonth;
+    $date = clone $this->firstDayOfMonth;
 
-	$days = date('t', mktime(0, 0, 0, $monthNum, 1, $yearNum));
-/*     $days = cal_days_in_month(CAL_GREGORIAN, $monthNum, $yearNum); //http://php.net/manual/en/function.cal-days-in-month.php */
+    // gets days in month.
+    $days = date('t', mktime(0, 0, 0, $monthNum, 1, $yearNum));
     $rows = ($days / 7) + 1;
 
     $calender = [];
-
     $daysOfWeek = $this->getDaysOfTheWeek();
 
     $row = 0;
-    while ( $dt->format('M') == $this->firstDayOfMonth->format('M') )
+    while ( $date->format('M') == $this->firstDayOfMonth->format('M') )
     {
 
       foreach ($daysOfWeek as $day) {
-        if ( $dt->format('D') == $day && $dt->format('M') == $this->firstDayOfMonth->format('M') )
+        if ( $date->format('D') == $day && $date->format('M') == $this->firstDayOfMonth->format('M') )
         {
 
           $calender[$row][$day] = [
-                  "href"   => BASE_PATH . "{$this->username}/diary/{$dt->format('Y/m/d')}",
-                  "date"   => $dt->format('Y/m/d'),
-                  "events" => $this->getDiary($dt)
+                  "href"   => BASE_PATH . "{$this->username}/diary/{$date->format('Y/m/d')}",
+                  "date"   => $date->format('Y/m/d'),
+                  "events" => $this->getDiary($date)
                   ];
 
-          $dt->modify("+1 days");
+          $date->modify("+1 days");
         }  else {
           $calender[$row][$day] = "";
         }
@@ -108,10 +122,4 @@ class DiaryMonthModel
 
     return $calender;
   }
-
-  public function getDaysOfTheWeek()
-  {
-    return ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  }
-
 }

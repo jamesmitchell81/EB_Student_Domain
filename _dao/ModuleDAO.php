@@ -3,6 +3,9 @@
 include_once './_models/_entities/Module.php';
 include_once './_database/DatabaseQuery.php';
 
+/**
+ * Database Interaction for Module Domain.
+ */
 class ModuleDAO
 {
   private $db;
@@ -86,14 +89,3 @@ class ModuleDAO
 
   }
 }
-
-
-
-
-
-
-
-
-
-
-

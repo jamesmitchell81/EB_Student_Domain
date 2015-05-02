@@ -7,6 +7,9 @@ include_once './_dao/ModuleDAO.php';
 include_once './_dao/StudentDAO.php';
 include_once './_database/DatabaseQuery.php';
 
+/**
+ * Database Interation for the Attendance Domain.
+ */
 class AttendanceDAO
 {
   private $db;
@@ -102,9 +105,6 @@ class AttendanceDAO
 
     foreach ($data as $session) {
       $attendanceSession = new AttendanceSession();
-      // $attendanceSession->setDate($session['Date']);
-      // $attendanceSession->setResult($session['Result']);
-      // $attendance->addSession($attendanceSession);
       $attendance->addSession($session['Date'], $session['Result']);
     }
 

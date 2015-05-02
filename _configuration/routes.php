@@ -60,9 +60,6 @@ class Routes
 
     // Personal Tutor Feedback
     static::$routes['tutor-sessions'] = new Route('PersonalTutorModel', 'PersonalTutorView', 'PersonalTutorController');
-
-    // user feedback
-    // static::$routes['user-feedback'] = new Route('UserFeedbackModel', 'UserFeedbackView', 'UserFeedbackController');
   }
 
   public static function getRoutes()

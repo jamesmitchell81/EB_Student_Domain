@@ -10,7 +10,7 @@ class DiaryUpdateController
 
     $action = $this->model->getAction();
 
-    if ( method_exists($this->model, $action) && is_callable(array($this->model, $action)) )
+    if ( method_exists($this->model, $action)  )
     {
       call_user_func(array($this->model, $action));
     }

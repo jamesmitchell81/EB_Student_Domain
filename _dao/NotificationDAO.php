@@ -5,6 +5,9 @@ include_once './_models/_entities/Person.php';
 include_once './_models/_entities/PersonInterface.php';
 include_once './_database/DatabaseQuery.php';
 
+/**
+ * Database Interaction for Notification Domain.
+ */
 class NotificationDAO
 {
   private $db;
@@ -12,8 +15,10 @@ class NotificationDAO
   public function getNotificationById($id, $username)
   {
     $this->db = new DatabaseQuery();
+
     $this->db->set('id', $id, PDO::PARAM_INT);
     $this->db->set('username', $username, PDO::PARAM_INT);
+
     $this->db->select('SELECT n.idNotifications, n.Title AS Subject, n.Body, n.NotificationDate, s.Title, s.FirstName, s.Surname
                        FROM Notifications n
                        INNER JOIN Staff s ON s.idStaff = n.idStaff
@@ -74,30 +79,6 @@ class NotificationDAO
     }
 
     return $notifications;
-  }
-
-  public function saveNotification($id, $username)
-  {
-    $this->db = new DatabaseQuery();
-    $this->db->setInt('id', $id);
-    $this->db->setInt('username', $username);
-    $success = $this->db->update('UPDATE NotificationReceivers
-                                 SET Saved = TRUE
-                                 WHERE idNotifications = :id
-                                 AND idStudent = :username');
-    return $success;
-  }
-
-  public function unSaveNotification($id, $username)
-  {
-    $this->db = new DatabaseQuery();
-    $this->db->setInt('id', $id);
-    $this->db->setInt('username', $username);
-    $success = $this->db->update('UPDATE NotificationReceivers
-                                 SET Saved = FALSE
-                                 WHERE idNotifications = :id
-                                 AND idStudent = :username');
-    return $success;
   }
 
   public function deleteNotificationById($id, $username)
