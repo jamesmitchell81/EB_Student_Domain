@@ -22,7 +22,6 @@ class ModuleModel
 
   public function getModules()
   {
-
     $moduleData = new ModuleDAO();
     $lecturerData = new LecturerDAO();
 
@@ -33,6 +32,7 @@ class ModuleModel
       $modules[] = $moduleData->getModuleById($code);
     }
 
+    // Assign lecturers to modules.
     foreach ($modules as $module) {
       $code = $module->getModuleCode();
       $lecturers = $lecturerData->getLecturersByModuleCode($code);
@@ -41,5 +41,4 @@ class ModuleModel
 
     return $modules;
   }
-
 }

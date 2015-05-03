@@ -1,6 +1,5 @@
 <?php
 
-// date interval ref: http://php.net/manual/en/dateinterval.construct.php
 include_once './_database/DatabaseQuery.php';
 include_once './_dao/TimetableDAO.php';
 include_once './_util/Time.php';
@@ -75,7 +74,7 @@ class TimetableModel
 
   private function setDateToMonday($date)
   {
-    // ((date - weekday) - 2 )
+    // monday = ((date - weekday number) - 2 )
     $weekday = (int)date('w', strtotime($date->format('Y-m-d')));
     if ( $weekday == 1 ) return $date;
     $weekday -= 1;
@@ -122,6 +121,7 @@ class TimetableModel
     $startDate->setDate($this->args[":yyyy"], $this->args[':mm'], $this->args[':dd']);
     $startDate = $this->setDateToMonday($startDate);
 
+    // Make the date and integer value.
     $startDate = strtotime($startDate->format('Y-m-d'));
     $endDate = $startDate + Time::fromDays(5);
 
@@ -135,11 +135,12 @@ class TimetableModel
 
     $timespaces = [];
 
-    while ( ( Time::toMinutes($endTime - $startTime) + 15) > 0 )
+    while ( ( Time::toMinutes($endTime - $startTime) + Time::fromMinutes(15) ) > 0 )
     {
       $startDateTemp = $startDate;
       while ( Time::toDays($endDate - $startDateTemp) > 0 )
       {
+        // $timespaces["08:00"]["Mon"] = "Mon 08:00";
         $timespaces[date('H:i', $startTime)][date('D', $startDateTemp)] = date('D', $startDateTemp) . " " . date('H:i', $startTime);
         $startDateTemp += Time::fromDays(1);
       }
@@ -148,42 +149,6 @@ class TimetableModel
 
     return $timespaces;
   }
-
-  // private function days($t)
-  // {
-  //   return ((($t * 60) * 60) * 24);
-  // }
-
-  // private function hours($t)
-  // {
-  //   return ($t * 60) * 60;
-  // }
-
-  // private function minutes($t)
-  // {
-  //   return $t * 60;
-  // }
-
-  // private function day($t)
-  // {
-  //   return $this->hour($t) / 24;
-  // }
-
-  // private function hour($t)
-  // {
-  //   return $this->minute($t) / 60;
-  // }
-
-  // private function minute($t)
-  // {
-  //   // return $this->second($t) / 60;
-  //   return $t / 60;
-  // }
-
-  // private function second($t)
-  // {
-  //   return ($t - strtotime(date("Y-m-d"))) / 1000;
-  // }
 }
 
 

@@ -71,7 +71,6 @@ class DiaryYearModel
 
     for ( $i = 0; $i < 12; $i++ )
     {
-      // $range[$tempDate->format('F Y')] = BASE_PATH . "{$this->username}/diary/{$tempDate->format('Y/m')}";
       $range[$tempDate->format('F Y')] = $this->getCalender($tempDate);
       $tempDate->add(new DateInterval('P1M'));
     }
@@ -86,7 +85,6 @@ class DiaryYearModel
 
     for ( $i = 0; $i < 12; $i++ )
     {
-      // $range[$tempDate->format('F Y')] = BASE_PATH . "{$this->username}/diary/{$tempDate->format('Y/m')}";
       $range[] = [
         "title" => $tempDate->format('F Y'),
         "href"  => BASE_PATH .  "{$this->username}/diary/{$tempDate->format('Y/m')}"
@@ -105,8 +103,7 @@ class DiaryYearModel
     $monthNum = (int)$dt->format('m');
     $yearNum = (int)$this->year;
 
-	$days = date('t', mktime(0, 0, 0, $monthNum, 1, $yearNum));
-/*     $days = cal_days_in_month(CAL_GREGORIAN, $monthNum, $yearNum); //http://php.net/manual/en/function.cal-days-in-month.php */
+  	$days = date('t', mktime(0, 0, 0, $monthNum, 1, $yearNum));
     $rows = ($days / 7) + 1;
 
     $calender = [];

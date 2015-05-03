@@ -1,10 +1,15 @@
 <?php
 
+/**
+ * Isolation of super globals and data inputs.
+ * Single point of contact allowing for cleaner escaping.
+ * Addition sanitation and filtering would improve.
+ */
 class Input
 {
-  private function __construct()
-  {
-
+  public function __construct() {
+  // required to allow Input::input() to be static.
+  // Input::input() assumed as constructor otherwise.
   }
 
   private static function process($arr = [], $key = '')
@@ -67,7 +72,6 @@ class Input
 
   public static function input()
   {
-
+    return file_get_contents("php://input");
   }
-
 }

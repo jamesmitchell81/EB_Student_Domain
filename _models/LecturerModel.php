@@ -16,12 +16,14 @@ class LecturerModel
   public function getLecturerDetails()
   {
     $dao = new LecturerDAO();
-    if ( !empty($this->args) ) {
-      $lecturer[] = $dao->getLecturerById($this->args[':lecturerid']);
-      return $lecturer;
-    } else {
+
+    if ( empty($this->args) )
+    {
       return $dao->getLecturerByStudent($this->username);
     }
+
+    $lecturer[] = $dao->getLecturerById($this->args[':lecturerid']);
+    return $lecturer;
   }
 
 

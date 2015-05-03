@@ -2,6 +2,10 @@
 
 include_once 'Input.php';
 
+/**
+ * Central point for dealing with navigational
+ * View elements allowing for cleaner markup.
+ */
 class Navigation
 {
   public static function defaultDiary()

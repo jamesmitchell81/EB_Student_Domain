@@ -4,6 +4,10 @@ include './_configuration/Routes.php';
 include './_configuration/Domains.php';
 include './_configuration/Wildcards.php';
 
+/**
+ * Determine required route from url.
+ * extract actions and arguments from url.
+ */
 class Router
 {
   private $domains;
@@ -16,7 +20,6 @@ class Router
 
   public function __construct($data = '')
   {
-    $this->routePath = $data;
     $this->routePath = rtrim($data, '/');
     $this->data = explode("/", $this->routePath);
 
@@ -24,13 +27,17 @@ class Router
     $this->wildcards = Wildcards::getWildcards();
     $this->routes = Routes::getRoutes();
 
+    // is the username in the correct format
     $this->username = $this->matchUsername();
-    if ( $this->username ) {
-      array_shift($this->data);
-      $this->routePath = implode("/", $this->data);
-    } else {
+    if ( !$this->username ) {
       $this->route = Routes::getRoute('signin');
+      return;
     }
+
+    // strip the username from data.
+    array_shift($this->data);
+    // re-assemble path string
+    $this->routePath = implode("/", $this->data);
 
     $this->route = $this->determineCorrectRoute();
     $this->setArguments();
@@ -42,18 +49,22 @@ class Router
     $wildcardPatterns = array_values($this->wildcards);
     $routekeys = implode("|", array_keys($this->routes));
 
+    // str_replace(search for, replace with, in subject)
+    // swap wildcard string with related wildcard patterns for all routes.
     $domainRegex = str_replace($wildcardKeys, $wildcardPatterns, $routekeys);
+    // escape forward slashes.
     $domainRegex = str_replace("/", "\/", $domainRegex);
 
-    $routekeys = explode("|", $domainRegex);
-    $routevalues = array_keys($this->routes);
+    // seporate back to array
+    $routePatterns = explode("|", $domainRegex);
+    $routekeys = array_keys($this->routes);
 
-    for ($i = 0; $i < count($routekeys); $i++ ) {
-      $domain = $routekeys[$i];
+    for ($i = 0; $i < count($routePatterns); $i++ ) {
+      $route = $routePatterns[$i];
 
-      if ( preg_match("/^($domain)$/", $this->routePath))
+      if ( preg_match("/^($route)$/", $this->routePath))
       {
-        $this->routeMatch = $routevalues[$i];
+        $this->routeMatch = $routekeys[$i];
         return Routes::getRoute($this->routeMatch);
       }
     }
@@ -82,18 +93,25 @@ class Router
 
     // remove the domain part.
     foreach ($this->domains as $value) {
+      // search for domain on url array.
+      // array_search(needle, haystack)
       $index = array_search($value, $args);
       unset($args[$index]);
 
+      // search for domain on matched route.
       $index = array_search($value, $match);
       unset($match[$index]);
     }
 
-    // remove the action part.
+    // find the action part in url data and the matched route string.
+    // preg_grep(pattern, input)
     $this->action = preg_grep("/^{$this->wildcards[':action']}$/", $args);
     $matchAction = preg_grep("/^{$this->wildcards[':action']}$/", $match);
     if ( !empty($this->action) )
     {
+      // convert action from array to string.
+      // find action in url data.
+      // remove from url data.
       $this->action = array_shift($this->action);
       $index = array_search($this->action, $args);
       unset($args[$index]);
@@ -103,10 +121,10 @@ class Router
       unset($match[$index]);
     }
 
-    // get the arguments.
+    // get the arguments from url data
+    // get the key from the wildcard. :id, :yyyy, :dd,  etc.
     foreach ($args as $arg) {
       $key = $this->matchWildcard($match, $arg);
-      // $key = $this->getArgWildcard($arg);
       $this->arguments[$key] = $arg;
     }
   }
@@ -118,26 +136,13 @@ class Router
       $pattern = $this->wildcards[$key];
       if ( preg_match("/^$pattern$/", $arg) )
       {
+        // find matched wildcard and remove from possible wildcards.
+        // array_search(needle, haystack)
         $index = array_search($key, $domainMatchedWildcards);
         unset($domainMatchedWildcards[$index]);
         return $key;
       }
     }
-  }
-
-  private function getArgWildcard($arg)
-  {
-    $key = $arg;
-    foreach ($this->wildcards as $wildcard => $pattern) {
-      if ( preg_match("/^$pattern$/", $key) )
-      {
-        $key = preg_replace($pattern, $wildcard, $key);
-        // remove wildcard if used.
-        unset($this->wildcards[$wildcard]);
-        return $key;
-      }
-    }
-    return;
   }
 
   public function getAction()

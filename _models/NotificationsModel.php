@@ -37,7 +37,6 @@ class NotificationsModel
     }
   }
 
-  // move controller?
   public function save()
   {
     if ( !empty($this->args) )

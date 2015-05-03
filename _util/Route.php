@@ -1,7 +1,9 @@
 <?php
 
 // https://r.je/mvc-php-front-controller.html
-
+/**
+ * Allowing for grouping of routes.
+ */
 class Route
 {
   public $model;
